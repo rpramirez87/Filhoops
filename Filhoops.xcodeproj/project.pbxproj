@@ -1,0 +1,537 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D9FCB2221DD83A2C00AF6BB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FCB2211DD83A2C00AF6BB7 /* AppDelegate.swift */; };
+		D9FCB2241DD83A2C00AF6BB7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FCB2231DD83A2C00AF6BB7 /* ViewController.swift */; };
+		D9FCB2271DD83A2C00AF6BB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9FCB2251DD83A2C00AF6BB7 /* Main.storyboard */; };
+		D9FCB2291DD83A2C00AF6BB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9FCB2281DD83A2C00AF6BB7 /* Assets.xcassets */; };
+		D9FCB22C1DD83A2C00AF6BB7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9FCB22A1DD83A2C00AF6BB7 /* LaunchScreen.storyboard */; };
+		D9FCB2371DD83A2C00AF6BB7 /* FilhoopsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FCB2361DD83A2C00AF6BB7 /* FilhoopsTests.swift */; };
+		D9FCB2421DD83A2C00AF6BB7 /* FilhoopsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FCB2411DD83A2C00AF6BB7 /* FilhoopsUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D9FCB2331DD83A2C00AF6BB7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9FCB2161DD83A2C00AF6BB7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D9FCB21D1DD83A2C00AF6BB7;
+			remoteInfo = Filhoops;
+		};
+		D9FCB23E1DD83A2C00AF6BB7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9FCB2161DD83A2C00AF6BB7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D9FCB21D1DD83A2C00AF6BB7;
+			remoteInfo = Filhoops;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D9FCB21E1DD83A2C00AF6BB7 /* Filhoops.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Filhoops.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9FCB2211DD83A2C00AF6BB7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D9FCB2231DD83A2C00AF6BB7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D9FCB2261DD83A2C00AF6BB7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D9FCB2281DD83A2C00AF6BB7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D9FCB22B1DD83A2C00AF6BB7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D9FCB22D1DD83A2C00AF6BB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D9FCB2321DD83A2C00AF6BB7 /* FilhoopsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FilhoopsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9FCB2361DD83A2C00AF6BB7 /* FilhoopsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilhoopsTests.swift; sourceTree = "<group>"; };
+		D9FCB2381DD83A2C00AF6BB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D9FCB23D1DD83A2C00AF6BB7 /* FilhoopsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FilhoopsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9FCB2411DD83A2C00AF6BB7 /* FilhoopsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilhoopsUITests.swift; sourceTree = "<group>"; };
+		D9FCB2431DD83A2C00AF6BB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D9FCB21B1DD83A2C00AF6BB7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9FCB22F1DD83A2C00AF6BB7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9FCB23A1DD83A2C00AF6BB7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D9FCB2151DD83A2C00AF6BB7 = {
+			isa = PBXGroup;
+			children = (
+				D9FCB2201DD83A2C00AF6BB7 /* Filhoops */,
+				D9FCB2351DD83A2C00AF6BB7 /* FilhoopsTests */,
+				D9FCB2401DD83A2C00AF6BB7 /* FilhoopsUITests */,
+				D9FCB21F1DD83A2C00AF6BB7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D9FCB21F1DD83A2C00AF6BB7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D9FCB21E1DD83A2C00AF6BB7 /* Filhoops.app */,
+				D9FCB2321DD83A2C00AF6BB7 /* FilhoopsTests.xctest */,
+				D9FCB23D1DD83A2C00AF6BB7 /* FilhoopsUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D9FCB2201DD83A2C00AF6BB7 /* Filhoops */ = {
+			isa = PBXGroup;
+			children = (
+				D9FCB2211DD83A2C00AF6BB7 /* AppDelegate.swift */,
+				D9FCB2231DD83A2C00AF6BB7 /* ViewController.swift */,
+				D9FCB2251DD83A2C00AF6BB7 /* Main.storyboard */,
+				D9FCB2281DD83A2C00AF6BB7 /* Assets.xcassets */,
+				D9FCB22A1DD83A2C00AF6BB7 /* LaunchScreen.storyboard */,
+				D9FCB22D1DD83A2C00AF6BB7 /* Info.plist */,
+			);
+			path = Filhoops;
+			sourceTree = "<group>";
+		};
+		D9FCB2351DD83A2C00AF6BB7 /* FilhoopsTests */ = {
+			isa = PBXGroup;
+			children = (
+				D9FCB2361DD83A2C00AF6BB7 /* FilhoopsTests.swift */,
+				D9FCB2381DD83A2C00AF6BB7 /* Info.plist */,
+			);
+			path = FilhoopsTests;
+			sourceTree = "<group>";
+		};
+		D9FCB2401DD83A2C00AF6BB7 /* FilhoopsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D9FCB2411DD83A2C00AF6BB7 /* FilhoopsUITests.swift */,
+				D9FCB2431DD83A2C00AF6BB7 /* Info.plist */,
+			);
+			path = FilhoopsUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D9FCB21D1DD83A2C00AF6BB7 /* Filhoops */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D9FCB2461DD83A2C00AF6BB7 /* Build configuration list for PBXNativeTarget "Filhoops" */;
+			buildPhases = (
+				D9FCB21A1DD83A2C00AF6BB7 /* Sources */,
+				D9FCB21B1DD83A2C00AF6BB7 /* Frameworks */,
+				D9FCB21C1DD83A2C00AF6BB7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Filhoops;
+			productName = Filhoops;
+			productReference = D9FCB21E1DD83A2C00AF6BB7 /* Filhoops.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D9FCB2311DD83A2C00AF6BB7 /* FilhoopsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D9FCB2491DD83A2C00AF6BB7 /* Build configuration list for PBXNativeTarget "FilhoopsTests" */;
+			buildPhases = (
+				D9FCB22E1DD83A2C00AF6BB7 /* Sources */,
+				D9FCB22F1DD83A2C00AF6BB7 /* Frameworks */,
+				D9FCB2301DD83A2C00AF6BB7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D9FCB2341DD83A2C00AF6BB7 /* PBXTargetDependency */,
+			);
+			name = FilhoopsTests;
+			productName = FilhoopsTests;
+			productReference = D9FCB2321DD83A2C00AF6BB7 /* FilhoopsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D9FCB23C1DD83A2C00AF6BB7 /* FilhoopsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D9FCB24C1DD83A2C00AF6BB7 /* Build configuration list for PBXNativeTarget "FilhoopsUITests" */;
+			buildPhases = (
+				D9FCB2391DD83A2C00AF6BB7 /* Sources */,
+				D9FCB23A1DD83A2C00AF6BB7 /* Frameworks */,
+				D9FCB23B1DD83A2C00AF6BB7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D9FCB23F1DD83A2C00AF6BB7 /* PBXTargetDependency */,
+			);
+			name = FilhoopsUITests;
+			productName = FilhoopsUITests;
+			productReference = D9FCB23D1DD83A2C00AF6BB7 /* FilhoopsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D9FCB2161DD83A2C00AF6BB7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0810;
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = "Mochi Apps";
+				TargetAttributes = {
+					D9FCB21D1DD83A2C00AF6BB7 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = RJETQ2A4J2;
+						ProvisioningStyle = Automatic;
+					};
+					D9FCB2311DD83A2C00AF6BB7 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = RJETQ2A4J2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = D9FCB21D1DD83A2C00AF6BB7;
+					};
+					D9FCB23C1DD83A2C00AF6BB7 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = RJETQ2A4J2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = D9FCB21D1DD83A2C00AF6BB7;
+					};
+				};
+			};
+			buildConfigurationList = D9FCB2191DD83A2C00AF6BB7 /* Build configuration list for PBXProject "Filhoops" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D9FCB2151DD83A2C00AF6BB7;
+			productRefGroup = D9FCB21F1DD83A2C00AF6BB7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D9FCB21D1DD83A2C00AF6BB7 /* Filhoops */,
+				D9FCB2311DD83A2C00AF6BB7 /* FilhoopsTests */,
+				D9FCB23C1DD83A2C00AF6BB7 /* FilhoopsUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D9FCB21C1DD83A2C00AF6BB7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9FCB22C1DD83A2C00AF6BB7 /* LaunchScreen.storyboard in Resources */,
+				D9FCB2291DD83A2C00AF6BB7 /* Assets.xcassets in Resources */,
+				D9FCB2271DD83A2C00AF6BB7 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9FCB2301DD83A2C00AF6BB7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9FCB23B1DD83A2C00AF6BB7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D9FCB21A1DD83A2C00AF6BB7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9FCB2241DD83A2C00AF6BB7 /* ViewController.swift in Sources */,
+				D9FCB2221DD83A2C00AF6BB7 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9FCB22E1DD83A2C00AF6BB7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9FCB2371DD83A2C00AF6BB7 /* FilhoopsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9FCB2391DD83A2C00AF6BB7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9FCB2421DD83A2C00AF6BB7 /* FilhoopsUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D9FCB2341DD83A2C00AF6BB7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D9FCB21D1DD83A2C00AF6BB7 /* Filhoops */;
+			targetProxy = D9FCB2331DD83A2C00AF6BB7 /* PBXContainerItemProxy */;
+		};
+		D9FCB23F1DD83A2C00AF6BB7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D9FCB21D1DD83A2C00AF6BB7 /* Filhoops */;
+			targetProxy = D9FCB23E1DD83A2C00AF6BB7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D9FCB2251DD83A2C00AF6BB7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D9FCB2261DD83A2C00AF6BB7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D9FCB22A1DD83A2C00AF6BB7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D9FCB22B1DD83A2C00AF6BB7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D9FCB2441DD83A2C00AF6BB7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D9FCB2451DD83A2C00AF6BB7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D9FCB2471DD83A2C00AF6BB7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = RJETQ2A4J2;
+				INFOPLIST_FILE = Filhoops/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mochi.Filhoops;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		D9FCB2481DD83A2C00AF6BB7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = RJETQ2A4J2;
+				INFOPLIST_FILE = Filhoops/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mochi.Filhoops;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		D9FCB24A1DD83A2C00AF6BB7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = RJETQ2A4J2;
+				INFOPLIST_FILE = FilhoopsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mochi.FilhoopsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Filhoops.app/Filhoops";
+			};
+			name = Debug;
+		};
+		D9FCB24B1DD83A2C00AF6BB7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = RJETQ2A4J2;
+				INFOPLIST_FILE = FilhoopsTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mochi.FilhoopsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Filhoops.app/Filhoops";
+			};
+			name = Release;
+		};
+		D9FCB24D1DD83A2C00AF6BB7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = RJETQ2A4J2;
+				INFOPLIST_FILE = FilhoopsUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mochi.FilhoopsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Filhoops;
+			};
+			name = Debug;
+		};
+		D9FCB24E1DD83A2C00AF6BB7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = RJETQ2A4J2;
+				INFOPLIST_FILE = FilhoopsUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mochi.FilhoopsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = Filhoops;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D9FCB2191DD83A2C00AF6BB7 /* Build configuration list for PBXProject "Filhoops" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9FCB2441DD83A2C00AF6BB7 /* Debug */,
+				D9FCB2451DD83A2C00AF6BB7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D9FCB2461DD83A2C00AF6BB7 /* Build configuration list for PBXNativeTarget "Filhoops" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9FCB2471DD83A2C00AF6BB7 /* Debug */,
+				D9FCB2481DD83A2C00AF6BB7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D9FCB2491DD83A2C00AF6BB7 /* Build configuration list for PBXNativeTarget "FilhoopsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9FCB24A1DD83A2C00AF6BB7 /* Debug */,
+				D9FCB24B1DD83A2C00AF6BB7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D9FCB24C1DD83A2C00AF6BB7 /* Build configuration list for PBXNativeTarget "FilhoopsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9FCB24D1DD83A2C00AF6BB7 /* Debug */,
+				D9FCB24E1DD83A2C00AF6BB7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D9FCB2161DD83A2C00AF6BB7 /* Project object */;
+}
