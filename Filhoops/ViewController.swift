@@ -8,6 +8,7 @@
 
 import UIKit
 import FBSDKLoginKit
+import Firebase
 
 class ViewController: UIViewController, FBSDKLoginButtonDelegate {
 
@@ -51,16 +52,16 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         //Set up Firebase user for Facebook user
         let accessToken = FBSDKAccessToken.current()
         guard let accessTokenString = accessToken?.tokenString else { return }
-//        let credentials = FIRFacebookAuthProvider.credential(withAccessToken: accessTokenString)
-//        
-//        FIRAuth.auth()?.signIn(with: credentials, completion: { (user, error) in
-//            if error != nil {
-//                print("Something went wrong with our FB user: ", error ?? "")
-//                return
-//            }
-//            
-//            print("Successfully logged in with our user: ", user ?? "")
-//        })
+        let credentials = FIRFacebookAuthProvider.credential(withAccessToken: accessTokenString)
+        
+        FIRAuth.auth()?.signIn(with: credentials, completion: { (user, error) in
+            if error != nil {
+                print("Something went wrong with our FB user: ", error ?? "")
+                return
+            }
+            
+            print("Successfully logged in with our user: ", user ?? "")
+        })
         
         //Set up Graph Request
         FBSDKGraphRequest(graphPath: "/me", parameters: ["fields" : "id, name, email, cover, picture"]).start {
@@ -71,7 +72,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
                 return
             }
             
-            print(result)
+            print(result ?? "")
             
         }
     }

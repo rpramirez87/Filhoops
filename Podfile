@@ -9,6 +9,7 @@ target 'Filhoops' do
 	pod 'FBSDKCoreKit'
 	pod 'FBSDKShareKit'
 	pod 'FBSDKLoginKit'
+	pod 'Firebase/Auth'
 
 
   target 'FilhoopsTests' do
