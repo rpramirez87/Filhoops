@@ -27,6 +27,9 @@
                                     <constraint firstAttribute="height" constant="50" id="eU0-pn-xmC"/>
                                 </constraints>
                                 <state key="normal" title="Facebook Button"/>
+                                <connections>
+                                    <segue destination="bEn-Mt-E1X" kind="show" id="UY1-XD-LGm"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="temp_filhoops_logo" translatesAutoresizingMaskIntoConstraints="NO" id="AG1-sW-hUd">
                                 <rect key="frame" x="36" y="70" width="302" height="199"/>
@@ -53,8 +56,129 @@
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="111.99400299850076"/>
         </scene>
+        <!--Team-->
+        <scene sceneID="nft-qd-JNK">
+            <objects>
+                <viewController id="FDk-0q-52p" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pUx-1M-q6V"/>
+                        <viewControllerLayoutGuide type="bottom" id="EKy-Ig-hIF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NHH-cG-vER">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Team" image="004. Followers" id="adr-Yf-qFG" userLabel="Team"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zaQ-Az-fiN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="503" y="940"/>
+        </scene>
+        <!--Player-->
+        <scene sceneID="9be-nO-H84">
+            <objects>
+                <viewController id="vXs-7R-dBl" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="spv-Fd-g2w"/>
+                        <viewControllerLayoutGuide type="bottom" id="Zvg-U2-ZOb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="b7r-AS-rFI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Player" image="002. Contact" id="ERE-iu-THN"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mFZ-He-fkI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-180" y="940"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="WIO-cd-wJa">
+            <objects>
+                <tabBarController id="bEn-Mt-E1X" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="93Z-16-ilP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BZR-ae-ah2" kind="relationship" relationship="viewControllers" id="5FS-RH-3BT"/>
+                        <segue destination="vXs-7R-dBl" kind="relationship" relationship="viewControllers" id="DRo-FK-TeC"/>
+                        <segue destination="FDk-0q-52p" kind="relationship" relationship="viewControllers" id="iUk-gC-uYg"/>
+                        <segue destination="ejK-gT-eKF" kind="relationship" relationship="viewControllers" id="SAV-An-fEw"/>
+                        <segue destination="nYc-PT-kbA" kind="relationship" relationship="viewControllers" id="0NT-zF-Auu"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="INR-uP-0FT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="913" y="107"/>
+        </scene>
+        <!--Leaderboards-->
+        <scene sceneID="luB-oM-mqq">
+            <objects>
+                <viewController id="ejK-gT-eKF" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kd0-Ac-QpV"/>
+                        <viewControllerLayoutGuide type="bottom" id="hxn-Cb-PhT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="T9m-91-1zA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Leaderboards" image="343. Playlist" id="yba-dE-gDp"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uku-8I-Q6K" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1238" y="940"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="DcJ-dn-q0H">
+            <objects>
+                <viewController id="BZR-ae-ah2" customClass="HomeVC" customModule="Filhoops" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="g2m-d1-XdI"/>
+                        <viewControllerLayoutGuide type="bottom" id="fHw-Lj-KWS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PAq-4U-4T9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Home" image="001. Home" id="7wV-57-ABs" userLabel="Home"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uSn-5N-mKQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-876" y="941"/>
+        </scene>
+        <!--Playoffs-->
+        <scene sceneID="I4K-Pe-Huq">
+            <objects>
+                <viewController id="nYc-PT-kbA" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Bod-VK-5wl"/>
+                        <viewControllerLayoutGuide type="bottom" id="vFE-Bv-ym1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="chM-cP-OWn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Playoffs" image="430. Network" id="4vS-jd-Mah"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VZ7-yy-p03" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1978" y="940"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="001. Home" width="22" height="19"/>
+        <image name="002. Contact" width="20" height="18"/>
+        <image name="004. Followers" width="30" height="18"/>
+        <image name="343. Playlist" width="20" height="16"/>
+        <image name="430. Network" width="20" height="20"/>
         <image name="temp_filhoops_logo" width="570" height="375"/>
     </resources>
 </document>

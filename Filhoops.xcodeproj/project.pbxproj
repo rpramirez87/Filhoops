@@ -10,6 +10,7 @@
 		3C3A12B3B254DCD240A5C9F8 /* Pods_FilhoopsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A50DE69EB48AB51B6A05974 /* Pods_FilhoopsTests.framework */; };
 		53E5B416386C166361948055 /* Pods_FilhoopsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE6B7551710AA03A9A2FC3F9 /* Pods_FilhoopsUITests.framework */; };
 		D20C681F94CCE29873277BA0 /* Pods_Filhoops.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D315F3017F10B81495BBB506 /* Pods_Filhoops.framework */; };
+		D912BB411DE1048E00706DD0 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D912BB401DE1048E00706DD0 /* HomeVC.swift */; };
 		D91BD7CF1DD85784008F8EAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D91BD7CE1DD85784008F8EAE /* GoogleService-Info.plist */; };
 		D9FCB2221DD83A2C00AF6BB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FCB2211DD83A2C00AF6BB7 /* AppDelegate.swift */; };
 		D9FCB2241DD83A2C00AF6BB7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FCB2231DD83A2C00AF6BB7 /* ViewController.swift */; };
@@ -45,6 +46,7 @@
 		A8CAFE8F90F108AEC1F482E4 /* Pods-Filhoops.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Filhoops.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Filhoops/Pods-Filhoops.debug.xcconfig"; sourceTree = "<group>"; };
 		B7015616C2CD000C228E6AC6 /* Pods-FilhoopsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FilhoopsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FilhoopsTests/Pods-FilhoopsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D315F3017F10B81495BBB506 /* Pods_Filhoops.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Filhoops.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D912BB401DE1048E00706DD0 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		D91BD7CE1DD85784008F8EAE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D9BE06E51DD850EF00B4B87D /* Filhoops.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Filhoops.entitlements; sourceTree = "<group>"; };
 		D9FCB21E1DD83A2C00AF6BB7 /* Filhoops.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Filhoops.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,6 +117,28 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		D912BB391DE1041C00706DD0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		D912BB3A1DE1042200706DD0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		D912BB3B1DE1042700706DD0 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				D912BB401DE1048E00706DD0 /* HomeVC.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		D9FCB2151DD83A2C00AF6BB7 = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +164,9 @@
 		D9FCB2201DD83A2C00AF6BB7 /* Filhoops */ = {
 			isa = PBXGroup;
 			children = (
+				D912BB391DE1041C00706DD0 /* Model */,
+				D912BB3A1DE1042200706DD0 /* View */,
+				D912BB3B1DE1042700706DD0 /* Controller */,
 				D9BE06E51DD850EF00B4B87D /* Filhoops.entitlements */,
 				D9FCB2211DD83A2C00AF6BB7 /* AppDelegate.swift */,
 				D9FCB2231DD83A2C00AF6BB7 /* ViewController.swift */,
@@ -444,6 +471,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D912BB411DE1048E00706DD0 /* HomeVC.swift in Sources */,
 				D9FCB2241DD83A2C00AF6BB7 /* ViewController.swift in Sources */,
 				D9FCB2221DD83A2C00AF6BB7 /* AppDelegate.swift in Sources */,
 			);
