@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -27,9 +28,6 @@
                                     <constraint firstAttribute="height" constant="50" id="eU0-pn-xmC"/>
                                 </constraints>
                                 <state key="normal" title="Facebook Button"/>
-                                <connections>
-                                    <segue destination="bEn-Mt-E1X" kind="show" id="UY1-XD-LGm"/>
-                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="temp_filhoops_logo" translatesAutoresizingMaskIntoConstraints="NO" id="AG1-sW-hUd">
                                 <rect key="frame" x="36" y="70" width="302" height="199"/>
@@ -38,12 +36,23 @@
                                     <constraint firstAttribute="width" constant="302" id="zpv-Iy-Lzg"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8NG-f8-plU">
+                                <rect key="frame" x="16" y="559" width="343" height="30"/>
+                                <state key="normal" title="Start"/>
+                                <connections>
+                                    <segue destination="bEn-Mt-E1X" kind="show" id="jro-Ud-gPE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="bif-cF-KSs" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="1f9-qT-YvM"/>
+                            <constraint firstItem="8NG-f8-plU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5t5-eU-OTG"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bif-cF-KSs" secondAttribute="bottom" constant="20" id="Jh1-RN-8gr"/>
+                            <constraint firstItem="8NG-f8-plU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="aEw-GB-VYV"/>
+                            <constraint firstItem="8NG-f8-plU" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="aiW-io-onD"/>
                             <constraint firstAttribute="trailing" secondItem="bif-cF-KSs" secondAttribute="trailing" constant="16" id="mlV-Tf-9aN"/>
+                            <constraint firstItem="bif-cF-KSs" firstAttribute="top" secondItem="8NG-f8-plU" secondAttribute="bottom" constant="8" id="sCC-J3-JuD"/>
                             <constraint firstItem="AG1-sW-hUd" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="sme-4X-O7M"/>
                             <constraint firstItem="AG1-sW-hUd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tj8-AK-IjS"/>
                         </constraints>
@@ -67,18 +76,18 @@
                     <view key="view" contentMode="scaleToFill" id="NHH-cG-vER">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Team" image="004. Followers" id="adr-Yf-qFG" userLabel="Team"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zaQ-Az-fiN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="503" y="940"/>
+            <point key="canvasLocation" x="501.60000000000002" y="939.58020989505258"/>
         </scene>
         <!--Player-->
         <scene sceneID="9be-nO-H84">
             <objects>
-                <viewController id="vXs-7R-dBl" sceneMemberID="viewController">
+                <viewController id="vXs-7R-dBl" customClass="PlayerVC" customModule="Filhoops" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="spv-Fd-g2w"/>
                         <viewControllerLayoutGuide type="bottom" id="Zvg-U2-ZOb"/>
@@ -86,13 +95,29 @@
                     <view key="view" contentMode="scaleToFill" id="b7r-AS-rFI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fhM-u6-922">
+                                <rect key="frame" x="87.5" y="70" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="OLN-CL-Cbr"/>
+                                    <constraint firstAttribute="height" constant="200" id="qcI-af-2CX"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fhM-u6-922" firstAttribute="centerX" secondItem="b7r-AS-rFI" secondAttribute="centerX" id="JQL-kg-Z6E"/>
+                            <constraint firstItem="fhM-u6-922" firstAttribute="top" secondItem="spv-Fd-g2w" secondAttribute="bottom" constant="50" id="ttx-xk-Xgy"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Player" image="002. Contact" id="ERE-iu-THN"/>
+                    <connections>
+                        <outlet property="playerImageView" destination="fhM-u6-922" id="P0b-Mm-bSL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mFZ-He-fkI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-180" y="940"/>
+            <point key="canvasLocation" x="-180" y="939.58020989505258"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="WIO-cd-wJa">

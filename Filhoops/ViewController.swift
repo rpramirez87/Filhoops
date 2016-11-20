@@ -20,6 +20,8 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         facebookButton.delegate = self
         facebookButton.readPermissions = ["email" , "public_profile"]
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,10 +43,11 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         print("Successfully Logged in")
         
         self.showFacebookEmail()
-        
+
         
         
     }
+    
     
     
     func showFacebookEmail() {
@@ -76,5 +79,8 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
             
         }
     }
+    
+
+
 }
 

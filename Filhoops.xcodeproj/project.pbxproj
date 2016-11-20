@@ -12,6 +12,8 @@
 		D20C681F94CCE29873277BA0 /* Pods_Filhoops.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D315F3017F10B81495BBB506 /* Pods_Filhoops.framework */; };
 		D912BB411DE1048E00706DD0 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D912BB401DE1048E00706DD0 /* HomeVC.swift */; };
 		D91BD7CF1DD85784008F8EAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D91BD7CE1DD85784008F8EAE /* GoogleService-Info.plist */; };
+		D94A38911DE11EFB00B239B2 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A38901DE11EFB00B239B2 /* TabBarVC.swift */; };
+		D989648F1DE116CC00B3AD41 /* PlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D989648E1DE116CC00B3AD41 /* PlayerVC.swift */; };
 		D9FCB2221DD83A2C00AF6BB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FCB2211DD83A2C00AF6BB7 /* AppDelegate.swift */; };
 		D9FCB2241DD83A2C00AF6BB7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FCB2231DD83A2C00AF6BB7 /* ViewController.swift */; };
 		D9FCB2271DD83A2C00AF6BB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9FCB2251DD83A2C00AF6BB7 /* Main.storyboard */; };
@@ -48,6 +50,8 @@
 		D315F3017F10B81495BBB506 /* Pods_Filhoops.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Filhoops.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D912BB401DE1048E00706DD0 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		D91BD7CE1DD85784008F8EAE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D94A38901DE11EFB00B239B2 /* TabBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
+		D989648E1DE116CC00B3AD41 /* PlayerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerVC.swift; sourceTree = "<group>"; };
 		D9BE06E51DD850EF00B4B87D /* Filhoops.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Filhoops.entitlements; sourceTree = "<group>"; };
 		D9FCB21E1DD83A2C00AF6BB7 /* Filhoops.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Filhoops.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9FCB2211DD83A2C00AF6BB7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -134,7 +138,9 @@
 		D912BB3B1DE1042700706DD0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D94A38901DE11EFB00B239B2 /* TabBarVC.swift */,
 				D912BB401DE1048E00706DD0 /* HomeVC.swift */,
+				D989648E1DE116CC00B3AD41 /* PlayerVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -473,7 +479,9 @@
 			files = (
 				D912BB411DE1048E00706DD0 /* HomeVC.swift in Sources */,
 				D9FCB2241DD83A2C00AF6BB7 /* ViewController.swift in Sources */,
+				D94A38911DE11EFB00B239B2 /* TabBarVC.swift in Sources */,
 				D9FCB2221DD83A2C00AF6BB7 /* AppDelegate.swift in Sources */,
+				D989648F1DE116CC00B3AD41 /* PlayerVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
