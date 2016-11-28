@@ -10,19 +10,30 @@ import UIKit
 import FBSDKLoginKit
 import Firebase
 
-class ViewController: UIViewController, FBSDKLoginButtonDelegate {
+class LoginVC : UIViewController, FBSDKLoginButtonDelegate {
 
 
     @IBOutlet weak var facebookButton: FBSDKLoginButton!
+    @IBOutlet weak var bgImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        facebookButton.delegate = self
-        facebookButton.readPermissions = ["email" , "public_profile"]
+//        facebookButton.delegate = self
+//        facebookButton.readPermissions = ["email" , "public_profile"]
         
+        // If User is log in, skip to Tab Bar VC
+        if (FBSDKAccessToken.current() != nil) {
+            print("Mochiboy")
+            performSegue(withIdentifier: "showTabBarVC", sender: nil)
+            
+        }
         
+        //Shade Background
+        //self.view.alpha = 0.2
+        self.bgImageView.alpha = 0.6
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

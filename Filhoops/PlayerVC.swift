@@ -13,6 +13,7 @@ import FBSDKLoginKit
 class PlayerVC: UIViewController {
     
     @IBOutlet weak var playerImageView: UIImageView!
+    @IBOutlet weak var playerNameLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,9 +21,8 @@ class PlayerVC: UIViewController {
         playerImageView.layer.cornerRadius = 100
         playerImageView.clipsToBounds = true
         
-        
-
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         //Set up Graph Request
@@ -38,6 +38,8 @@ class PlayerVC: UIViewController {
             
             if let dict = result as? Dictionary<String, AnyObject> {
                 //if let URL = dict["cover"]?["source"] as? String {
+                
+                // Handle ID to get facebook picture
                 if let id = dict["id"] as? String {
                     print("ID \(id)")
                     let facebookProfileUrl = "http://graph.facebook.com/\(id)/picture?type=large"
@@ -50,8 +52,15 @@ class PlayerVC: UIViewController {
                         let img = UIImage(data : data as Data)
                         self.playerImageView.image = img
                     }
-
                 }
+                
+                // Handle name 
+                
+                if let playerName = dict["name"] as? String {
+                    self.playerNameLabel.text = "\(playerName)"
+                }
+                
+                
             }
         }
 
