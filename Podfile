@@ -10,6 +10,10 @@ target 'Filhoops' do
 	pod 'FBSDKShareKit'
 	pod 'FBSDKLoginKit'
 	pod 'Firebase/Auth'
+    pod 'Firebase/Core'
+    pod 'Firebase/Database'
+    pod 'Firebase/Storage'
+    pod 'SwiftKeychainWrapper', :git => 'https://github.com/jrendel/SwiftKeychainWrapper.git', :branch => 'master'
 
 
   target 'FilhoopsTests' do

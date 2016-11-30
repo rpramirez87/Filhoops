@@ -9,12 +9,15 @@
 import UIKit
 import FBSDKLoginKit
 import Firebase
+import SwiftKeychainWrapper
 
 class LoginVC : UIViewController, FBSDKLoginButtonDelegate {
 
 
-    @IBOutlet weak var facebookButton: FBSDKLoginButton!
+
     @IBOutlet weak var bgImageView: UIImageView!
+    @IBOutlet weak var emailTextField: CustomTextField!
+    @IBOutlet weak var passwordTextField: CustomTextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,18 +25,20 @@ class LoginVC : UIViewController, FBSDKLoginButtonDelegate {
 //        facebookButton.delegate = self
 //        facebookButton.readPermissions = ["email" , "public_profile"]
         
-        // If User is log in, skip to Tab Bar VC
-        if (FBSDKAccessToken.current() != nil) {
-            print("Mochiboy")
-            performSegue(withIdentifier: "showTabBarVC", sender: nil)
-            
-        }
         
         //Shade Background
-        //self.view.alpha = 0.2
         self.bgImageView.alpha = 0.6
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // Check if there's a user in the keychain
+        if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
+            performSegue(withIdentifier: "showTabBarVC", sender: nil)
+        }
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -54,9 +59,6 @@ class LoginVC : UIViewController, FBSDKLoginButtonDelegate {
         print("Successfully Logged in")
         
         self.showFacebookEmail()
-
-        
-        
     }
     
     
@@ -90,6 +92,83 @@ class LoginVC : UIViewController, FBSDKLoginButtonDelegate {
             
         }
     }
+
+    @IBAction func facebookButtonTapped(_ sender: Any) {
+        print("Facebook Button Tapped")
+        let facebookLogin = FBSDKLoginManager()
+        
+        facebookLogin.logIn(withReadPermissions: ["email"], from: self) { (result,error) in
+            
+            if error != nil {
+                print("ERROR : \(error)")
+            }else if result?.isCancelled == true {
+                print("User cancelled Facebook Authentication")
+            }else {
+                let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
+                self.firebaseAuth(credential)
+            }
+        }
+        
+
+    }
+    @IBAction func signInButtonTapped(_ sender: Any) {
+        
+        if let email = emailTextField.text, let password = passwordTextField.text {
+            FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
+                
+                if error == nil {
+                    print("Email user is authenticated")
+                    if let currentUser = user {
+                        let currentUserData = ["provider" : currentUser.providerID]
+                        self.keychainSignIn(id : currentUser.uid, userData: currentUserData)
+                        
+                    }
+                }else {
+                    FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
+                        
+                        if error != nil {
+                            print("Unable to authenticate with Firebase using email")
+                        } else {
+                            print("Sucessfully authenticated with Firebase")
+                            if let currentUser = user {
+                                let currentUserData = ["provider" : currentUser.providerID]
+                                self.keychainSignIn(id : currentUser.uid, userData: currentUserData)
+                            }
+                        }
+                    })
+                }
+            })
+            
+        }
+
+    }
+    
+    //MARK: Helper Functions
+    
+    func firebaseAuth(_ credential : FIRAuthCredential) {
+        FIRAuth.auth()?.signIn(with: credential, completion : { (user, error) in
+            
+            if error != nil {
+                print("ERROR: \(error)")
+            } else {
+                print("Successfully authenticated with Firebase")
+                if let currentUser = user {
+                    let currentUserData = ["provider" : credential.provider]
+                    self.keychainSignIn(id : currentUser.uid, userData: currentUserData)
+                    
+                }
+                
+            }
+        })
+    }
+    
+    func keychainSignIn(id : String, userData : Dictionary<String, String>) {
+        DataService.ds.createFirebaseDBUser(uid: id, userData: userData)
+        let saveSuccessful: Bool = KeychainWrapper.standard.set(id, forKey: KEY_UID)
+        print("Data saved to keychain \(saveSuccessful)")
+        performSegue(withIdentifier: "showTabBarVC", sender: nil)
+    }
+
     
 
 

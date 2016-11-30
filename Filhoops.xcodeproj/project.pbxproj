@@ -12,18 +12,23 @@
 		D20C681F94CCE29873277BA0 /* Pods_Filhoops.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D315F3017F10B81495BBB506 /* Pods_Filhoops.framework */; };
 		D912BB411DE1048E00706DD0 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D912BB401DE1048E00706DD0 /* HomeVC.swift */; };
 		D91BD7CF1DD85784008F8EAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D91BD7CE1DD85784008F8EAE /* GoogleService-Info.plist */; };
+		D92A5F0F1DED1C46009AFFA1 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92A5F0E1DED1C46009AFFA1 /* DataService.swift */; };
 		D93BD9D11DEA74B600C12E45 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93BD9D01DEA74B600C12E45 /* Constants.swift */; };
 		D93BD9D41DEA765D00C12E45 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93BD9D31DEA765D00C12E45 /* CustomButton.swift */; };
 		D93BD9D61DEA897600C12E45 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93BD9D51DEA897600C12E45 /* RoundButton.swift */; };
 		D94A38911DE11EFB00B239B2 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D94A38901DE11EFB00B239B2 /* TabBarVC.swift */; };
 		D966F7BE1DEA73EF0003D160 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D966F7BD1DEA73EF0003D160 /* CustomTextField.swift */; };
 		D989648F1DE116CC00B3AD41 /* PlayerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D989648E1DE116CC00B3AD41 /* PlayerVC.swift */; };
+		D9C4DDA11DED36C8005D16E0 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C4DDA01DED36C8005D16E0 /* CircleView.swift */; };
+		D9C4DDA51DED37DB005D16E0 /* CircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C4DDA41DED37DB005D16E0 /* CircleImageView.swift */; };
+		D9C4DDA71DED4974005D16E0 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C4DDA61DED4974005D16E0 /* CustomView.swift */; };
+		D9C4DDA91DEE4209005D16E0 /* GameDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C4DDA81DEE4209005D16E0 /* GameDataCell.swift */; };
+		D9C4DDAB1DEE49C3005D16E0 /* Collection+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C4DDAA1DEE49C3005D16E0 /* Collection+Ext.swift */; };
 		D9FCB2221DD83A2C00AF6BB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FCB2211DD83A2C00AF6BB7 /* AppDelegate.swift */; };
 		D9FCB2241DD83A2C00AF6BB7 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FCB2231DD83A2C00AF6BB7 /* LoginVC.swift */; };
 		D9FCB2271DD83A2C00AF6BB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9FCB2251DD83A2C00AF6BB7 /* Main.storyboard */; };
 		D9FCB2291DD83A2C00AF6BB7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9FCB2281DD83A2C00AF6BB7 /* Assets.xcassets */; };
 		D9FCB22C1DD83A2C00AF6BB7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9FCB22A1DD83A2C00AF6BB7 /* LaunchScreen.storyboard */; };
-		D9FCB2371DD83A2C00AF6BB7 /* FilhoopsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FCB2361DD83A2C00AF6BB7 /* FilhoopsTests.swift */; };
 		D9FCB2421DD83A2C00AF6BB7 /* FilhoopsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FCB2411DD83A2C00AF6BB7 /* FilhoopsUITests.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +59,7 @@
 		D315F3017F10B81495BBB506 /* Pods_Filhoops.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Filhoops.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D912BB401DE1048E00706DD0 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		D91BD7CE1DD85784008F8EAE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D92A5F0E1DED1C46009AFFA1 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		D93BD9D01DEA74B600C12E45 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D93BD9D31DEA765D00C12E45 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		D93BD9D51DEA897600C12E45 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
@@ -61,6 +67,11 @@
 		D966F7BD1DEA73EF0003D160 /* CustomTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		D989648E1DE116CC00B3AD41 /* PlayerVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerVC.swift; sourceTree = "<group>"; };
 		D9BE06E51DD850EF00B4B87D /* Filhoops.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Filhoops.entitlements; sourceTree = "<group>"; };
+		D9C4DDA01DED36C8005D16E0 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
+		D9C4DDA41DED37DB005D16E0 /* CircleImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleImageView.swift; sourceTree = "<group>"; };
+		D9C4DDA61DED4974005D16E0 /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		D9C4DDA81DEE4209005D16E0 /* GameDataCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDataCell.swift; sourceTree = "<group>"; };
+		D9C4DDAA1DEE49C3005D16E0 /* Collection+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Ext.swift"; sourceTree = "<group>"; };
 		D9FCB21E1DD83A2C00AF6BB7 /* Filhoops.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Filhoops.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9FCB2211DD83A2C00AF6BB7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9FCB2231DD83A2C00AF6BB7 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -69,7 +80,6 @@
 		D9FCB22B1DD83A2C00AF6BB7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D9FCB22D1DD83A2C00AF6BB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9FCB2321DD83A2C00AF6BB7 /* FilhoopsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FilhoopsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D9FCB2361DD83A2C00AF6BB7 /* FilhoopsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilhoopsTests.swift; sourceTree = "<group>"; };
 		D9FCB2381DD83A2C00AF6BB7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9FCB23D1DD83A2C00AF6BB7 /* FilhoopsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FilhoopsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9FCB2411DD83A2C00AF6BB7 /* FilhoopsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilhoopsUITests.swift; sourceTree = "<group>"; };
@@ -139,9 +149,13 @@
 		D912BB3A1DE1042200706DD0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D9C4DDA61DED4974005D16E0 /* CustomView.swift */,
 				D966F7BD1DEA73EF0003D160 /* CustomTextField.swift */,
 				D93BD9D31DEA765D00C12E45 /* CustomButton.swift */,
 				D93BD9D51DEA897600C12E45 /* RoundButton.swift */,
+				D9C4DDA01DED36C8005D16E0 /* CircleView.swift */,
+				D9C4DDA41DED37DB005D16E0 /* CircleImageView.swift */,
+				D9C4DDA81DEE4209005D16E0 /* GameDataCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -157,12 +171,28 @@
 			name = Controller;
 			sourceTree = "<group>";
 		};
+		D92A5F0D1DED1C1F009AFFA1 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				D92A5F0E1DED1C46009AFFA1 /* DataService.swift */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
 		D93BD9D21DEA74CE00C12E45 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
 				D93BD9D01DEA74B600C12E45 /* Constants.swift */,
 			);
 			name = Constants;
+			sourceTree = "<group>";
+		};
+		D9C4DDAC1DEE49E1005D16E0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D9C4DDAA1DEE49C3005D16E0 /* Collection+Ext.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		D9FCB2151DD83A2C00AF6BB7 = {
@@ -190,10 +220,12 @@
 		D9FCB2201DD83A2C00AF6BB7 /* Filhoops */ = {
 			isa = PBXGroup;
 			children = (
+				D9C4DDAC1DEE49E1005D16E0 /* Extensions */,
+				D92A5F0D1DED1C1F009AFFA1 /* Utility */,
 				D93BD9D21DEA74CE00C12E45 /* Constants */,
 				D912BB391DE1041C00706DD0 /* Model */,
-				D912BB3A1DE1042200706DD0 /* View */,
 				D912BB3B1DE1042700706DD0 /* Controller */,
+				D912BB3A1DE1042200706DD0 /* View */,
 				D9BE06E51DD850EF00B4B87D /* Filhoops.entitlements */,
 				D9FCB2211DD83A2C00AF6BB7 /* AppDelegate.swift */,
 				D9FCB2251DD83A2C00AF6BB7 /* Main.storyboard */,
@@ -208,7 +240,6 @@
 		D9FCB2351DD83A2C00AF6BB7 /* FilhoopsTests */ = {
 			isa = PBXGroup;
 			children = (
-				D9FCB2361DD83A2C00AF6BB7 /* FilhoopsTests.swift */,
 				D9FCB2381DD83A2C00AF6BB7 /* Info.plist */,
 			);
 			path = FilhoopsTests;
@@ -300,6 +331,7 @@
 					D9FCB21D1DD83A2C00AF6BB7 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = RJETQ2A4J2;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -310,12 +342,14 @@
 					D9FCB2311DD83A2C00AF6BB7 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = RJETQ2A4J2;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 						TestTargetID = D9FCB21D1DD83A2C00AF6BB7;
 					};
 					D9FCB23C1DD83A2C00AF6BB7 = {
 						CreatedOnToolsVersion = 8.1;
 						DevelopmentTeam = RJETQ2A4J2;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 						TestTargetID = D9FCB21D1DD83A2C00AF6BB7;
 					};
@@ -497,15 +531,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9C4DDAB1DEE49C3005D16E0 /* Collection+Ext.swift in Sources */,
 				D93BD9D61DEA897600C12E45 /* RoundButton.swift in Sources */,
+				D9C4DDA91DEE4209005D16E0 /* GameDataCell.swift in Sources */,
 				D912BB411DE1048E00706DD0 /* HomeVC.swift in Sources */,
 				D9FCB2241DD83A2C00AF6BB7 /* LoginVC.swift in Sources */,
 				D966F7BE1DEA73EF0003D160 /* CustomTextField.swift in Sources */,
+				D9C4DDA51DED37DB005D16E0 /* CircleImageView.swift in Sources */,
 				D94A38911DE11EFB00B239B2 /* TabBarVC.swift in Sources */,
+				D9C4DDA71DED4974005D16E0 /* CustomView.swift in Sources */,
 				D93BD9D41DEA765D00C12E45 /* CustomButton.swift in Sources */,
+				D9C4DDA11DED36C8005D16E0 /* CircleView.swift in Sources */,
 				D93BD9D11DEA74B600C12E45 /* Constants.swift in Sources */,
 				D9FCB2221DD83A2C00AF6BB7 /* AppDelegate.swift in Sources */,
 				D989648F1DE116CC00B3AD41 /* PlayerVC.swift in Sources */,
+				D92A5F0F1DED1C46009AFFA1 /* DataService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -513,7 +553,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9FCB2371DD83A2C00AF6BB7 /* FilhoopsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,7 +640,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -646,7 +685,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -659,6 +698,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A8CAFE8F90F108AEC1F482E4 /* Pods-Filhoops.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Filhoops/Filhoops.entitlements;
 				DEVELOPMENT_TEAM = RJETQ2A4J2;
@@ -674,6 +714,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9C7472E31CE46E39D267AD81 /* Pods-Filhoops.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Filhoops/Filhoops.entitlements;
 				DEVELOPMENT_TEAM = RJETQ2A4J2;

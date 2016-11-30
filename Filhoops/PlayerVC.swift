@@ -10,16 +10,32 @@ import UIKit
 import FBSDKLoginKit
 
 
-class PlayerVC: UIViewController {
+class PlayerVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var playerImageView: UIImageView!
     @IBOutlet weak var playerNameLabel: UILabel!
+    @IBOutlet weak var firstNameLabel: UILabel!
+    @IBOutlet weak var lastNameLabel: UILabel!
+    @IBOutlet weak var teamNameLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var averageLabel: UILabel!
+    @IBOutlet weak var careerHighLabel: UILabel!
+    
+    var playerPoints = [12, 14, 15, 0, 15, 14, 0, 14, 19]
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         playerImageView.layer.cornerRadius = 100
         playerImageView.clipsToBounds = true
+        tableView.delegate = self
+        tableView.dataSource = self
+        averageLabel.text = "\(playerPoints.average)"
+        careerHighLabel.text = "\(playerPoints.max()!)"
+        
+      
         
     }
     
@@ -57,13 +73,46 @@ class PlayerVC: UIViewController {
                 // Handle name 
                 
                 if let playerName = dict["name"] as? String {
-                    self.playerNameLabel.text = "\(playerName)"
+                    print(playerName)
+                    let names = playerName.components(separatedBy: [" "])
+                    print(names[0])
+                    print(names[1])
+                    
+                    //self.playerNameLabel.text = "\(playerName)"
+                    self.firstNameLabel.text = "\(names[0])"
+                    self.lastNameLabel.text = "\(names[1])"
                 }
                 
                 
             }
         }
-
+    }
+    
+    //MARK: Table View Delegate Functions
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+         if let cell = tableView.dequeueReusableCell(withIdentifier: "GameDataCell") as? GameDataCell {
+            cell.configureCell(gameNumber: indexPath.row, points: playerPoints[indexPath.row])
+            return cell
+         }else {
+            return UITableViewCell()
+        }
+        
+        //return UITableViewCell()
+        
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 9
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
         
     }
 }

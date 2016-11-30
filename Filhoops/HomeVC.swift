@@ -19,8 +19,8 @@ class HomeVC: UIViewController, WKNavigationDelegate {
         
         // loading URL :
         let filhoopsURL = "http://filhoopshouston.com/"
-        let url = NSURL(string: filhoopsURL)
-        let request = NSURLRequest(url: url! as URL)
+        let url = URL(string: filhoopsURL)
+        let request = URLRequest(url: url! as URL)
         
         // init and load request in webview.
         webView = WKWebView(frame: self.view.frame)
