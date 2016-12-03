@@ -8,6 +8,8 @@
 
 import UIKit
 import WebKit
+import SwiftKeychainWrapper
+import Firebase
 
 class HomeVC: UIViewController, WKNavigationDelegate {
     
@@ -41,9 +43,16 @@ class HomeVC: UIViewController, WKNavigationDelegate {
         print(error.localizedDescription)
     }
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        print("Strat to load")
+        print("Start to load")
     }
+    
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         print("finish to load")
+    }
+    @IBAction func signOutButtonTapped(_ sender: Any) {
+        let keyChainResult = KeychainWrapper.standard.removeObject(forKey: KEY_UID)
+        print("User signed out \(keyChainResult)")
+        try! FIRAuth.auth()?.signOut()
+        performSegue(withIdentifier: "goBackToLoginVC", sender: nil)
     }
 }

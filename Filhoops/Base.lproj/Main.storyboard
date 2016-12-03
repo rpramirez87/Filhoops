@@ -227,7 +227,7 @@
                                     <constraint firstAttribute="bottom" secondItem="MGu-Pm-Bww" secondAttribute="bottom" constant="8" id="hHm-EF-clS"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gAj-ip-qbj">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gAj-ip-qbj">
                                 <rect key="frame" x="0.0" y="205" width="414" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -324,7 +324,7 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gA5-vB-GDd">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gA5-vB-GDd">
                                 <rect key="frame" x="8" y="361" width="398" height="218"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -581,7 +581,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MgM-zv-Ubf" id="DX6-LD-kbt">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ajG-Ia-Jox">
@@ -785,17 +785,31 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fiz-0k-ke9">
-                                        <rect key="frame" x="171.66666666666666" y="14" width="71" height="36"/>
+                                        <rect key="frame" x="172" y="24" width="71" height="36"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="26"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dPM-8L-eog">
+                                        <rect key="frame" x="376" y="27" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="Vyg-VE-1OU"/>
+                                            <constraint firstAttribute="height" constant="30" id="clg-le-58F"/>
+                                        </constraints>
+                                        <state key="normal" image="logout"/>
+                                        <connections>
+                                            <action selector="signOutButtonTapped:" destination="BZR-ae-ah2" eventType="touchUpInside" id="gDV-YF-Tck"/>
+                                            <segue destination="BYZ-38-t0r" kind="show" identifier="goBackToLoginVC" id="Tmi-nz-YaI"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.2470588235" green="0.31764705879999999" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="Fiz-0k-ke9" firstAttribute="centerX" secondItem="A0w-Kx-j1x" secondAttribute="centerX" id="ApD-LN-i0h"/>
-                                    <constraint firstItem="Fiz-0k-ke9" firstAttribute="centerY" secondItem="A0w-Kx-j1x" secondAttribute="centerY" id="SJc-kh-3Qp"/>
+                                    <constraint firstAttribute="trailing" secondItem="dPM-8L-eog" secondAttribute="trailing" constant="8" id="HFH-KP-Wdw"/>
                                     <constraint firstAttribute="height" constant="65" id="t09-qN-wVe"/>
+                                    <constraint firstItem="Fiz-0k-ke9" firstAttribute="centerY" secondItem="dPM-8L-eog" secondAttribute="centerY" id="tOp-1T-eeG"/>
+                                    <constraint firstAttribute="bottom" secondItem="dPM-8L-eog" secondAttribute="bottom" constant="8" id="uOY-Mi-SMk"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -810,7 +824,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uSn-5N-mKQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-876" y="940.47976011994012"/>
+            <point key="canvasLocation" x="-876.81159420289862" y="939.94565217391312"/>
         </scene>
         <!--Playoffs-->
         <scene sceneID="I4K-Pe-Huq">
@@ -866,6 +880,7 @@
         <image name="black-mamba" width="501" height="720"/>
         <image name="f" width="352" height="328"/>
         <image name="houston" width="1100" height="619"/>
+        <image name="logout" width="46" height="38"/>
         <image name="wolves-logo" width="447" height="481"/>
     </resources>
 </document>
