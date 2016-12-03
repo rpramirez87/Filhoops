@@ -108,6 +108,7 @@ class PlayerVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //Always return 9 because there's only 9 games in a season
         return 9
     }
     
