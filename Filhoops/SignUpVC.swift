@@ -74,17 +74,20 @@ class SignUpVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
         }
         
         // Add team to user
-        
-        var teamReference : FIRDatabaseReference!
-        teamReference = DataService.ds.REF_USER_CURRENT
-        let userData = ["team" : teamName]
-        teamReference.updateChildValues(userData)
+        var currentUserReference : FIRDatabaseReference!
+        currentUserReference = DataService.ds.REF_USER_CURRENT
+        let userData = ["teamKey" : teamKey, "team" : teamName]
+        currentUserReference.updateChildValues(userData)
         
         // Add user to team
+        var currentTeamReference : FIRDatabaseReference!
+        currentTeamReference = DataService.ds.REF_TEAMS.child(teamKey).child("players").child(DataService.ds.REF_USER_CURRENT.key)
+        currentTeamReference.setValue(true)
         
         
-       
-    
+        
+        
+        
         performSegue(withIdentifier: "signUpToTabVC", sender: nil)
     }
 

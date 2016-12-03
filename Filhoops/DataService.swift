@@ -52,8 +52,8 @@ class DataService  {
         let user = REF_USERS.child(uid!)
         let team = user.child("team")
         return team
-        
     }
+    
     
     var REF_PROFILE_IMAGES : FIRStorageReference {
         return _REF_PROFILE_IMAGES
