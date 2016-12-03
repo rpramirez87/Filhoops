@@ -19,6 +19,8 @@ class LoginVC : UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var emailTextField: CustomTextField!
     @IBOutlet weak var passwordTextField: CustomTextField!
     
+    var isNewUser = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -166,7 +168,12 @@ class LoginVC : UIViewController, FBSDKLoginButtonDelegate {
         DataService.ds.createFirebaseDBUser(uid: id, userData: userData)
         let saveSuccessful: Bool = KeychainWrapper.standard.set(id, forKey: KEY_UID)
         print("Data saved to keychain \(saveSuccessful)")
-        performSegue(withIdentifier: "showTabBarVC", sender: nil)
+        
+        if isNewUser {
+            performSegue(withIdentifier: "goToSignUpVC", sender: nil)
+        }else {
+            performSegue(withIdentifier: "showTabBarVC", sender: nil)
+        }
     }
 
     
