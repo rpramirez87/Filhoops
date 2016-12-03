@@ -136,7 +136,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a team" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QFt-E4-YcF">
-                                <rect key="frame" x="28" y="374" width="358" height="23.333333333333314"/>
+                                <rect key="frame" x="28" y="375" width="358" height="23.333333333333314"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -149,10 +149,11 @@
                                 </state>
                                 <connections>
                                     <action selector="signInButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Sea-Du-iDT"/>
+                                    <action selector="signUpButtonTapped:" destination="7fM-81-b6l" eventType="touchUpInside" id="rHn-0K-dYk"/>
                                 </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KNF-Hi-IMU">
-                                <rect key="frame" x="28" y="406" width="358" height="216"/>
+                                <rect key="frame" x="28" y="406.66666666666663" width="358" height="215.99999999999989"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signing up to the wrong team can lead to account termination." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Wy-3z-jXt">
@@ -162,7 +163,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="jersey" translatesAutoresizingMaskIntoConstraints="NO" id="OpT-8d-5sO">
-                                <rect key="frame" x="20" y="167" width="374" height="199"/>
+                                <rect key="frame" x="20" y="167" width="374" height="200"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a Number" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYI-8I-SJd">
                                 <rect key="frame" x="20" y="135" width="374" height="24"/>
@@ -197,6 +198,10 @@
                             <constraint firstItem="OpT-8d-5sO" firstAttribute="top" secondItem="fYI-8I-SJd" secondAttribute="bottom" constant="8" id="xLI-vO-kdL"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="teamPickerView" destination="KNF-Hi-IMU" id="Bg4-Te-CkO"/>
+                        <segue destination="bEn-Mt-E1X" kind="show" identifier="signUpToTabVC" id="bca-8p-Zi1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gQi-rb-cyA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -675,7 +680,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MgM-zv-Ubf" id="DX6-LD-kbt">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ajG-Ia-Jox">
@@ -978,4 +983,7 @@
         <image name="logout" width="46" height="38"/>
         <image name="wolves-logo" width="447" height="481"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="bca-8p-Zi1"/>
+    </inferredMetricsTieBreakers>
 </document>

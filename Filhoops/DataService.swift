@@ -23,6 +23,7 @@ class DataService  {
     //Database References
     private var _REF_BASE = DB_BASE
     private var _REF_USERS = DB_BASE.child("users")
+    private var _REF_TEAMS = DB_BASE.child("teams")
     
     //Storage references
     private var _REF_PROFILE_IMAGES = STORAGE_BASE.child("profile-pics")
@@ -36,10 +37,22 @@ class DataService  {
         return _REF_USERS
     }
     
+    var REF_TEAMS :FIRDatabaseReference {
+        return _REF_TEAMS
+    }
+    
     var REF_USER_CURRENT : FIRDatabaseReference {
         let uid = KeychainWrapper.standard.string(forKey: KEY_UID)
         let user = REF_USERS.child(uid!)
         return user
+    }
+    
+    var REF_USER_CURRENT_TEAM : FIRDatabaseReference {
+        let uid = KeychainWrapper.standard.string(forKey: KEY_UID)
+        let user = REF_USERS.child(uid!)
+        let team = user.child("team")
+        return team
+        
     }
     
     var REF_PROFILE_IMAGES : FIRStorageReference {

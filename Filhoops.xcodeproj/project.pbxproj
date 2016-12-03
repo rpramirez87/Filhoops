@@ -15,6 +15,7 @@
 		D91BD7CF1DD85784008F8EAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D91BD7CE1DD85784008F8EAE /* GoogleService-Info.plist */; };
 		D92A5F0F1DED1C46009AFFA1 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92A5F0E1DED1C46009AFFA1 /* DataService.swift */; };
 		D92AFBF91DF2B38C008D2992 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92AFBF81DF2B38C008D2992 /* SignUpVC.swift */; };
+		D92AFBFB1DF2BE91008D2992 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92AFBFA1DF2BE91008D2992 /* Team.swift */; };
 		D93BD9D11DEA74B600C12E45 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93BD9D01DEA74B600C12E45 /* Constants.swift */; };
 		D93BD9D41DEA765D00C12E45 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93BD9D31DEA765D00C12E45 /* CustomButton.swift */; };
 		D93BD9D61DEA897600C12E45 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D93BD9D51DEA897600C12E45 /* RoundButton.swift */; };
@@ -66,6 +67,7 @@
 		D91BD7CE1DD85784008F8EAE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D92A5F0E1DED1C46009AFFA1 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		D92AFBF81DF2B38C008D2992 /* SignUpVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		D92AFBFA1DF2BE91008D2992 /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		D93BD9D01DEA74B600C12E45 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		D93BD9D31DEA765D00C12E45 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		D93BD9D51DEA897600C12E45 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 		D912BB391DE1041C00706DD0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D92AFBFA1DF2BE91008D2992 /* Team.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -551,6 +554,7 @@
 				D966F7BE1DEA73EF0003D160 /* CustomTextField.swift in Sources */,
 				D9C4DDA51DED37DB005D16E0 /* CircleImageView.swift in Sources */,
 				D92AFBF91DF2B38C008D2992 /* SignUpVC.swift in Sources */,
+				D92AFBFB1DF2BE91008D2992 /* Team.swift in Sources */,
 				D9C836C31DF24B2800263DBE /* TeamVC.swift in Sources */,
 				D94A38911DE11EFB00B239B2 /* TabBarVC.swift in Sources */,
 				D9C836C11DF24B0B00263DBE /* PlayerCell.swift in Sources */,
