@@ -23,7 +23,6 @@ class PlayerCell: UICollectionViewCell {
         //Set up name
         playerNameLabel.text = player.playerName
         
-        
         //Set up Image
         let url = NSURL(string : player.imageURL)
         //If data can be converted

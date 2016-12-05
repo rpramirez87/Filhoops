@@ -13,7 +13,8 @@ import FBSDKLoginKit
 class SignUpVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var teamPickerView: UIPickerView!
-    
+    @IBOutlet weak var jerseyLabel: UILabel!
+    @IBOutlet weak var numberSlider: UISlider!
     
     var teams = [String]()
     var teamKeys = [String]()
@@ -21,6 +22,7 @@ class SignUpVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     var teamKey : String?
     var playerName : String?
     var profileImageURL : String?
+    var playerNumber : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +56,8 @@ class SignUpVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
         // Do any additional setup after loading the view.
     }
     
+    //MARK: Picker View Delegate Functions
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -70,6 +74,9 @@ class SignUpVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
         teamName = teams[row]
         teamKey = teamKeys[row]
     }
+    
+    //MARK: IBActions 
+    
     @IBAction func signUpButtonTapped(_ sender: Any) {
         
         guard let teamName = self.teamName, let teamKey = self.teamKey else {
@@ -81,12 +88,17 @@ class SignUpVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
             print("WARNING: Facebook Error getting User's Profile Picture and Name")
             return
         }
+        
+        guard let number = self.playerNumber else {
+            print("WARNING: Please select a Jersey Number")
+            return
+        }
 
         
         // Add team to user
         var currentUserReference : FIRDatabaseReference!
         currentUserReference = DataService.ds.REF_USER_CURRENT
-        let userData = ["teamKey" : teamKey, "team" : teamName, "name" : playerName, "url" : playerImageURL]
+        let userData = ["teamKey" : teamKey, "team" : teamName, "name" : playerName, "url" : playerImageURL, "number" : number]
         currentUserReference.updateChildValues(userData)
         
         // Add user to team
@@ -97,6 +109,11 @@ class SignUpVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
         performSegue(withIdentifier: "signUpToTabVC", sender: nil)
     }
     
+    @IBAction func sliderValueChange(_ sender: Any) {
+        let currentValue = Int(numberSlider.value)
+        jerseyLabel.text = "\(currentValue)"
+        playerNumber = "\(currentValue)"
+    }
     //MARK: Helper Functions
     
     func facebookGraphRequest() {

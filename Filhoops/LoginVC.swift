@@ -170,6 +170,7 @@ class LoginVC : UIViewController, FBSDKLoginButtonDelegate {
         let saveSuccessful: Bool = KeychainWrapper.standard.set(id, forKey: KEY_UID)
         print("Data saved to keychain \(saveSuccessful)")
         
+        
         if isNewUser {
             performSegue(withIdentifier: "goToSignUpVC", sender: nil)
         }else {

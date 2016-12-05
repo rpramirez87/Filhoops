@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -136,7 +137,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a team" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QFt-E4-YcF">
-                                <rect key="frame" x="28" y="375" width="358" height="23.333333333333314"/>
+                                <rect key="frame" x="28" y="391" width="358" height="23.333333333333314"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -153,8 +154,11 @@
                                 </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KNF-Hi-IMU">
-                                <rect key="frame" x="28" y="406.66666666666663" width="358" height="215.99999999999989"/>
+                                <rect key="frame" x="28" y="422.66666666666663" width="358" height="199.99999999999989"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="Xzi-u6-K3t"/>
+                                </constraints>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signing up to the wrong team can lead to account termination." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Wy-3z-jXt">
                                 <rect key="frame" x="28" y="692.66666666666652" width="358" height="23.333333333333371"/>
@@ -163,18 +167,38 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="jersey" translatesAutoresizingMaskIntoConstraints="NO" id="OpT-8d-5sO">
-                                <rect key="frame" x="20" y="167" width="374" height="200"/>
+                                <rect key="frame" x="20" y="205" width="374" height="178"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Ne-B3-O5y">
+                                <rect key="frame" x="193.66666666666666" y="281" width="26.666666666666686" height="26.333333333333314"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="4Ne-B3-O5y" secondAttribute="height" multiplier="42:43" id="BTT-LZ-DW7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a Number" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYI-8I-SJd">
                                 <rect key="frame" x="20" y="135" width="374" height="24"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="99" translatesAutoresizingMaskIntoConstraints="NO" id="IpF-A3-PbA">
+                                <rect key="frame" x="155.66666666666669" y="167" width="104.00000000000006" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="TWa-uo-Yq6"/>
+                                    <constraint firstAttribute="width" constant="100" id="qnY-57-x6d"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="sliderValueChange:" destination="7fM-81-b6l" eventType="valueChanged" id="Uph-vD-MeQ"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="e7l-3M-ETD" firstAttribute="top" secondItem="KNF-Hi-IMU" secondAttribute="bottom" constant="20" id="10k-Px-y98"/>
+                            <constraint firstItem="4Ne-B3-O5y" firstAttribute="centerY" secondItem="OpT-8d-5sO" secondAttribute="centerY" id="5se-Hn-bJN"/>
                             <constraint firstItem="0U7-YQ-E7J" firstAttribute="top" secondItem="9Wy-3z-jXt" secondAttribute="bottom" constant="20" id="6CI-So-6E9"/>
                             <constraint firstItem="fYI-8I-SJd" firstAttribute="top" secondItem="Wxj-MI-7oK" secondAttribute="bottom" constant="8" id="72G-8t-mPM"/>
                             <constraint firstItem="e7l-3M-ETD" firstAttribute="leading" secondItem="r9W-pK-vFS" secondAttribute="leadingMargin" constant="16" id="76G-lG-djU"/>
@@ -184,10 +208,13 @@
                             <constraint firstAttribute="trailingMargin" secondItem="QFt-E4-YcF" secondAttribute="trailing" constant="8" id="Ke0-gx-bpl"/>
                             <constraint firstItem="QFt-E4-YcF" firstAttribute="top" secondItem="OpT-8d-5sO" secondAttribute="bottom" constant="8" id="LD1-Jo-wpn"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Wxj-MI-7oK" secondAttribute="trailing" id="LIc-vM-GIk"/>
+                            <constraint firstItem="IpF-A3-PbA" firstAttribute="centerX" secondItem="r9W-pK-vFS" secondAttribute="centerX" id="NQg-oj-II7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="OpT-8d-5sO" secondAttribute="trailing" id="PUh-bf-L1Z"/>
+                            <constraint firstItem="IpF-A3-PbA" firstAttribute="top" secondItem="fYI-8I-SJd" secondAttribute="bottom" constant="8" id="Vxe-4R-tbH"/>
                             <constraint firstItem="fYI-8I-SJd" firstAttribute="trailing" secondItem="r9W-pK-vFS" secondAttribute="trailingMargin" id="WMj-e0-h8L"/>
                             <constraint firstAttribute="trailingMargin" secondItem="9Wy-3z-jXt" secondAttribute="trailing" constant="8" id="YRv-p0-KKi"/>
                             <constraint firstItem="fYI-8I-SJd" firstAttribute="leading" secondItem="r9W-pK-vFS" secondAttribute="leadingMargin" id="Zmy-up-z10"/>
+                            <constraint firstItem="OpT-8d-5sO" firstAttribute="top" secondItem="IpF-A3-PbA" secondAttribute="bottom" constant="8" id="Zqt-t2-aF2"/>
                             <constraint firstAttribute="trailingMargin" secondItem="e7l-3M-ETD" secondAttribute="trailing" constant="16" id="aww-98-w3r"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KNF-Hi-IMU" secondAttribute="trailing" constant="8" id="axD-XN-N5j"/>
                             <constraint firstItem="9Wy-3z-jXt" firstAttribute="top" secondItem="e7l-3M-ETD" secondAttribute="bottom" constant="20" id="dFz-pQ-OyD"/>
@@ -195,10 +222,12 @@
                             <constraint firstItem="OpT-8d-5sO" firstAttribute="leading" secondItem="r9W-pK-vFS" secondAttribute="leadingMargin" id="khe-J3-Ug5"/>
                             <constraint firstItem="Wxj-MI-7oK" firstAttribute="top" secondItem="r9W-pK-vFS" secondAttribute="top" constant="50" id="o5F-b2-ZLw"/>
                             <constraint firstItem="QFt-E4-YcF" firstAttribute="leading" secondItem="r9W-pK-vFS" secondAttribute="leadingMargin" constant="8" id="qC5-nk-uU7"/>
-                            <constraint firstItem="OpT-8d-5sO" firstAttribute="top" secondItem="fYI-8I-SJd" secondAttribute="bottom" constant="8" id="xLI-vO-kdL"/>
+                            <constraint firstItem="4Ne-B3-O5y" firstAttribute="centerX" secondItem="OpT-8d-5sO" secondAttribute="centerX" id="sag-OU-sMG"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="jerseyLabel" destination="4Ne-B3-O5y" id="ZYY-Nh-0Du"/>
+                        <outlet property="numberSlider" destination="IpF-A3-PbA" id="8Kd-fR-V8k"/>
                         <outlet property="teamPickerView" destination="KNF-Hi-IMU" id="Bg4-Te-CkO"/>
                         <segue destination="bEn-Mt-E1X" kind="show" identifier="signUpToTabVC" id="bca-8p-Zi1"/>
                     </connections>
@@ -605,20 +634,20 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="bcM-9t-1rr">
                                                 <rect key="frame" x="110" y="11" width="203" height="78.333333333333343"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Danielle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ep3-KY-gkO">
-                                                        <rect key="frame" x="0.0" y="0.0" width="84.666666666666657" height="24.666666666666671"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ep3-KY-gkO">
+                                                        <rect key="frame" x="0.0" y="0.0" width="48" height="24.666666666666671"/>
                                                         <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="22"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ho" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t1h-dk-bum">
-                                                        <rect key="frame" x="0.0" y="24.666666666666671" width="36" height="30.333333333333329"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t1h-dk-bum">
+                                                        <rect key="frame" x="0.0" y="24.666666666666671" width="55.666666666666657" height="30.333333333333329"/>
                                                         <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="27"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wolves" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o29-1e-F6Q">
-                                                        <rect key="frame" x="0.0" y="55" width="56.333333333333343" height="23.333333333333343"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o29-1e-F6Q">
+                                                        <rect key="frame" x="0.0" y="55" width="42" height="23.333333333333343"/>
                                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -799,6 +828,7 @@
                         <outlet property="careerHighLabel" destination="f1C-uD-vGl" id="NzZ-E6-94D"/>
                         <outlet property="firstNameLabel" destination="ep3-KY-gkO" id="lxG-52-q8H"/>
                         <outlet property="lastNameLabel" destination="t1h-dk-bum" id="Yd9-Jr-VM1"/>
+                        <outlet property="numberLabel" destination="JZs-bu-Qx1" id="Yu2-Bc-TCE"/>
                         <outlet property="playerImageView" destination="fhM-u6-922" id="P0b-Mm-bSL"/>
                         <outlet property="playerNameLabel" destination="o29-1e-F6Q" id="xd9-Zr-RKG"/>
                         <outlet property="tableView" destination="gqW-gg-HeS" id="1Qf-60-LkT"/>

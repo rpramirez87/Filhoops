@@ -15,7 +15,6 @@ class TeamVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     @IBOutlet weak var gameCollectionView: UICollectionView!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var players = [String]()
     var teamPlayers = [Player]()
     
     var currentUsersTeam : String!
@@ -43,45 +42,8 @@ class TeamVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
                 print("Current Team Key : \(self.currentUsersTeamKey!)")
             }
         })
-        
-        //Get current team players from Database
-        DataService.ds.REF_TEAMS.observe(.value, with: { (snapshot) in
-            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
-                
-                //Clear all players
-                self.players = []
-                
-                for snap in snapshots {
-                    print("SNAP: \(snap)")
-                    if let teamDict = snap.value as? Dictionary<String, AnyObject> {
-                        
-                        if let teamName = teamDict["name"] as? String {
-                            print(teamName)
-                            if teamName == self.currentUsersTeam {
-                                print(teamName)
-                                if let playersDict = teamDict["players"] as? Dictionary<String, AnyObject> {
-                                    print("Hello")
-                                    print(playersDict)
-                                    
-                                    for player in playersDict {
-                                        print("KEY : \(player.key)")
-                                        self.players.append(player.key)
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                self.gameCollectionView.reloadData()
-                self.collectionView.reloadData()
-                print(self.players)
-            }
-            
-        })
-        
-        //Load players from users database\
     
-        
+        //Load players from users database\
         DataService.ds.REF_USERS.observe(.value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 

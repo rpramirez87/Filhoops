@@ -21,6 +21,8 @@ class PlayerVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var averageLabel: UILabel!
     @IBOutlet weak var careerHighLabel: UILabel!
+    @IBOutlet weak var numberLabel: UILabel!
+    
     
     var playerPoints = [12, 14, 15, 0, 15, 14, 0, 14, 19]
     
@@ -79,64 +81,31 @@ class PlayerVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 }
             }
         }
-
         
-        DataService.ds.REF_USER_CURRENT_TEAM.observe(.value, with: { (snapshot) in
-            if let currentTeam = snapshot.value as? String {
-                self.teamNameLabel.text = currentTeam
+        
+        
+        // Get Player Keys
+        
+        DataService.ds.REF_USER_CURRENT.observe(.value, with: { (snapshot) in
+            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                
+                print(snapshot.children.allObjects.count)
+                for snap in snapshots {
+                    print("SNAP: \(snap)")
+                    if snap.key == "number" {
+                        self.numberLabel.text = snap.value as! String?
+                    }
+                    
+                    if snap.key == "team" {
+                        self.teamNameLabel.text = snap.value as! String?
+                    }
+                    
+                }
             }
+            
         })
-
-      
-        
     }
     
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        //Set up Graph Request
-//        FBSDKGraphRequest(graphPath: "/me", parameters: ["fields" : "id, name, email, cover, picture"]).start {
-//            (connection, result, err) in
-//            
-//            if err != nil {
-//                print("Failed to start graph request: \(err)")
-//                
-//            }
-//            
-//            print("Result \(result)")
-//            
-//            if let dict = result as? Dictionary<String, AnyObject> {
-//                //if let URL = dict["cover"]?["source"] as? String {
-//                
-//                // Handle ID to get facebook picture
-//                if let id = dict["id"] as? String {
-//                    print("ID \(id)")
-//                    let facebookProfileUrl = "http://graph.facebook.com/\(id)/picture?type=large"
-//                    print(facebookProfileUrl)
-//                    let url = NSURL(string : facebookProfileUrl)
-//                    
-//                    //If data can be converted
-//                    if let data = NSData(contentsOf: url as! URL){
-//                        //Use the Image
-//                        let img = UIImage(data : data as Data)
-//                        self.playerImageView.image = img
-//                    }
-//                }
-//                
-//                // Handle name 
-//                
-//                if let playerName = dict["name"] as? String {
-//                    print(playerName)
-//                    let names = playerName.components(separatedBy: [" "])
-//                    print(names[0])
-//                    print(names[1])
-//                    
-//                    //self.playerNameLabel.text = "\(playerName)"
-//                    self.firstNameLabel.text = "\(names[0])"
-//                    self.lastNameLabel.text = "\(names[1])"
-//                }
-//            }
-//        }
-//    }
     
     //MARK: Table View Delegate Functions
     
