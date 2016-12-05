@@ -466,6 +466,10 @@
                                             <constraint firstItem="h4Z-UO-YoZ" firstAttribute="top" secondItem="VY3-J1-Lj4" secondAttribute="bottom" id="j32-SS-Zvy"/>
                                             <constraint firstAttribute="trailing" secondItem="h4Z-UO-YoZ" secondAttribute="trailing" id="lo3-lW-HIO"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="playerNameLabel" destination="h4Z-UO-YoZ" id="ywU-cS-OoM"/>
+                                            <outlet property="profileImageView" destination="VY3-J1-Lj4" id="zWX-T2-NPi"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -539,6 +543,7 @@
                     <connections>
                         <outlet property="collectionView" destination="gA5-vB-GDd" id="99b-Qf-0gY"/>
                         <outlet property="gameCollectionView" destination="gAj-ip-qbj" id="CWc-lR-3Eh"/>
+                        <outlet property="teamNameLabel" destination="ddK-7t-TJv" id="Fbn-bk-YW8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zaQ-Az-fiN" userLabel="First Responder" sceneMemberID="firstResponder"/>

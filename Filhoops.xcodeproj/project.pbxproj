@@ -11,6 +11,7 @@
 		53E5B416386C166361948055 /* Pods_FilhoopsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE6B7551710AA03A9A2FC3F9 /* Pods_FilhoopsUITests.framework */; };
 		D20C681F94CCE29873277BA0 /* Pods_Filhoops.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D315F3017F10B81495BBB506 /* Pods_Filhoops.framework */; };
 		D912BB411DE1048E00706DD0 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D912BB401DE1048E00706DD0 /* HomeVC.swift */; };
+		D914BF9D1DF2F34B00837DBB /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = D914BF9C1DF2F34B00837DBB /* Player.swift */; };
 		D91BB9901DF256C900C735DA /* TeamGameDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91BB98F1DF256C900C735DA /* TeamGameDataCell.swift */; };
 		D91BD7CF1DD85784008F8EAE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D91BD7CE1DD85784008F8EAE /* GoogleService-Info.plist */; };
 		D92A5F0F1DED1C46009AFFA1 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92A5F0E1DED1C46009AFFA1 /* DataService.swift */; };
@@ -63,6 +64,7 @@
 		B7015616C2CD000C228E6AC6 /* Pods-FilhoopsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FilhoopsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FilhoopsTests/Pods-FilhoopsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D315F3017F10B81495BBB506 /* Pods_Filhoops.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Filhoops.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D912BB401DE1048E00706DD0 /* HomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		D914BF9C1DF2F34B00837DBB /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		D91BB98F1DF256C900C735DA /* TeamGameDataCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamGameDataCell.swift; sourceTree = "<group>"; };
 		D91BD7CE1DD85784008F8EAE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D92A5F0E1DED1C46009AFFA1 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				D92AFBFA1DF2BE91008D2992 /* Team.swift */,
+				D914BF9C1DF2F34B00837DBB /* Player.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -550,6 +553,7 @@
 				D93BD9D61DEA897600C12E45 /* RoundButton.swift in Sources */,
 				D9C4DDA91DEE4209005D16E0 /* GameDataCell.swift in Sources */,
 				D912BB411DE1048E00706DD0 /* HomeVC.swift in Sources */,
+				D914BF9D1DF2F34B00837DBB /* Player.swift in Sources */,
 				D9FCB2241DD83A2C00AF6BB7 /* LoginVC.swift in Sources */,
 				D966F7BE1DEA73EF0003D160 /* CustomTextField.swift in Sources */,
 				D9C4DDA51DED37DB005D16E0 /* CircleImageView.swift in Sources */,

@@ -165,6 +165,7 @@ class LoginVC : UIViewController, FBSDKLoginButtonDelegate {
     }
     
     func keychainSignIn(id : String, userData : Dictionary<String, String>) {
+        
         DataService.ds.createFirebaseDBUser(uid: id, userData: userData)
         let saveSuccessful: Bool = KeychainWrapper.standard.set(id, forKey: KEY_UID)
         print("Data saved to keychain \(saveSuccessful)")

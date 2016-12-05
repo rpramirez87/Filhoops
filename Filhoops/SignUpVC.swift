@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FBSDKLoginKit
 
 class SignUpVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
@@ -18,12 +19,15 @@ class SignUpVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     var teamKeys = [String]()
     var teamName : String?
     var teamKey : String?
+    var playerName : String?
+    var profileImageURL : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         teamPickerView.delegate = self
         teamPickerView.dataSource = self
+        facebookGraphRequest()
         
         DataService.ds.REF_TEAMS.observe(.value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
@@ -73,10 +77,16 @@ class SignUpVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
             return
         }
         
+        guard let playerImageURL = self.profileImageURL,  let playerName = self.playerName else {
+            print("WARNING: Facebook Error getting User's Profile Picture and Name")
+            return
+        }
+
+        
         // Add team to user
         var currentUserReference : FIRDatabaseReference!
         currentUserReference = DataService.ds.REF_USER_CURRENT
-        let userData = ["teamKey" : teamKey, "team" : teamName]
+        let userData = ["teamKey" : teamKey, "team" : teamName, "name" : playerName, "url" : playerImageURL]
         currentUserReference.updateChildValues(userData)
         
         // Add user to team
@@ -84,11 +94,46 @@ class SignUpVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
         currentTeamReference = DataService.ds.REF_TEAMS.child(teamKey).child("players").child(DataService.ds.REF_USER_CURRENT.key)
         currentTeamReference.setValue(true)
         
-        
-        
-        
-        
         performSegue(withIdentifier: "signUpToTabVC", sender: nil)
+    }
+    
+    //MARK: Helper Functions
+    
+    func facebookGraphRequest() {
+        
+        //Set up Graph Request
+        FBSDKGraphRequest(graphPath: "/me", parameters: ["fields" : "id, name, email, cover, picture"]).start {
+            (connection, result, err) in
+            
+            if err != nil {
+                print("Failed to start graph request: \(err)")
+                
+            }
+            
+            print("Result \(result)")
+            
+            if let dict = result as? Dictionary<String, AnyObject> {
+                
+                
+                // Handle ID to get facebook picture
+                if let id = dict["id"] as? String {
+                    print("ID \(id)")
+                    let facebookProfileUrl = "http://graph.facebook.com/\(id)/picture?type=large"
+                    self.profileImageURL = facebookProfileUrl
+                    
+
+                }
+                
+                // Handle name
+                
+                if let playerName = dict["name"] as? String {
+                    print(playerName)
+                    self.playerName = playerName
+
+   
+                }
+            }
+        }
     }
 
 }
