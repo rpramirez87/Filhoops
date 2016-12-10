@@ -99,11 +99,10 @@ class PlayerVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     if snap.key == "team" {
                         self.teamNameLabel.text = snap.value as! String?
                     }
-                    
                 }
             }
             
-        })
+        })                                                                                                                                                                              
     }
     
     

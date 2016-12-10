@@ -43,7 +43,7 @@ class TeamVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             }
         })
     
-        //Load players from users database\
+        //Load players from users database
         DataService.ds.REF_USERS.observe(.value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 

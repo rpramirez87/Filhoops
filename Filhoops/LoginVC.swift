@@ -19,7 +19,10 @@ class LoginVC : UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var emailTextField: CustomTextField!
     @IBOutlet weak var passwordTextField: CustomTextField!
     
-    var isNewUser = true
+    var returningUser = false
+    
+    //MARK: TODO - Constraint User to only sign up for one team
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +40,7 @@ class LoginVC : UIViewController, FBSDKLoginButtonDelegate {
         
         // Check if there's a user in the keychain
         if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
-            performSegue(withIdentifier: "showTabBarVC", sender: nil)
+            doesCurrentUserHaveTeam()
         }
         
     }
@@ -165,21 +168,33 @@ class LoginVC : UIViewController, FBSDKLoginButtonDelegate {
     }
     
     func keychainSignIn(id : String, userData : Dictionary<String, String>) {
+        print("Hello")
         
         DataService.ds.createFirebaseDBUser(uid: id, userData: userData)
         let saveSuccessful: Bool = KeychainWrapper.standard.set(id, forKey: KEY_UID)
         print("Data saved to keychain \(saveSuccessful)")
         
-        
-        if isNewUser {
-            performSegue(withIdentifier: "goToSignUpVC", sender: nil)
-        }else {
-            performSegue(withIdentifier: "showTabBarVC", sender: nil)
-        }
+        doesCurrentUserHaveTeam()
     }
-
     
-
-
+    func doesCurrentUserHaveTeam() {
+        print("Does user have current team?")
+        DataService.ds.REF_USER_CURRENT.child("team").observeSingleEvent(of: .value , with: { snapshot in
+            
+            // Current User does not have a team
+            guard let team = snapshot.value as? String else {
+                self.returningUser = false
+                self.performSegue(withIdentifier: "goToSignUpVC", sender: nil)
+                print("Team doesn't exist")
+                return
+            }
+            
+            // Current User does have a team
+            print("Team \(snapshot.value) exists")
+            print("Current user is on \(team)")
+            self.performSegue(withIdentifier: "showTabBarVC", sender: nil)
+        })
+    }
 }
+
 
