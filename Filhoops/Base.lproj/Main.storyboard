@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="12z-4v-zzl">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,6 +10,100 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Loading ScreenVC-->
+        <scene sceneID="Whc-FD-VJA">
+            <objects>
+                <viewController id="12z-4v-zzl" customClass="LoadingScreenVC" customModule="Filhoops" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jUy-JM-Y7R"/>
+                        <viewControllerLayoutGuide type="bottom" id="7dl-Ll-hGn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7Df-P4-gQQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="Hjo-RX-hxx" kind="show" identifier="goToPlayerOfTheWeekVC" id="7KN-gR-DsS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RKg-3e-LTn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-578" y="-564"/>
+        </scene>
+        <!--Player Of The WeekVC-->
+        <scene sceneID="dDx-Su-THf">
+            <objects>
+                <viewController id="Hjo-RX-hxx" customClass="PlayerOfTheWeekVC" customModule="Filhoops" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7GN-Xr-RYZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ttf-VO-d0A"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ihj-Dp-OgZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="houston" translatesAutoresizingMaskIntoConstraints="NO" id="sSI-sX-wnd">
+                                <rect key="frame" x="0.0" y="-28" width="414" height="736"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Aj1-Oz-6uX">
+                                <rect key="frame" x="82" y="243" width="250" height="250"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="Player of the Week" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wd0-Bu-J6x">
+                                        <rect key="frame" x="0.0" y="0.0" width="250" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="E7K-wH-35A"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Profile Picture" translatesAutoresizingMaskIntoConstraints="NO" id="ezB-c4-fhV">
+                                        <rect key="frame" x="0.0" y="30" width="250" height="190"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Patrick Ramirez" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aeY-Xz-Vsx">
+                                        <rect key="frame" x="0.0" y="230" width="250" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="69D-KQ-3zp"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="aeY-Xz-Vsx" secondAttribute="trailing" id="0Gi-yr-AWx"/>
+                                    <constraint firstItem="Wd0-Bu-J6x" firstAttribute="leading" secondItem="Aj1-Oz-6uX" secondAttribute="leading" id="DzA-HI-mVT"/>
+                                    <constraint firstItem="aeY-Xz-Vsx" firstAttribute="leading" secondItem="Aj1-Oz-6uX" secondAttribute="leading" id="Gdq-Rd-f0q"/>
+                                    <constraint firstAttribute="width" constant="250" id="Wm0-G0-6bw"/>
+                                    <constraint firstItem="Wd0-Bu-J6x" firstAttribute="top" secondItem="Aj1-Oz-6uX" secondAttribute="top" id="aJ5-ch-Bae"/>
+                                    <constraint firstAttribute="trailing" secondItem="Wd0-Bu-J6x" secondAttribute="trailing" id="cTx-CY-hlj"/>
+                                    <constraint firstAttribute="height" constant="250" id="uLb-11-DT5"/>
+                                </constraints>
+                            </stackView>
+                            <progressView opaque="NO" contentMode="scaleAspectFit" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hIU-zi-qLL">
+                                <rect key="frame" x="82" y="726" width="250" height="2"/>
+                                <color key="progressTintColor" red="0.2470588235" green="0.31764705879999999" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
+                            </progressView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ttf-VO-d0A" firstAttribute="top" secondItem="hIU-zi-qLL" secondAttribute="bottom" constant="8" id="DWD-Dm-IlD"/>
+                            <constraint firstItem="Aj1-Oz-6uX" firstAttribute="centerY" secondItem="ihj-Dp-OgZ" secondAttribute="centerY" id="EMX-Fk-tv6"/>
+                            <constraint firstItem="hIU-zi-qLL" firstAttribute="centerX" secondItem="Aj1-Oz-6uX" secondAttribute="centerX" id="VFR-D6-aWV"/>
+                            <constraint firstItem="hIU-zi-qLL" firstAttribute="width" secondItem="ezB-c4-fhV" secondAttribute="width" id="aDX-xG-zdJ"/>
+                            <constraint firstItem="Aj1-Oz-6uX" firstAttribute="centerX" secondItem="ihj-Dp-OgZ" secondAttribute="centerX" id="cmb-7V-4F8"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="goToLoginVC" id="Wee-SW-Xrv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uJp-pL-hgI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="215.94202898550725" y="-564.13043478260875"/>
+        </scene>
         <!--LoginVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -23,10 +117,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="houston" translatesAutoresizingMaskIntoConstraints="NO" id="BPg-gr-GSx">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="yAl-N2-eK0">
-                                <rect key="frame" x="36" y="480.33333333333337" width="342" height="120.00000000000011"/>
+                                <rect key="frame" x="36" y="529.33333333333337" width="342" height="120"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email address" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7KP-Gt-fnn" customClass="CustomTextField" customModule="Filhoops" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="342" height="30"/>
@@ -36,14 +130,14 @@
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                     </textField>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pxr-ez-9xW" customClass="CustomTextField" customModule="Filhoops" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="45.000000000000057" width="342" height="30"/>
+                                        <rect key="frame" x="0.0" y="45" width="342" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WUE-AA-C4G" customClass="CustomButton" customModule="Filhoops" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="90.000000000000057" width="342" height="30"/>
+                                        <rect key="frame" x="0.0" y="90" width="342" height="30"/>
                                         <color key="backgroundColor" red="0.86666666670000003" green="0.17254901959999999" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Sign In">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -55,7 +149,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you haven't signed in before, an account will be created for you." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="env-FD-5H7">
-                                <rect key="frame" x="8" y="620.33333333333348" width="378" height="46.666666666666629"/>
+                                <rect key="frame" x="8" y="669.33333333333348" width="378" height="46.666666666666629"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -714,7 +808,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MgM-zv-Ubf" id="DX6-LD-kbt">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ajG-Ia-Jox">
@@ -1049,6 +1143,7 @@
         <image name="wolves-logo" width="447" height="481"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bca-8p-Zi1"/>
+        <segue reference="lUF-Pv-6Zf"/>
+        <segue reference="Wee-SW-Xrv"/>
     </inferredMetricsTieBreakers>
 </document>
