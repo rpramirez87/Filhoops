@@ -714,7 +714,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MgM-zv-Ubf" id="DX6-LD-kbt">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ajG-Ia-Jox">
@@ -918,12 +918,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A0w-Kx-j1x">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fiz-0k-ke9">
-                                        <rect key="frame" x="172" y="24" width="71" height="36"/>
-                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="26"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dPM-8L-eog">
                                         <rect key="frame" x="376" y="27" width="30" height="30"/>
                                         <constraints>
@@ -936,14 +930,48 @@
                                             <segue destination="BYZ-38-t0r" kind="show" identifier="goBackToLoginVC" id="Tmi-nz-YaI"/>
                                         </connections>
                                     </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="OI5-dP-ymX">
+                                        <rect key="frame" x="93.333333333333314" y="29.666666666666664" width="227.33333333333337" height="24.999999999999993"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zwB-iW-ELJ">
+                                                <rect key="frame" x="0.0" y="0.0" width="25" height="24.999999999999996"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25" id="bOr-Cf-aLt"/>
+                                                    <constraint firstAttribute="width" constant="25" id="d1h-99-Q2d"/>
+                                                </constraints>
+                                                <state key="normal" image="back-calendar"/>
+                                                <connections>
+                                                    <action selector="backButtonPressed:" destination="BZR-ae-ah2" eventType="touchUpInside" id="8lZ-gc-NXe"/>
+                                                </connections>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fiz-0k-ke9">
+                                                <rect key="frame" x="25" y="0.0" width="177.33333333333337" height="24.999999999999996"/>
+                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="26"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vs4-jo-2bp">
+                                                <rect key="frame" x="202.33333333333337" y="0.0" width="25" height="24.999999999999996"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="25" id="0F2-Ym-8e8"/>
+                                                    <constraint firstAttribute="width" constant="25" id="t6Z-pR-0lY"/>
+                                                </constraints>
+                                                <state key="normal" image="forward-calendar"/>
+                                                <connections>
+                                                    <action selector="backButtonPressed:" destination="BZR-ae-ah2" eventType="touchUpInside" id="kfY-ub-nT8"/>
+                                                    <action selector="forwardButtonPressed:" destination="BZR-ae-ah2" eventType="touchUpInside" id="HZ5-Qi-TGp"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.2470588235" green="0.31764705879999999" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="Fiz-0k-ke9" firstAttribute="centerX" secondItem="A0w-Kx-j1x" secondAttribute="centerX" id="ApD-LN-i0h"/>
+                                    <constraint firstItem="OI5-dP-ymX" firstAttribute="centerX" secondItem="A0w-Kx-j1x" secondAttribute="centerX" id="6lx-2J-wdz"/>
                                     <constraint firstAttribute="trailing" secondItem="dPM-8L-eog" secondAttribute="trailing" constant="8" id="HFH-KP-Wdw"/>
                                     <constraint firstAttribute="height" constant="65" id="t09-qN-wVe"/>
-                                    <constraint firstItem="Fiz-0k-ke9" firstAttribute="centerY" secondItem="dPM-8L-eog" secondAttribute="centerY" id="tOp-1T-eeG"/>
                                     <constraint firstAttribute="bottom" secondItem="dPM-8L-eog" secondAttribute="bottom" constant="8" id="uOY-Mi-SMk"/>
+                                    <constraint firstItem="dPM-8L-eog" firstAttribute="centerY" secondItem="Fiz-0k-ke9" secondAttribute="centerY" id="xSZ-rX-sfO"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -958,7 +986,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uSn-5N-mKQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-755" y="1714"/>
+            <point key="canvasLocation" x="-691" y="1714"/>
         </scene>
         <!--Playoffs-->
         <scene sceneID="I4K-Pe-Huq">
@@ -1011,8 +1039,10 @@
         <image name="343. Playlist" width="20" height="16"/>
         <image name="430. Network" width="20" height="20"/>
         <image name="Profile Picture" width="400" height="400"/>
+        <image name="back-calendar" width="10" height="18"/>
         <image name="black-mamba" width="501" height="720"/>
         <image name="f" width="352" height="328"/>
+        <image name="forward-calendar" width="10" height="18"/>
         <image name="houston" width="1100" height="619"/>
         <image name="jersey" width="660" height="660"/>
         <image name="logout" width="46" height="38"/>

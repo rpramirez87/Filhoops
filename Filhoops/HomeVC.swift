@@ -31,7 +31,21 @@ class HomeVC: UIViewController, WKNavigationDelegate {
         self.view.addSubview(webView)
         self.view.sendSubview(toBack: webView)
     }
+    @IBAction func backButtonPressed(_ sender: Any) {
+        if webView.canGoBack {
+            webView.goBack()
+        }
+        
+    }
     
+    @IBAction func forwardButtonPressed(_ sender: Any) {
+        if webView.canGoForward {
+            webView.goForward()
+        }
+        
+    }
+    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
