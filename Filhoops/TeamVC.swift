@@ -16,6 +16,7 @@ class TeamVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     @IBOutlet weak var collectionView: UICollectionView!
     
     var teamPlayers = [Player]()
+    var teamGames = [Game]()
     
     var currentUsersTeam : String!
     var currentUsersTeamKey : String!
@@ -67,8 +68,30 @@ class TeamVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             }
             
         })
-
         
+        //Load team games from database
+        DataService.ds.REF_GAMES.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                
+                for snap in snapshots {
+                    print("SNAP: \(snap)")
+                    if let teamDict = snap.value as? Dictionary<String, AnyObject> {
+                        
+                        // Save unique key value for Team
+                        let key = snap.key
+                        let game = Game(gameKey: key, gameData: teamDict)
+                        self.teamGames.append(game)
+                        
+                        if let gameTitle = teamDict["name"] as? String {
+                            print(gameTitle)
+                            
+                        }
+                    }
+                }
+                self.gameCollectionView.reloadData()
+
+            }
+        })
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -76,14 +99,22 @@ class TeamVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return teamPlayers.count
+        
+        if collectionView == self.collectionView {
+            return teamPlayers.count
+        }else {
+            return teamGames.count
+        }
+ 
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let teamPlayer = teamPlayers[indexPath.row]
+       
         
         if collectionView == self.collectionView {
+            let teamPlayer = teamPlayers[indexPath.row]
+            
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlayerCell", for: indexPath) as? PlayerCell {
                 cell.configureCell(player : teamPlayer)
                 return cell
@@ -91,7 +122,9 @@ class TeamVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
                 return UICollectionViewCell()
             }
         }else {
+            let teamGame = teamGames[indexPath.row]
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeamGameDataCell", for: indexPath) as? TeamGameDataCell {
+                cell.configureCell(game: teamGame)
                 return cell
             }else {
                 return UICollectionViewCell()

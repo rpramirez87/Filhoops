@@ -31,6 +31,7 @@
 		D98BCD0E1DFD96EC004455F3 /* ArcLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98BCD071DFD96EC004455F3 /* ArcLayer.swift */; };
 		D98BCD0F1DFD96EC004455F3 /* HolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98BCD091DFD96EC004455F3 /* HolderView.swift */; };
 		D98BCD111DFD9736004455F3 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98BCD101DFD9736004455F3 /* Colors.swift */; };
+		D98BCD131DFDA3EA004455F3 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98BCD121DFDA3EA004455F3 /* Game.swift */; };
 		D9C4DDA11DED36C8005D16E0 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C4DDA01DED36C8005D16E0 /* CircleView.swift */; };
 		D9C4DDA51DED37DB005D16E0 /* CircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C4DDA41DED37DB005D16E0 /* CircleImageView.swift */; };
 		D9C4DDA71DED4974005D16E0 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C4DDA61DED4974005D16E0 /* CustomView.swift */; };
@@ -92,6 +93,7 @@
 		D98BCD071DFD96EC004455F3 /* ArcLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcLayer.swift; sourceTree = "<group>"; };
 		D98BCD091DFD96EC004455F3 /* HolderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HolderView.swift; sourceTree = "<group>"; };
 		D98BCD101DFD9736004455F3 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		D98BCD121DFDA3EA004455F3 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		D9BE06E51DD850EF00B4B87D /* Filhoops.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Filhoops.entitlements; sourceTree = "<group>"; };
 		D9C4DDA01DED36C8005D16E0 /* CircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		D9C4DDA41DED37DB005D16E0 /* CircleImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleImageView.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 			children = (
 				D92AFBFA1DF2BE91008D2992 /* Team.swift */,
 				D914BF9C1DF2F34B00837DBB /* Player.swift */,
+				D98BCD121DFDA3EA004455F3 /* Game.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -179,15 +182,8 @@
 		D912BB3A1DE1042200706DD0 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D9C4DDA61DED4974005D16E0 /* CustomView.swift */,
-				D966F7BD1DEA73EF0003D160 /* CustomTextField.swift */,
-				D93BD9D31DEA765D00C12E45 /* CustomButton.swift */,
-				D93BD9D51DEA897600C12E45 /* RoundButton.swift */,
-				D9C4DDA01DED36C8005D16E0 /* CircleView.swift */,
-				D9C4DDA41DED37DB005D16E0 /* CircleImageView.swift */,
-				D9C4DDA81DEE4209005D16E0 /* GameDataCell.swift */,
-				D9C836C01DF24B0B00263DBE /* PlayerCell.swift */,
-				D91BB98F1DF256C900C735DA /* TeamGameDataCell.swift */,
+				D98BCD141DFDBDC1004455F3 /* Custom Views */,
+				D98BCD151DFDBDDE004455F3 /* CustomCells */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -260,6 +256,29 @@
 			);
 			name = "Loader View";
 			path = "../../../../Downloads/SBLoader - Finished/SBLoader";
+			sourceTree = "<group>";
+		};
+		D98BCD141DFDBDC1004455F3 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				D9C4DDA61DED4974005D16E0 /* CustomView.swift */,
+				D966F7BD1DEA73EF0003D160 /* CustomTextField.swift */,
+				D93BD9D31DEA765D00C12E45 /* CustomButton.swift */,
+				D93BD9D51DEA897600C12E45 /* RoundButton.swift */,
+				D9C4DDA01DED36C8005D16E0 /* CircleView.swift */,
+				D9C4DDA41DED37DB005D16E0 /* CircleImageView.swift */,
+			);
+			name = "Custom Views";
+			sourceTree = "<group>";
+		};
+		D98BCD151DFDBDDE004455F3 /* CustomCells */ = {
+			isa = PBXGroup;
+			children = (
+				D91BB98F1DF256C900C735DA /* TeamGameDataCell.swift */,
+				D9C836C01DF24B0B00263DBE /* PlayerCell.swift */,
+				D9C4DDA81DEE4209005D16E0 /* GameDataCell.swift */,
+			);
+			name = CustomCells;
 			sourceTree = "<group>";
 		};
 		D9C4DDAC1DEE49E1005D16E0 /* Extensions */ = {
@@ -607,6 +626,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D98BCD0F1DFD96EC004455F3 /* HolderView.swift in Sources */,
+				D98BCD131DFDA3EA004455F3 /* Game.swift in Sources */,
 				D9C4DDAB1DEE49C3005D16E0 /* Collection+Ext.swift in Sources */,
 				D93BD9D61DEA897600C12E45 /* RoundButton.swift in Sources */,
 				D9C4DDA91DEE4209005D16E0 /* GameDataCell.swift in Sources */,

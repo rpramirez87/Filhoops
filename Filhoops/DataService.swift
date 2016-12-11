@@ -24,6 +24,7 @@ class DataService  {
     private var _REF_BASE = DB_BASE
     private var _REF_USERS = DB_BASE.child("users")
     private var _REF_TEAMS = DB_BASE.child("teams")
+    private var _REF_GAMES = DB_BASE.child("games")
     
     //Storage references
     private var _REF_PROFILE_IMAGES = STORAGE_BASE.child("profile-pics")
@@ -39,6 +40,10 @@ class DataService  {
     
     var REF_TEAMS :FIRDatabaseReference {
         return _REF_TEAMS
+    }
+    
+    var REF_GAMES :FIRDatabaseReference {
+        return _REF_GAMES
     }
     
     var REF_USER_CURRENT : FIRDatabaseReference {
