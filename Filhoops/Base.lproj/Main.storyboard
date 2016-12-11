@@ -104,6 +104,7 @@
                     </view>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="goToLoginVC" id="Wee-SW-Xrv"/>
+                        <segue destination="bEn-Mt-E1X" kind="show" identifier="loadingScreenToMainVC" id="uyo-h4-Mz4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uJp-pL-hgI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1192,7 +1193,7 @@
         <image name="wolves-logo" width="447" height="481"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lUF-Pv-6Zf"/>
+        <segue reference="uyo-h4-Mz4"/>
         <segue reference="Wee-SW-Xrv"/>
     </inferredMetricsTieBreakers>
 </document>
