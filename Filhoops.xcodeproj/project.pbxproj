@@ -39,6 +39,7 @@
 		D9C4DDAB1DEE49C3005D16E0 /* Collection+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C4DDAA1DEE49C3005D16E0 /* Collection+Ext.swift */; };
 		D9C836C11DF24B0B00263DBE /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C836C01DF24B0B00263DBE /* PlayerCell.swift */; };
 		D9C836C31DF24B2800263DBE /* TeamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C836C21DF24B2800263DBE /* TeamVC.swift */; };
+		D9D8F4D31DFE0D1200BDAA6A /* AddTeamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D8F4D21DFE0D1200BDAA6A /* AddTeamVC.swift */; };
 		D9FCB2221DD83A2C00AF6BB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FCB2211DD83A2C00AF6BB7 /* AppDelegate.swift */; };
 		D9FCB2241DD83A2C00AF6BB7 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FCB2231DD83A2C00AF6BB7 /* LoginVC.swift */; };
 		D9FCB2271DD83A2C00AF6BB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9FCB2251DD83A2C00AF6BB7 /* Main.storyboard */; };
@@ -102,6 +103,7 @@
 		D9C4DDAA1DEE49C3005D16E0 /* Collection+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Ext.swift"; sourceTree = "<group>"; };
 		D9C836C01DF24B0B00263DBE /* PlayerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
 		D9C836C21DF24B2800263DBE /* TeamVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamVC.swift; sourceTree = "<group>"; };
+		D9D8F4D21DFE0D1200BDAA6A /* AddTeamVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTeamVC.swift; sourceTree = "<group>"; };
 		D9FCB21E1DD83A2C00AF6BB7 /* Filhoops.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Filhoops.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9FCB2211DD83A2C00AF6BB7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9FCB2231DD83A2C00AF6BB7 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -191,11 +193,12 @@
 		D912BB3B1DE1042700706DD0 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				D9D8F4D41DFE0D1900BDAA6A /* AuthorizedVC */,
 				D98BCD001DFD950B004455F3 /* LoadingScreens */,
+				D98BCCFF1DFD94E4004455F3 /* Tabs */,
 				D94A38901DE11EFB00B239B2 /* TabBarVC.swift */,
 				D9FCB2231DD83A2C00AF6BB7 /* LoginVC.swift */,
 				D92AFBF81DF2B38C008D2992 /* SignUpVC.swift */,
-				D98BCCFF1DFD94E4004455F3 /* Tabs */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -288,6 +291,14 @@
 				D9C4DDAA1DEE49C3005D16E0 /* Collection+Ext.swift */,
 			);
 			name = Extensions;
+			sourceTree = "<group>";
+		};
+		D9D8F4D41DFE0D1900BDAA6A /* AuthorizedVC */ = {
+			isa = PBXGroup;
+			children = (
+				D9D8F4D21DFE0D1200BDAA6A /* AddTeamVC.swift */,
+			);
+			name = AuthorizedVC;
 			sourceTree = "<group>";
 		};
 		D9FCB2151DD83A2C00AF6BB7 = {
@@ -430,6 +441,9 @@
 						SystemCapabilities = {
 							com.apple.Keychain = {
 								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 0;
 							};
 						};
 					};
@@ -634,6 +648,7 @@
 				D914BF9D1DF2F34B00837DBB /* Player.swift in Sources */,
 				D9FCB2241DD83A2C00AF6BB7 /* LoginVC.swift in Sources */,
 				D966F7BE1DEA73EF0003D160 /* CustomTextField.swift in Sources */,
+				D9D8F4D31DFE0D1200BDAA6A /* AddTeamVC.swift in Sources */,
 				D98BCCFE1DFD901F004455F3 /* LoadingScreenVC.swift in Sources */,
 				D9C4DDA51DED37DB005D16E0 /* CircleImageView.swift in Sources */,
 				D92AFBF91DF2B38C008D2992 /* SignUpVC.swift in Sources */,
@@ -734,6 +749,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = RJETQ2A4J2;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -782,10 +798,11 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = RJETQ2A4J2;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -812,6 +829,8 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Filhoops/Filhoops.entitlements;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = RJETQ2A4J2;
 				INFOPLIST_FILE = Filhoops/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -829,7 +848,8 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Filhoops/Filhoops.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = RJETQ2A4J2;
 				INFOPLIST_FILE = Filhoops/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

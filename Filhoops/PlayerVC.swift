@@ -30,7 +30,7 @@ class PlayerVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print("PlayerVC")
         playerImageView.layer.cornerRadius = 100
         playerImageView.clipsToBounds = true
         tableView.delegate = self

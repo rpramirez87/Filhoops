@@ -20,6 +20,7 @@ class LoginVC : UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var passwordTextField: CustomTextField!
     
     var returningUser = false
+
     
     //MARK: TODO - Constraint User to only sign up for one team
     
@@ -173,8 +174,9 @@ class LoginVC : UIViewController, FBSDKLoginButtonDelegate {
         DataService.ds.createFirebaseDBUser(uid: id, userData: userData)
         let saveSuccessful: Bool = KeychainWrapper.standard.set(id, forKey: KEY_UID)
         print("Data saved to keychain \(saveSuccessful)")
-        
+  
         doesCurrentUserHaveTeam()
+        
     }
     
     func doesCurrentUserHaveTeam() {

@@ -40,8 +40,8 @@ class SignUpVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
                 
                 for snap in snapshots {
                     print("SNAP: \(snap)")
-                    if let postDict = snap.value as? Dictionary<String, AnyObject> {
-                        if let teamName = postDict["name"] as? String {
+                    if let teamDict = snap.value as? Dictionary<String, AnyObject> {
+                        if let teamName = teamDict["name"] as? String {
                             self.teams.append(teamName)
                             self.teamKeys.append(snap.key)
                         }

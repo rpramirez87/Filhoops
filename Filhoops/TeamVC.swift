@@ -110,8 +110,6 @@ class TeamVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-       
-        
         if collectionView == self.collectionView {
             let teamPlayer = teamPlayers[indexPath.row]
             
