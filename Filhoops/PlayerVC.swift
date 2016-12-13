@@ -116,9 +116,6 @@ class PlayerVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
          }else {
             return UITableViewCell()
         }
-        
-        //return UITableViewCell()
-        
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
