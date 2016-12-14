@@ -20,8 +20,8 @@ class AUTHGameVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var firstTeamTableVC: UITableView!
     @IBOutlet weak var secondTeamTableVC: UITableView!
     
-    var team1Players = ["Jb Olicia", "Emmanuel Villaflor", "Patrick Ramirez"]
-    var team2Players = ["Mochiboy1", "Mochiboy2", "Danielle Ho"]
+    var team1Players = [String]()
+    var team2Players = [String]()
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,11 +99,6 @@ class AUTHGameVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
 
     
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

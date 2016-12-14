@@ -11,8 +11,10 @@ import SwiftKeychainWrapper
 
 class PlayerOfTheWeekVC: UIViewController {
     var returningUser = false
-    
+    @IBOutlet weak var bgImageView: UIImageView!
     override func viewDidLoad() {
+        //Shade Background
+        self.bgImageView.alpha = 0.6
         super.viewDidLoad()
     }
 
