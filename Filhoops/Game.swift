@@ -11,8 +11,13 @@ import Firebase
 
 class Game {
     
+    //Attributes
     private var _gameTitle : String!
     private var _gameDate : String!
+    private var _gameTime : String!
+    
+    
+    //Firebase
     private var _gameKey : String!
     private var _gameRef : FIRDatabaseReference!
     
@@ -25,9 +30,14 @@ class Game {
         return _gameDate
     }
     
-    init(gameTitle : String, gameDate : String) {
+    var gameTime : String {
+        return _gameTime
+    }
+    
+    init(gameTitle : String, gameDate : String, gameTime : String) {
         self._gameTitle = gameTitle
         self._gameDate = gameDate
+        self._gameTime = gameTime
     }
 
     
@@ -41,6 +51,10 @@ class Game {
         
         if let date = gameData["date"] as? String {
             self._gameDate = date
+        }
+        
+        if let time = gameData["time"] as? String {
+            self._gameTime = time
         }
         
         _gameRef = DataService.ds.REF_GAMES.child(gameKey)

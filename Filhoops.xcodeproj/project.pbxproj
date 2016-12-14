@@ -43,6 +43,7 @@
 		D9C836C11DF24B0B00263DBE /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C836C01DF24B0B00263DBE /* PlayerCell.swift */; };
 		D9C836C31DF24B2800263DBE /* TeamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C836C21DF24B2800263DBE /* TeamVC.swift */; };
 		D9D8F4D31DFE0D1200BDAA6A /* AddTeamVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D8F4D21DFE0D1200BDAA6A /* AddTeamVC.swift */; };
+		D9E803551E01B68200711546 /* Date + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E803541E01B68200711546 /* Date + Ext.swift */; };
 		D9FCB2221DD83A2C00AF6BB7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FCB2211DD83A2C00AF6BB7 /* AppDelegate.swift */; };
 		D9FCB2241DD83A2C00AF6BB7 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FCB2231DD83A2C00AF6BB7 /* LoginVC.swift */; };
 		D9FCB2271DD83A2C00AF6BB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9FCB2251DD83A2C00AF6BB7 /* Main.storyboard */; };
@@ -110,6 +111,7 @@
 		D9C836C01DF24B0B00263DBE /* PlayerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
 		D9C836C21DF24B2800263DBE /* TeamVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeamVC.swift; sourceTree = "<group>"; };
 		D9D8F4D21DFE0D1200BDAA6A /* AddTeamVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTeamVC.swift; sourceTree = "<group>"; };
+		D9E803541E01B68200711546 /* Date + Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date + Ext.swift"; sourceTree = "<group>"; };
 		D9FCB21E1DD83A2C00AF6BB7 /* Filhoops.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Filhoops.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9FCB2211DD83A2C00AF6BB7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9FCB2231DD83A2C00AF6BB7 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				D9C4DDAA1DEE49C3005D16E0 /* Collection+Ext.swift */,
+				D9E803541E01B68200711546 /* Date + Ext.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -667,6 +670,7 @@
 				D98BCD0C1DFD96EC004455F3 /* TriangleLayer.swift in Sources */,
 				D9C836C31DF24B2800263DBE /* TeamVC.swift in Sources */,
 				D9577E131DFF4BCA00508CCA /* AUTHGameVC.swift in Sources */,
+				D9E803551E01B68200711546 /* Date + Ext.swift in Sources */,
 				D98BCD031DFD96CB004455F3 /* PlayerOfTheWeekVC.swift in Sources */,
 				D94A38911DE11EFB00B239B2 /* TabBarVC.swift in Sources */,
 				D98BCD0D1DFD96EC004455F3 /* RectangleLayer.swift in Sources */,

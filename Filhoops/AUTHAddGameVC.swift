@@ -19,6 +19,7 @@ class AUTHAddGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     var teams = [String]()
     var filteredTeams = [String]()
     var teamSelected = ""
+    var timeSelected = ""
     var inSearchMode = false
     
     @IBOutlet weak var timePickerView: UIPickerView!
@@ -107,14 +108,22 @@ class AUTHAddGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
             return
         }
         
-        let gameName = "\(teamName1) Vs \(teamName2)"
+        guard timeSelected != "" else {
+            print("Select a time")
+            return
+        }
         
+        let gameName = "\(teamName1) Vs \(teamName2)"
+        let currentDate = Date()
+
         let firebaseTeamPost = DataService.ds.REF_GAMES.childByAutoId()
         let teamPost : Dictionary<String, AnyObject> = [
             "name" : gameName as AnyObject,
-            "date" : "December 13, 2016" as AnyObject
+            "date" : currentDate.StringDateFormatter() as AnyObject,
+            "time" : timeSelected as AnyObject
             
         ]
+        
         firebaseTeamPost.setValue(teamPost)
         
         
@@ -138,6 +147,10 @@ class AUTHAddGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return availableTimes[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        timeSelected = availableTimes[row]
     }
     
     //MARK: Table View Delegate Functions

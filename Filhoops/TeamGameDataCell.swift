@@ -10,11 +10,15 @@ import UIKit
 
 class TeamGameDataCell: UICollectionViewCell {
     
+    @IBOutlet weak var gameTimeLabel: UILabel!
+    @IBOutlet weak var gameDateLabel: UILabel!
     @IBOutlet weak var gameTitleLabel: UILabel!
+    @IBOutlet weak var team1ScoreLabel: UILabel!
+    @IBOutlet weak var team2ScoreLabel: UILabel!
     
     func configureCell(game : Game) {
-        
         self.gameTitleLabel.text = game.gameTitle
-    
+        self.gameTimeLabel.text = game.gameTime
+        self.gameDateLabel.text = game.gameDate
     }
 }
