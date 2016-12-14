@@ -43,6 +43,13 @@ class AUTHCalendarVC: UIViewController,UITableViewDataSource, UITableViewDelegat
                 
             }
         })
+        
+        // Current Date
+        let currentDate = Date()
+        self.dateLabel.text = currentDate.longDateFormatter()
+        print(currentDate.longDateFormatter())
+        self.dayLabel.text = currentDate.weekdayDateFormatter()
+        
     }
 
     

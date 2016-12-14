@@ -119,7 +119,7 @@ class AUTHAddGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         let firebaseTeamPost = DataService.ds.REF_GAMES.childByAutoId()
         let teamPost : Dictionary<String, AnyObject> = [
             "name" : gameName as AnyObject,
-            "date" : currentDate.StringDateFormatter() as AnyObject,
+            "date" : currentDate.shortDateFormatter() as AnyObject,
             "time" : timeSelected as AnyObject
             
         ]
@@ -133,7 +133,10 @@ class AUTHAddGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         self.dismiss(animated: true, completion: nil)
         
     }
-  
+    @IBAction func cancelButtonPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+
     
     //MARK: Picker View Delegate Functions
     

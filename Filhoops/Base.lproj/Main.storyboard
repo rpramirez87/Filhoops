@@ -256,19 +256,6 @@
                                             <constraint firstAttribute="height" constant="50" id="gXR-Ce-kfq"/>
                                         </constraints>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5TV-ld-zb8">
-                                        <rect key="frame" x="8" y="529" width="398" height="30"/>
-                                        <color key="backgroundColor" red="0.95686274510000002" green="0.26274509800000001" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="oje-e9-di6"/>
-                                        </constraints>
-                                        <state key="normal" title="Add Game">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="addGameButtonPressed:" destination="1IY-JD-g58" eventType="touchUpInside" id="ynA-PR-Dhq"/>
-                                        </connections>
-                                    </button>
                                     <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="TIP-0M-t5D">
                                         <rect key="frame" x="8" y="48" width="398" height="44"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
@@ -287,26 +274,58 @@
                                             <constraint firstAttribute="height" constant="100" id="vhF-J0-Wbp"/>
                                         </constraints>
                                     </pickerView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Og1-mj-BhZ">
+                                        <rect key="frame" x="8" y="529" width="398" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dSQ-aI-BMz">
+                                                <rect key="frame" x="0.0" y="0.0" width="196.66666666666666" height="30"/>
+                                                <color key="backgroundColor" red="0.95686274510000002" green="0.26274509800000001" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="vvl-rF-HMB"/>
+                                                </constraints>
+                                                <state key="normal" title="Cancel">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="addGameButtonPressed:" destination="1IY-JD-g58" eventType="touchUpInside" id="Iut-nc-vhr"/>
+                                                    <action selector="cancelButtonPressed:" destination="1IY-JD-g58" eventType="touchUpInside" id="WLD-vE-C6A"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5TV-ld-zb8">
+                                                <rect key="frame" x="201.66666666666663" y="0.0" width="196.33333333333337" height="30"/>
+                                                <color key="backgroundColor" red="0.95686274510000002" green="0.26274509800000001" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Add Game">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="addGameButtonPressed:" destination="1IY-JD-g58" eventType="touchUpInside" id="ynA-PR-Dhq"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="UvZ-Yr-F4Z"/>
+                                        </constraints>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="5TV-ld-zb8" firstAttribute="top" secondItem="Sik-dB-5ab" secondAttribute="bottom" constant="8" id="0YR-5l-ydp"/>
                                     <constraint firstItem="eq3-5L-o4O" firstAttribute="top" secondItem="xpY-Yh-q1q" secondAttribute="top" constant="8" id="0ZU-KC-hqt"/>
                                     <constraint firstItem="F69-tW-bEJ" firstAttribute="leading" secondItem="xpY-Yh-q1q" secondAttribute="leading" constant="8" id="6UQ-BS-QW7"/>
                                     <constraint firstItem="TIP-0M-t5D" firstAttribute="leading" secondItem="xpY-Yh-q1q" secondAttribute="leading" constant="8" id="BTs-Zg-pDk"/>
-                                    <constraint firstAttribute="bottom" secondItem="5TV-ld-zb8" secondAttribute="bottom" constant="8" id="C6g-2a-FIJ"/>
                                     <constraint firstItem="Sik-dB-5ab" firstAttribute="leading" secondItem="xpY-Yh-q1q" secondAttribute="leading" constant="8" id="DOG-P5-h5N"/>
-                                    <constraint firstAttribute="trailing" secondItem="5TV-ld-zb8" secondAttribute="trailing" constant="8" id="FbO-Fe-wSo"/>
+                                    <constraint firstItem="Og1-mj-BhZ" firstAttribute="leading" secondItem="xpY-Yh-q1q" secondAttribute="leading" constant="8" id="KpO-xU-6gx"/>
                                     <constraint firstItem="VfG-M8-2yz" firstAttribute="leading" secondItem="xpY-Yh-q1q" secondAttribute="leading" constant="8" id="KsL-hC-Gat"/>
                                     <constraint firstAttribute="trailing" secondItem="F69-tW-bEJ" secondAttribute="trailing" constant="8" id="MR7-u1-7yY"/>
                                     <constraint firstItem="TIP-0M-t5D" firstAttribute="top" secondItem="eq3-5L-o4O" secondAttribute="bottom" id="ReZ-Bo-Fx6"/>
-                                    <constraint firstItem="5TV-ld-zb8" firstAttribute="leading" secondItem="xpY-Yh-q1q" secondAttribute="leading" constant="8" id="U28-fn-fti"/>
                                     <constraint firstItem="eq3-5L-o4O" firstAttribute="leading" secondItem="xpY-Yh-q1q" secondAttribute="leading" constant="8" id="X2l-NH-i2d"/>
                                     <constraint firstItem="VfG-M8-2yz" firstAttribute="top" secondItem="TIP-0M-t5D" secondAttribute="bottom" id="XTk-lS-yZt"/>
                                     <constraint firstAttribute="trailing" secondItem="VfG-M8-2yz" secondAttribute="trailing" constant="8" id="XrM-du-Rzw"/>
                                     <constraint firstAttribute="trailing" secondItem="TIP-0M-t5D" secondAttribute="trailing" constant="8" id="a8X-xv-fH6"/>
                                     <constraint firstAttribute="trailing" secondItem="Sik-dB-5ab" secondAttribute="trailing" constant="8" id="bCo-Py-NAp"/>
+                                    <constraint firstItem="Og1-mj-BhZ" firstAttribute="top" secondItem="Sik-dB-5ab" secondAttribute="bottom" constant="8" id="bfh-XF-V85"/>
                                     <constraint firstItem="aE8-66-8d5" firstAttribute="top" secondItem="F69-tW-bEJ" secondAttribute="bottom" constant="8" id="hVL-6o-nx4"/>
+                                    <constraint firstAttribute="bottom" secondItem="Og1-mj-BhZ" secondAttribute="bottom" constant="8" id="nHs-00-Y4N"/>
+                                    <constraint firstAttribute="trailing" secondItem="Og1-mj-BhZ" secondAttribute="trailing" constant="8" id="nwL-Xc-KLQ"/>
                                     <constraint firstItem="F69-tW-bEJ" firstAttribute="top" secondItem="VfG-M8-2yz" secondAttribute="bottom" constant="8" id="of3-lr-4uO"/>
                                     <constraint firstAttribute="trailing" secondItem="aE8-66-8d5" secondAttribute="trailing" constant="8" id="vWi-l5-Fh7"/>
                                     <constraint firstItem="aE8-66-8d5" firstAttribute="leading" secondItem="xpY-Yh-q1q" secondAttribute="leading" constant="8" id="wdX-pU-f1e"/>
@@ -333,7 +352,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t6A-5H-oqN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-691" y="3408"/>
+            <point key="canvasLocation" x="-691.304347826087" y="3407.608695652174"/>
         </scene>
         <!--GameVC-->
         <scene sceneID="ay8-6l-xwC">

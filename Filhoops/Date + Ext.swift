@@ -9,39 +9,42 @@
 import Foundation
 
 extension Date {
-    func StringDateFormatter() -> String {
-        return DateFormatter.StringDateFormatter.string(from: self)
+    func shortDateFormatter() -> String {
+        return DateFormatter.shortDateFormatter.string(from: self)
     }
     
-    func MonthDayDateFormatter() -> String {
-        return DateFormatter.MonthDayDateFormatter.string(from: self)
+    func longDateFormatter() -> String {
+        return DateFormatter.longDateFormatter.string(from: self)
+    }
+    
+    func weekdayDateFormatter() -> String {
+        return DateFormatter.weekdayDateFormatter.string(from: self)
     }
 }
 
 // Formatter for Short-Style Date E.G. 10/11/2016 3:11 P.M
 extension DateFormatter {
-    fileprivate static let StringDateFormatter: DateFormatter = {
+    
+    //Short Date Formatter - 10/11/12
+    fileprivate static let shortDateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .short
         formatter.timeStyle = .none
         return formatter
     }()
-}
-
-extension DateFormatter {
-    fileprivate static let MonthDayDateFormatter: DateFormatter = {
+    
+    //Long Date Formatter - December 12, 2016
+    fileprivate static let longDateFormatter : DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "MMMM d"
+        formatter.dateStyle = .long
+        formatter.timeStyle = .none
+        return formatter
+    }()
+    
+    fileprivate static let weekdayDateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "EEEE"
         return formatter
     }()
 }
 
-// Formatter for Month and Year E.G. October 2016
-extension Date {
-    func MonthYearDateFormatter() -> String {
-        let calendar = Calendar.current
-        let components = (calendar as NSCalendar).components([.month , .year], from: self)
-        let formatter = DateFormatter()
-        return "\(formatter.monthSymbols[components.month! - 1]) \(components.year!)"
-    }
-}
