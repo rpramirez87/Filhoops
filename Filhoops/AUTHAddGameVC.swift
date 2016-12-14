@@ -22,7 +22,9 @@ class AUTHAddGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     var timeSelected = ""
     var inSearchMode = false
     var dateToAddGame : Date?
+    var gym = "Gym 1"
     
+    @IBOutlet weak var gymSegmentControl: UISegmentedControl!
     @IBOutlet weak var timePickerView: UIPickerView!
     var availableTimes = ["7:30 PM","8:30 PM", "9:30 PM", "10:30 PM", "11:30 PM"]
 
@@ -104,8 +106,8 @@ class AUTHAddGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     
     @IBAction func addGameButtonPressed(_ sender: Any) {
         
-        guard let teamName1 = team1Label.text, teamName1 != "", let teamName2 = team2Label.text, teamName2 != "" else {
-            print("Team names aren't filled up")
+        guard let teamName1 = team1Label.text, teamName1 != "", let teamName2 = team2Label.text, teamName2 != "", teamName1 != teamName2 else {
+            print("Invalid Teams")
             return
         }
         
@@ -126,7 +128,10 @@ class AUTHAddGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         let teamPost : Dictionary<String, AnyObject> = [
             "name" : gameName as AnyObject,
             "date" : gameDate.shortDateFormatter() as AnyObject,
-            "time" : timeSelected as AnyObject
+            "time" : timeSelected as AnyObject,
+            "team1" : teamName1 as AnyObject,
+            "team2" : teamName2 as AnyObject,
+            "gym" : gym as AnyObject
             
         ]
         
@@ -139,6 +144,13 @@ class AUTHAddGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         self.dismiss(animated: true, completion: nil)
     }
 
+    @IBAction func gymValueChanged(_ sender: Any) {
+        if gymSegmentControl.selectedSegmentIndex == 0 {
+            gym = "Gym 1"
+        }else {
+            gym = "Gym 2"
+        }
+    }
     
     //MARK: Picker View Delegate Functions
     
@@ -195,7 +207,6 @@ class AUTHAddGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
             teamSelected = filteredTeams[indexPath.row]
         }else {
             teamSelected = teams[indexPath.row]
-
         }
         
     }

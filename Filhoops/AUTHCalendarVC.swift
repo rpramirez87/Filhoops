@@ -11,7 +11,7 @@ import Firebase
 
 class AUTHCalendarVC: UIViewController,UITableViewDataSource, UITableViewDelegate {
     
-    var games = [String]()
+    var games = [Game]()
     var currentDate = Date()
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -74,9 +74,14 @@ class AUTHCalendarVC: UIViewController,UITableViewDataSource, UITableViewDelegat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let game = games[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PlainCell", for : indexPath)
-        cell.textLabel?.text = game
-        return cell
+        
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "AUTHGameCell", for: indexPath) as? AUTHGameCell {
+            cell.configureCell(game : game)
+            return cell
+        }else {
+            return UITableViewCell()
+        }
+        
     }
     
     //MARK: Helper Functions
@@ -108,15 +113,18 @@ class AUTHCalendarVC: UIViewController,UITableViewDataSource, UITableViewDelegat
                 
                 for snap in snapshots {
                     print("SNAP: \(snap)")
-                    if let teamDict = snap.value as? Dictionary<String, AnyObject> {
+                    if let gameDict = snap.value as? Dictionary<String, AnyObject> {
                         
+                        // Save unique key value for Team
+                        let key = snap.key
+                        let game = Game(gameKey: key, gameData: gameDict)
+                        self.games.append(game)
                         
-                        if let gameTitle = teamDict["name"] as? String {
-                            self.games.append(gameTitle)
+                        if let gameTitle = gameDict["name"] as? String {
+                            print(gameTitle)
                             
                         }
-                    }
-                }
+                    }                }
                 self.gamesTableVC.reloadData()
                 
             }

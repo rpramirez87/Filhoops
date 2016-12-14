@@ -28,7 +28,7 @@ class TeamVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         
         collectionView.dataSource = self
         collectionView.delegate = self
-        
+
         DataService.ds.REF_USER_CURRENT_TEAM.observe(.value, with: { (snapshot) in
             if let currentTeam = snapshot.value as? String {
                 
@@ -75,14 +75,14 @@ class TeamVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
                 
                 for snap in snapshots {
                     print("SNAP: \(snap)")
-                    if let teamDict = snap.value as? Dictionary<String, AnyObject> {
+                    if let gameDict = snap.value as? Dictionary<String, AnyObject> {
                         
                         // Save unique key value for Team
                         let key = snap.key
-                        let game = Game(gameKey: key, gameData: teamDict)
+                        let game = Game(gameKey: key, gameData: gameDict)
                         self.teamGames.append(game)
                         
-                        if let gameTitle = teamDict["name"] as? String {
+                        if let gameTitle = gameDict["name"] as? String {
                             print(gameTitle)
                             
                         }

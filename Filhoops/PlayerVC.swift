@@ -76,8 +76,8 @@ class PlayerVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     print(names[1])
                     
                     //self.playerNameLabel.text = "\(playerName)"
-                    self.firstNameLabel.text = "\(names[0])"
-                    self.lastNameLabel.text = "\(names[1])"
+                    self.firstNameLabel.text = "\(names.first)"
+                    self.lastNameLabel.text = "\(names.last)"
                 }
             }
         }

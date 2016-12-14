@@ -15,6 +15,4 @@ class Team {
     var teamName : String {
         return _teamName
     }
-    
-
 }

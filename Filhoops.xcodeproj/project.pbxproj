@@ -33,6 +33,7 @@
 		D98BCD0F1DFD96EC004455F3 /* HolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98BCD091DFD96EC004455F3 /* HolderView.swift */; };
 		D98BCD111DFD9736004455F3 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98BCD101DFD9736004455F3 /* Colors.swift */; };
 		D98BCD131DFDA3EA004455F3 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98BCD121DFDA3EA004455F3 /* Game.swift */; };
+		D9B02E0A1E01F8BC00042476 /* AUTHGameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B02E091E01F8BC00042476 /* AUTHGameCell.swift */; };
 		D9B124DF1E0087260080182E /* AUTHCalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B124DE1E0087260080182E /* AUTHCalendarVC.swift */; };
 		D9B124E11E00873B0080182E /* AUTHAddGameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B124E01E00873B0080182E /* AUTHAddGameVC.swift */; };
 		D9C4DDA11DED36C8005D16E0 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C4DDA01DED36C8005D16E0 /* CircleView.swift */; };
@@ -100,6 +101,7 @@
 		D98BCD091DFD96EC004455F3 /* HolderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HolderView.swift; sourceTree = "<group>"; };
 		D98BCD101DFD9736004455F3 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		D98BCD121DFDA3EA004455F3 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		D9B02E091E01F8BC00042476 /* AUTHGameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUTHGameCell.swift; sourceTree = "<group>"; };
 		D9B124DE1E0087260080182E /* AUTHCalendarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUTHCalendarVC.swift; sourceTree = "<group>"; };
 		D9B124E01E00873B0080182E /* AUTHAddGameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUTHAddGameVC.swift; sourceTree = "<group>"; };
 		D9BE06E51DD850EF00B4B87D /* Filhoops.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Filhoops.entitlements; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 				D91BB98F1DF256C900C735DA /* TeamGameDataCell.swift */,
 				D9C836C01DF24B0B00263DBE /* PlayerCell.swift */,
 				D9C4DDA81DEE4209005D16E0 /* GameDataCell.swift */,
+				D9B02E091E01F8BC00042476 /* AUTHGameCell.swift */,
 			);
 			name = CustomCells;
 			sourceTree = "<group>";
@@ -680,6 +683,7 @@
 				D98BCD111DFD9736004455F3 /* Colors.swift in Sources */,
 				D9C4DDA71DED4974005D16E0 /* CustomView.swift in Sources */,
 				D98BCD0B1DFD96EC004455F3 /* OvalLayer.swift in Sources */,
+				D9B02E0A1E01F8BC00042476 /* AUTHGameCell.swift in Sources */,
 				D93BD9D41DEA765D00C12E45 /* CustomButton.swift in Sources */,
 				D9C4DDA11DED36C8005D16E0 /* CircleView.swift in Sources */,
 				D93BD9D11DEA74B600C12E45 /* Constants.swift in Sources */,

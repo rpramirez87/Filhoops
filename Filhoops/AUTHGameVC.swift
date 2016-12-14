@@ -94,11 +94,6 @@ class AUTHGameVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 }
             }
         })
-        
-      
-        
-
-    
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

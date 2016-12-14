@@ -16,7 +16,6 @@ class AddTeamVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var teamTableVC: UITableView!
     @IBOutlet weak var teamTextField: UITextField!
     var teams = [String]()
-    var mochis = ["Hello", "Okay", "There"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

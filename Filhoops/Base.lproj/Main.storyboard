@@ -139,17 +139,77 @@
                                     <action selector="addTeamButtonPressed:" destination="PNG-Nf-Zxf" eventType="touchUpInside" id="4EC-BP-Vv0"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="owd-eP-g8u">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="68" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="owd-eP-g8u">
                                 <rect key="frame" x="0.0" y="176" width="414" height="511"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlainCell" id="9es-Os-p8P">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AUTHGameCell" rowHeight="68" id="9es-Os-p8P" customClass="AUTHGameCell" customModule="Filhoops" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="68"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9es-Os-p8P" id="Vfb-WJ-kdZ">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="67"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uv8-iG-ene">
+                                                    <rect key="frame" x="16" y="16" width="398" height="52"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="uRh-vx-Jiv">
+                                                            <rect key="frame" x="0.0" y="0.0" width="398" height="52"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shamwow" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXW-QQ-b9b">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="132.66666666666666" height="52"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="-10" translatesAutoresizingMaskIntoConstraints="NO" id="v1f-TV-vN4">
+                                                                    <rect key="frame" x="132.66666666666669" y="0.0" width="132.66666666666669" height="52"/>
+                                                                    <subviews>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gym 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uQl-A1-j4q">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="132.66666666666666" height="31"/>
+                                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="7:30 P.M." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HNi-Ws-udX">
+                                                                            <rect key="frame" x="0.0" y="21" width="132.66666666666666" height="31"/>
+                                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                                            <nil key="textColor"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
+                                                                    </subviews>
+                                                                </stackView>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wolves" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hnp-oN-y8s">
+                                                                    <rect key="frame" x="265.33333333333326" y="0.0" width="132.66666666666669" height="52"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="uRh-vx-Jiv" secondAttribute="trailing" id="Dag-ZY-CEG"/>
+                                                        <constraint firstItem="uRh-vx-Jiv" firstAttribute="leading" secondItem="Uv8-iG-ene" secondAttribute="leading" id="V1I-hK-W2Q"/>
+                                                        <constraint firstAttribute="bottom" secondItem="uRh-vx-Jiv" secondAttribute="bottom" id="hMB-2P-XEL"/>
+                                                        <constraint firstItem="uRh-vx-Jiv" firstAttribute="top" secondItem="Uv8-iG-ene" secondAttribute="top" id="k0w-yC-7b3"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Uv8-iG-ene" firstAttribute="top" secondItem="Vfb-WJ-kdZ" secondAttribute="topMargin" constant="8" id="32o-QQ-5LR"/>
+                                                <constraint firstItem="Uv8-iG-ene" firstAttribute="bottom" secondItem="Vfb-WJ-kdZ" secondAttribute="bottomMargin" constant="8" id="FTK-7k-axw"/>
+                                                <constraint firstItem="Uv8-iG-ene" firstAttribute="leading" secondItem="Vfb-WJ-kdZ" secondAttribute="leadingMargin" constant="8" id="doK-A5-36I"/>
+                                                <constraint firstItem="Uv8-iG-ene" firstAttribute="trailing" secondItem="Vfb-WJ-kdZ" secondAttribute="trailingMargin" constant="8" id="vA4-I3-6Zs"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="gymLabel" destination="uQl-A1-j4q" id="cvZ-0F-Vl5"/>
+                                            <outlet property="team1Label" destination="dXW-QQ-b9b" id="9O1-d7-PEs"/>
+                                            <outlet property="team2Label" destination="Hnp-oN-y8s" id="V1b-NA-JN4"/>
+                                            <outlet property="timeLabel" destination="HNi-Ws-udX" id="nOu-x1-ibo"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -292,6 +352,9 @@
                                             <segment title="Gym 2"/>
                                         </segments>
                                         <color key="tintColor" red="0.95686274510000002" green="0.26274509800000001" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="gymValueChanged:" destination="1IY-JD-g58" eventType="valueChanged" id="NrA-HE-h07"/>
+                                        </connections>
                                     </segmentedControl>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sik-dB-5ab">
                                         <rect key="frame" x="8" y="421" width="398" height="100"/>
@@ -368,6 +431,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="gymSegmentControl" destination="aE8-66-8d5" id="Zbf-Wo-K1E"/>
                         <outlet property="searchBar" destination="TIP-0M-t5D" id="JCX-my-DDV"/>
                         <outlet property="team1Label" destination="fe4-JU-46g" id="AG5-Fe-suT"/>
                         <outlet property="team2Label" destination="zHH-oZ-Fmu" id="fFq-Zg-d7h"/>
