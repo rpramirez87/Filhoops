@@ -12,6 +12,7 @@ import Firebase
 class AUTHCalendarVC: UIViewController,UITableViewDataSource, UITableViewDelegate {
     
     var games = [String]()
+    var currentDate = Date()
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var gamesTableVC: UITableView!
@@ -45,18 +46,31 @@ class AUTHCalendarVC: UIViewController,UITableViewDataSource, UITableViewDelegat
         })
         
         // Current Date
-        let currentDate = Date()
         self.dateLabel.text = currentDate.longDateFormatter()
         print(currentDate.longDateFormatter())
         self.dayLabel.text = currentDate.weekdayDateFormatter()
         
     }
+    
+    //MARK : IBACTIONS
 
     
     @IBAction func addGameButtonPressed(_ sender: Any) {
         performSegue(withIdentifier: "showAUTHAddGameVC", sender: nil)
   
     }
+
+    
+    @IBAction func nextDayButtonPressed(_ sender: Any) {
+        processDay(step: 1)
+        
+    }
+    
+    @IBAction func previousDayButtonPressed(_ sender: Any) {
+        processDay(step: -1)
+        
+    }
+    //MARK : STORYBOARD SEGUE ACTIONS
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -81,6 +95,17 @@ class AUTHCalendarVC: UIViewController,UITableViewDataSource, UITableViewDelegat
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlainCell", for : indexPath)
         cell.textLabel?.text = game
         return cell
+    }
+    
+    //MARK: Helper Functions
+    
+    func processDay(step : Int) {
+        let direction = (step < 1 ? "Back" : "Next")
+        print("\(direction) Button Pressed")
+        currentDate = (Calendar.current as NSCalendar).date(byAdding: .day, value: step, to: currentDate, options: [])!
+        self.dateLabel.text = currentDate.longDateFormatter()
+        self.dayLabel.text = currentDate.weekdayDateFormatter()
+
     }
 
 }

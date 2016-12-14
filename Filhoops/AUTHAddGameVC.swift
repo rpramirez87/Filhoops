@@ -205,6 +205,8 @@ class AUTHAddGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
             inSearchMode = false
             view.endEditing(true)
             teamTableView.reloadData()
+            
+            
         }else {
             inSearchMode = true
             let lower = searchBar.text!.lowercased()

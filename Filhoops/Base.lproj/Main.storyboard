@@ -78,29 +78,54 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K2a-yt-sUq">
                                 <rect key="frame" x="0.0" y="65" width="414" height="65"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="cfz-Kv-JJ4">
-                                        <rect key="frame" x="141" y="11" width="133" height="42"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yH9-H0-w22">
+                                        <rect key="frame" x="8" y="8" width="91" height="49"/>
+                                        <state key="normal" image="back-calendar"/>
+                                        <connections>
+                                            <action selector="previousDayButtonPressed:" destination="ejc-eO-cdY" eventType="touchUpInside" id="f7C-hS-y0B"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="cfz-Kv-JJ4">
+                                        <rect key="frame" x="107" y="12" width="200" height="41"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tuesday" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hO5-80-XOe">
-                                                <rect key="frame" x="26.666666666666657" y="0.0" width="80" height="24"/>
+                                                <rect key="frame" x="60" y="0.0" width="80" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="December 13, 2016" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bF5-7O-dbH">
-                                                <rect key="frame" x="0.0" y="24" width="133" height="18"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <rect key="frame" x="37.333333333333343" y="24" width="125.33333333333334" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <color key="textColor" white="0.0" alpha="0.54000000000000004" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="lxK-OY-ALW"/>
+                                        </constraints>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pno-DA-RyD">
+                                        <rect key="frame" x="315" y="8" width="91" height="49"/>
+                                        <state key="normal" image="forward-calendar"/>
+                                        <connections>
+                                            <action selector="nextDayButtonPressed:" destination="ejc-eO-cdY" eventType="touchUpInside" id="ZN5-w8-SIR"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.92156862750000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="cfz-Kv-JJ4" firstAttribute="centerX" secondItem="K2a-yt-sUq" secondAttribute="centerX" id="0MV-NC-dSw"/>
-                                    <constraint firstItem="cfz-Kv-JJ4" firstAttribute="centerY" secondItem="K2a-yt-sUq" secondAttribute="centerY" id="8e4-lD-f9Z"/>
+                                    <constraint firstAttribute="bottom" secondItem="Pno-DA-RyD" secondAttribute="bottom" constant="8" id="0oH-qX-heN"/>
+                                    <constraint firstItem="cfz-Kv-JJ4" firstAttribute="centerY" secondItem="K2a-yt-sUq" secondAttribute="centerY" id="3xm-Va-3WX"/>
+                                    <constraint firstItem="cfz-Kv-JJ4" firstAttribute="leading" secondItem="yH9-H0-w22" secondAttribute="trailing" constant="8" id="4K3-7h-w5J"/>
+                                    <constraint firstAttribute="bottom" secondItem="yH9-H0-w22" secondAttribute="bottom" constant="8" id="5jY-lf-rNy"/>
+                                    <constraint firstAttribute="trailing" secondItem="Pno-DA-RyD" secondAttribute="trailing" constant="8" id="ADf-Ju-hrl"/>
+                                    <constraint firstItem="yH9-H0-w22" firstAttribute="leading" secondItem="K2a-yt-sUq" secondAttribute="leading" constant="8" id="AJI-36-QrP"/>
+                                    <constraint firstItem="Pno-DA-RyD" firstAttribute="top" secondItem="K2a-yt-sUq" secondAttribute="top" constant="8" id="Mfs-xY-fXe"/>
                                     <constraint firstAttribute="height" constant="65" id="cFl-eC-9Lw"/>
+                                    <constraint firstItem="cfz-Kv-JJ4" firstAttribute="centerX" secondItem="K2a-yt-sUq" secondAttribute="centerX" id="h65-7H-9MJ"/>
+                                    <constraint firstItem="Pno-DA-RyD" firstAttribute="leading" secondItem="cfz-Kv-JJ4" secondAttribute="trailing" constant="8" id="rYV-aR-Ey0"/>
+                                    <constraint firstItem="yH9-H0-w22" firstAttribute="top" secondItem="K2a-yt-sUq" secondAttribute="top" constant="8" id="rxI-gB-U0p"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i7m-nv-n9C">
@@ -155,7 +180,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V2V-Gy-h94" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-691" y="2609"/>
+            <point key="canvasLocation" x="-691.304347826087" y="2608.6956521739135"/>
         </scene>
         <!--Add GameVC-->
         <scene sceneID="x06-QC-tcv">
