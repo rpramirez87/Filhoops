@@ -23,27 +23,7 @@ class AUTHCalendarVC: UIViewController,UITableViewDataSource, UITableViewDelegat
         gamesTableVC.delegate = self
         gamesTableVC.dataSource = self
 
-        //Load team games from database
-        DataService.ds.REF_GAMES.observe(.value, with: { (snapshot) in
-            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
-                
-                self.games = []
-                
-                for snap in snapshots {
-                    print("SNAP: \(snap)")
-                    if let teamDict = snap.value as? Dictionary<String, AnyObject> {
-                        
-                        
-                        if let gameTitle = teamDict["name"] as? String {
-                            self.games.append(gameTitle)
-                            
-                        }
-                    }
-                }
-                self.gamesTableVC.reloadData()
-                
-            }
-        })
+       updateGames()
         
         // Current Date
         self.dateLabel.text = currentDate.longDateFormatter()
@@ -63,11 +43,12 @@ class AUTHCalendarVC: UIViewController,UITableViewDataSource, UITableViewDelegat
     
     @IBAction func nextDayButtonPressed(_ sender: Any) {
         processDay(step: 1)
-        
+        updateGames()
     }
     
     @IBAction func previousDayButtonPressed(_ sender: Any) {
         processDay(step: -1)
+        updateGames()
         
     }
     //MARK : STORYBOARD SEGUE ACTIONS
@@ -78,6 +59,7 @@ class AUTHCalendarVC: UIViewController,UITableViewDataSource, UITableViewDelegat
             let AddGameVC = segue.destination as! AUTHAddGameVC
             AddGameVC.view.backgroundColor = UIColor.clear
             AddGameVC.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
+            AddGameVC.dateToAddGame = currentDate
         }
     }
     
@@ -107,5 +89,37 @@ class AUTHCalendarVC: UIViewController,UITableViewDataSource, UITableViewDelegat
         self.dayLabel.text = currentDate.weekdayDateFormatter()
 
     }
-
+    
+    func updateGames() {
+        let dateString = currentDate.shortDateFormatter()
+        print(dateString)
+        
+        DataService.ds.REF_GAMES.queryOrdered(byChild: "date").queryEqual(toValue: dateString).observe(.value, with :  { (snapshot) in
+            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                
+                guard snapshot.exists() else {
+                    print("No Data Here - Clear Table")
+                    self.games = []
+                    self.gamesTableVC.reloadData()
+                    return
+                }
+                
+                self.games = []
+                
+                for snap in snapshots {
+                    print("SNAP: \(snap)")
+                    if let teamDict = snap.value as? Dictionary<String, AnyObject> {
+                        
+                        
+                        if let gameTitle = teamDict["name"] as? String {
+                            self.games.append(gameTitle)
+                            
+                        }
+                    }
+                }
+                self.gamesTableVC.reloadData()
+                
+            }
+        })
+    }
 }

@@ -21,6 +21,7 @@ class AUTHAddGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     var teamSelected = ""
     var timeSelected = ""
     var inSearchMode = false
+    var dateToAddGame : Date?
     
     @IBOutlet weak var timePickerView: UIPickerView!
     var availableTimes = ["7:30 PM","8:30 PM", "9:30 PM", "10:30 PM", "11:30 PM"]
@@ -113,22 +114,23 @@ class AUTHAddGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
             return
         }
         
+        guard let gameDate = dateToAddGame else {
+            print("Current Date is empty!")
+            return
+        }
+        
         let gameName = "\(teamName1) Vs \(teamName2)"
-        let currentDate = Date()
+
 
         let firebaseTeamPost = DataService.ds.REF_GAMES.childByAutoId()
         let teamPost : Dictionary<String, AnyObject> = [
             "name" : gameName as AnyObject,
-            "date" : currentDate.shortDateFormatter() as AnyObject,
+            "date" : gameDate.shortDateFormatter() as AnyObject,
             "time" : timeSelected as AnyObject
             
         ]
         
         firebaseTeamPost.setValue(teamPost)
-        
-        
-        
-        
         
         self.dismiss(animated: true, completion: nil)
         
