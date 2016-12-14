@@ -101,6 +101,26 @@ class AUTHAddGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     }
     
     @IBAction func addGameButtonPressed(_ sender: Any) {
+        
+        guard let teamName1 = team1Label.text, teamName1 != "", let teamName2 = team2Label.text, teamName2 != "" else {
+            print("Team names aren't filled up")
+            return
+        }
+        
+        let gameName = "\(teamName1) Vs \(teamName2)"
+        
+        let firebaseTeamPost = DataService.ds.REF_GAMES.childByAutoId()
+        let teamPost : Dictionary<String, AnyObject> = [
+            "name" : gameName as AnyObject,
+            "date" : "December 13, 2016" as AnyObject
+            
+        ]
+        firebaseTeamPost.setValue(teamPost)
+        
+        
+        
+        
+        
         self.dismiss(animated: true, completion: nil)
         
     }
