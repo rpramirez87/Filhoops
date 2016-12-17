@@ -11,8 +11,21 @@ import Firebase
 
 class Team {
     private var _teamName : String!
-    
+    private var _teamKey : String!
+
     var teamName : String {
         return _teamName
+    }
+    
+    var teamKey : String {
+        return _teamKey
+    }
+    
+    init(teamKey : String, teamData : Dictionary<String, AnyObject>) {
+        self._teamKey = teamKey
+        
+        if let name = teamData["name"] as? String {
+            self._teamName = name
+        }
     }
 }

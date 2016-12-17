@@ -11,6 +11,7 @@ import Firebase
 
 class AUTHGameVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    
     var team1Key : String?
     var team2Key : String?
     

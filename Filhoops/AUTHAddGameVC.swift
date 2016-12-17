@@ -16,9 +16,17 @@ class AUTHAddGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var teams = [String]()
-    var filteredTeams = [String]()
-    var teamSelected = ""
+    //var teams = [String]()
+    //var filteredTeams = [String]()
+    
+    var currentTeams = [Team]()
+    var currentFilteredTeams = [Team]()
+    
+    var team1 : Team?, team2 : Team?
+
+    //var teamSelected = ""
+    var teamSelected : Team?
+    var teamKeySelected = ""
     var timeSelected = ""
     var inSearchMode = false
     var dateToAddGame : Date?
@@ -53,19 +61,24 @@ class AUTHAddGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 
                 //Clear all posts
-                self.teams = [""]
+                self.currentTeams = []
                 
                 for snap in snapshots {
                     print("SNAP: \(snap)")
                     if let teamDict = snap.value as? Dictionary<String, AnyObject> {
-                        if let teamName = teamDict["name"] as? String {
-                            self.teams.append(teamName)
-                        }
+                        let key = snap.key
+                        let team = Team(teamKey : key, teamData : teamDict)
+                        self.currentTeams.append(team)
+                        
+                        
+                        //
+//                        if let teamName = teamDict["name"] as? String {
+//                            self.teams.append(teamName)
+//                        }
                     }
                 }
                 self.teamTableView.reloadData()
             }
-            
         })
 
 
@@ -75,39 +88,42 @@ class AUTHAddGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     // MARK : IBActions
     
     @IBAction func team1ButtonPressed(_ sender: Any) {
-        guard teamSelected != "" else {
+        guard let team = teamSelected else {
             print("WARNING SELECT A TEAM")
             return
         }
+        team1 = team
         
-        guard team2Label.text != teamSelected else {
+        guard team2Label.text != team.teamName else {
             print("TEAM IS ALREADY SELECTED")
             return
         }
         
-        team1Label.text = teamSelected
+        team1Label.text = team.teamName
     }
 
     @IBAction func team2ButtonPressed(_ sender: Any) {
-        guard teamSelected != "" else {
+        guard let team = teamSelected else {
             print("WARNING SELECT A TEAM")
             return
         }
         
-        guard team1Label.text != teamSelected else {
+        guard team1Label.text != team.teamName else {
             print("TEAM IS ALREADY SELECTED")
             return
         }
         
-        team2Label.text = teamSelected
+        team2Label.text = team.teamName
+        team2 = team
 
         
     }
     
     @IBAction func addGameButtonPressed(_ sender: Any) {
+    
         
-        guard let teamName1 = team1Label.text, teamName1 != "", let teamName2 = team2Label.text, teamName2 != "", teamName1 != teamName2 else {
-            print("Invalid Teams")
+        guard let firstTeam = team1, let secondTeam = team2 else {
+            print("Select Teams")
             return
         }
         
@@ -121,7 +137,8 @@ class AUTHAddGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
             return
         }
         
-        let gameName = "\(teamName1) Vs \(teamName2)"
+        
+        let gameName = "\(firstTeam.teamName) Vs \(secondTeam.teamName)"
 
 
         let firebaseTeamPost = DataService.ds.REF_GAMES.childByAutoId()
@@ -129,8 +146,10 @@ class AUTHAddGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
             "name" : gameName as AnyObject,
             "date" : gameDate.shortDateFormatter() as AnyObject,
             "time" : timeSelected as AnyObject,
-            "team1" : teamName1 as AnyObject,
-            "team2" : teamName2 as AnyObject,
+            "team1" : firstTeam.teamName as AnyObject,
+            "team2" : secondTeam.teamName as AnyObject,
+            "team1Key" : firstTeam.teamKey as AnyObject,
+            "team2Key" : secondTeam.teamKey as AnyObject,
             "gym" : gym as AnyObject
             
         ]
@@ -173,14 +192,17 @@ class AUTHAddGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     //MARK: Table View Delegate Functions
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var team : String!
+        //var team : String!
+        
+        var team : Team!
+        
         if inSearchMode{
-            team = filteredTeams[indexPath.row]
+            team = currentFilteredTeams[indexPath.row]
         }else{
-            team = teams[indexPath.row]
+            team = currentTeams[indexPath.row]
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "PlainCell", for : indexPath)
-        cell.textLabel?.text = team
+        cell.textLabel?.text = team.teamName
         return cell
         
     }
@@ -191,9 +213,9 @@ class AUTHAddGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if inSearchMode {
-            return filteredTeams.count
+            return currentFilteredTeams.count
         }else {
-            return teams.count
+            return currentTeams.count
         }
      
     }
@@ -204,9 +226,10 @@ class AUTHAddGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         
         
         if inSearchMode {
-            teamSelected = filteredTeams[indexPath.row]
+            teamSelected = currentFilteredTeams[indexPath.row]
+ 
         }else {
-            teamSelected = teams[indexPath.row]
+            teamSelected = currentTeams[indexPath.row]
         }
         
     }
@@ -223,12 +246,14 @@ class AUTHAddGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         }else {
             inSearchMode = true
             let lower = searchBar.text!.lowercased()
-            filteredTeams = teams.filter({$0.lowercased().range(of :lower) != nil})
+            //filteredTeams = teams.filter({$0.lowercased().range(of :lower) != nil})
+            currentFilteredTeams = currentTeams.filter({$0.teamName.lowercased().range(of :lower) != nil})
             teamTableView.reloadData()
         }
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
         //Hide the keyboard
         view.endEditing(true)
     }
