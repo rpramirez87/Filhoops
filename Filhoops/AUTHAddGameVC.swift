@@ -141,7 +141,7 @@ class AUTHAddGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         let gameName = "\(firstTeam.teamName) Vs \(secondTeam.teamName)"
 
 
-        let firebaseTeamPost = DataService.ds.REF_GAMES.childByAutoId()
+        let firebaseGamePost = DataService.ds.REF_GAMES.childByAutoId()
         let teamPost : Dictionary<String, AnyObject> = [
             "name" : gameName as AnyObject,
             "date" : gameDate.shortDateFormatter() as AnyObject,
@@ -154,7 +154,9 @@ class AUTHAddGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
             
         ]
         
-        firebaseTeamPost.setValue(teamPost)
+        firebaseGamePost.setValue(teamPost)
+        
+        addGameToPlayersBasedOn(gameKey: firebaseGamePost.key, forTeam: firstTeam.teamKey, andTeam: secondTeam.teamKey)
         
         self.dismiss(animated: true, completion: nil)
         
@@ -256,5 +258,39 @@ class AUTHAddGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         
         //Hide the keyboard
         view.endEditing(true)
+    }
+    
+    // MARK: Firebase Functions
+    
+    func addGameToPlayersBasedOn(gameKey : String, forTeam team1Key : String, andTeam team2Key : String) {
+        print(gameKey)
+        print(team1Key)
+        print(team2Key)
+        DataService.ds.REF_USERS.observe(.value, with: { (snapshot) in
+            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                
+                for snap in snapshots {
+                    print("SNAP: \(snap)")
+                    if let userDict = snap.value as? Dictionary<String, AnyObject> {
+                        
+                        if let playerTeamKey = userDict["teamKey"] as? String {
+                            if playerTeamKey == team1Key || playerTeamKey == team2Key {
+                                
+                                //Add Games to players Reference
+                                let playerGamePost = DataService.ds.REF_USERS.child(snap.key).child("games").child(gameKey)
+                                let gamePost : Dictionary<String, AnyObject> = [
+                                    "playerPoints" : 0 as AnyObject
+                                ]
+                                playerGamePost.setValue(gamePost)
+                                
+                            }
+                        }
+                    }
+                }
+            }
+            
+        })
+
+        
     }
 }

@@ -34,11 +34,6 @@ class AUTHPlayerCell: UITableViewCell {
                 self.playerPointsStepper.value = Double(self.oldValue)
             }
         })
-        
-
-        
-       //playerPointsLabel.text = "\(player.points)"
-        
     }
 
     @IBAction func stepperValueDidChange(_ sender: Any) {
