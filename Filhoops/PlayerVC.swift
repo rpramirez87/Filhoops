@@ -24,10 +24,8 @@ class PlayerVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var numberLabel: UILabel!
     
     
-    var playerPoints = [12, 14, 15, 0, 15, 14, 0, 14, 19]
-    
-    
-    
+    var playerPoints = [Int]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         print("PlayerVC")
@@ -35,9 +33,79 @@ class PlayerVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         playerImageView.clipsToBounds = true
         tableView.delegate = self
         tableView.dataSource = self
-        averageLabel.text = "\(playerPoints.average)"
-        careerHighLabel.text = "\(playerPoints.max()!)"
+
         
+        FBgraphRequest()
+        
+        // Get Player Keys
+        
+        DataService.ds.REF_USER_CURRENT.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                
+                print(snapshot.children.allObjects.count)
+                for snap in snapshots {
+                    print("SNAP: \(snap)")
+                    if snap.key == "number" {
+                        self.numberLabel.text = snap.value as! String?
+                    }
+                    
+                    if snap.key == "team" {
+                        self.teamNameLabel.text = snap.value as! String?
+                    }
+                    
+                }
+            }
+        })
+        
+        DataService.ds.REF_USER_CURRENT.child("games").observe(.value, with: { (snapshot) in
+            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                self.playerPoints = []
+                for snap in snapshots {
+                    print("GAMES: \(snap)")
+                    if let gameDict = snap.value as? Dictionary<String, AnyObject> {
+                        print("GAME DICT \(gameDict)")
+                        if let points = gameDict["playerPoints"] as? Int {
+                            print("POINTS\(points)")
+                            self.playerPoints.append(points)
+                        }
+                    }
+                }
+                self.tableView.reloadData()
+                
+                // Calculate Average
+                let average = self.playerAverage()
+                self.averageLabel.text = String(format: "%.1f", average)
+                self.careerHighLabel.text = "\(self.playerPoints.max()!)"
+            }
+        })
+    }
+    
+    //MARK: Table View Delegate Functions
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+         if let cell = tableView.dequeueReusableCell(withIdentifier: "GameDataCell") as? GameDataCell {
+            cell.configureCell(gameNumber: indexPath.row, points: playerPoints[indexPath.row])
+            return cell
+         }else {
+            return UITableViewCell()
+        }
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return playerPoints.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+        
+    }
+    
+    func FBgraphRequest() {
         //Set up Graph Request
         FBSDKGraphRequest(graphPath: "/me", parameters: ["fields" : "id, name, email, cover, picture"]).start {
             (connection, result, err) in
@@ -76,60 +144,21 @@ class PlayerVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     print(names[1])
                     
                     //self.playerNameLabel.text = "\(playerName)"
-                    self.firstNameLabel.text = "\(names.first)"
-                    self.lastNameLabel.text = "\(names.last)"
+                    self.firstNameLabel.text = "\(names.first!)"
+                    self.lastNameLabel.text = "\(names.last!)"
                 }
             }
         }
-        
-        
-        
-        // Get Player Keys
-        
-        DataService.ds.REF_USER_CURRENT.observe(.value, with: { (snapshot) in
-            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
-                
-                print(snapshot.children.allObjects.count)
-                for snap in snapshots {
-                    print("SNAP: \(snap)")
-                    if snap.key == "number" {
-                        self.numberLabel.text = snap.value as! String?
-                    }
-                    
-                    if snap.key == "team" {
-                        self.teamNameLabel.text = snap.value as! String?
-                    }
-                }
-            }
-            
-        })                                                                                                                                                                              
     }
     
-    
-    //MARK: Table View Delegate Functions
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
-         if let cell = tableView.dequeueReusableCell(withIdentifier: "GameDataCell") as? GameDataCell {
-            cell.configureCell(gameNumber: indexPath.row, points: playerPoints[indexPath.row])
-            return cell
-         }else {
-            return UITableViewCell()
+    func playerAverage() -> Double {
+        var sum = 0.0
+        
+        for points in playerPoints {
+            sum += Double(points)
         }
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //Always return 9 because there's only 9 games in a season
-        return 9
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
         
+        return sum / Double(playerPoints.count)
     }
     
 }
