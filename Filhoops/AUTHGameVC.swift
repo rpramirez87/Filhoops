@@ -132,8 +132,6 @@ class AUTHGameVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-    
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == firstTeamTableVC {
             let player = team1Players[indexPath.row]
@@ -153,4 +151,9 @@ class AUTHGameVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             }
         }
     }
+    
+    @IBAction func backButtonPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }
