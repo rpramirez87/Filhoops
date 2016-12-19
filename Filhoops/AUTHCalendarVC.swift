@@ -13,6 +13,7 @@ class AUTHCalendarVC: UIViewController,UITableViewDataSource, UITableViewDelegat
     
     var games = [Game]()
     var currentDate = Date()
+    var gameSelected : Game?
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var gamesTableVC: UITableView!
@@ -61,6 +62,13 @@ class AUTHCalendarVC: UIViewController,UITableViewDataSource, UITableViewDelegat
             AddGameVC.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
             AddGameVC.dateToAddGame = currentDate
         }
+        
+        if segue.identifier == "showGameVC" {
+            let AUTHGameVC = segue.destination as! AUTHGameVC
+            AUTHGameVC.currentGame = gameSelected
+
+            
+        }
     }
     
     //MARK: Table View Functions
@@ -81,7 +89,11 @@ class AUTHCalendarVC: UIViewController,UITableViewDataSource, UITableViewDelegat
         }else {
             return UITableViewCell()
         }
-        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        gameSelected = games[indexPath.row]
+        performSegue(withIdentifier: "showGameVC", sender: nil)
     }
     
     //MARK: Helper Functions
@@ -124,7 +136,8 @@ class AUTHCalendarVC: UIViewController,UITableViewDataSource, UITableViewDelegat
                             print(gameTitle)
                             
                         }
-                    }                }
+                    }
+                }
                 self.gamesTableVC.reloadData()
                 
             }

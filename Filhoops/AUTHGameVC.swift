@@ -11,29 +11,42 @@ import Firebase
 
 class AUTHGameVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    var currentGame : Game?
     
+    @IBOutlet weak var titleLabel: UILabel!
     var team1Key : String?
     var team2Key : String?
     
     var team1Name : String = ""
     var team2Name : String = ""
+    
+    var gameKey : String = ""
 
     @IBOutlet weak var firstTeamTableVC: UITableView!
     @IBOutlet weak var secondTeamTableVC: UITableView!
     
-    var team1Players = [String]()
-    var team2Players = [String]()
-   
+    var team1Players = [Player]()
+    var team2Players = [Player]()
+    
+
     override func viewDidLoad() {
+        
+        if let game = currentGame {
+            self.titleLabel.text = game.gameTitle
+            team1Key = game.team1Key
+            team2Key = game.team2Key
+            team1Name = game.team1
+            team2Name = game.team2
+            gameKey = game.gameKey
+            
+        }
         super.viewDidLoad()
         firstTeamTableVC.delegate = self
         firstTeamTableVC.dataSource = self
         secondTeamTableVC.dataSource = self
         secondTeamTableVC.delegate = self
         
-        // Temporary
-        team1Key = "34567sadjl"
-        team2Key = "-KYkXRqA71Mfb0K8H2v5"
+  
         
         //Load players from users database
         DataService.ds.REF_USERS.observe(.value, with: { (snapshot) in
@@ -43,6 +56,7 @@ class AUTHGameVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 self.team1Players = []
                 self.team2Players = []
                 
+                
                 for snap in snapshots {
                     print("SNAP: \(snap)")
                     if let userDict = snap.value as? Dictionary<String, AnyObject> {
@@ -50,16 +64,17 @@ class AUTHGameVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                         if let playerTeamKey = userDict["teamKey"] as? String {
                             if playerTeamKey == self.team1Key {
                                 
-                                if let playerName = userDict["name"] as? String {
-                                    self.team1Players.append(playerName)
-                                }
+                                let key = snap.key
+                                let user = Player(playerKey: key, gameKey: self.gameKey, playerData: userDict)
+                                self.team1Players.append(user)
+                                
                             }
                             
                             if playerTeamKey == self.team2Key {
                                 
-                                if let playerName = userDict["name"] as? String {
-                                    self.team2Players.append(playerName)
-                                }
+                                let key = snap.key
+                                let user = Player(playerKey: key, gameKey: self.gameKey, playerData: userDict)
+                                self.team2Players.append(user)
                             }
                             
                         }
@@ -122,14 +137,20 @@ class AUTHGameVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == firstTeamTableVC {
             let player = team1Players[indexPath.row]
-            let cell = tableView.dequeueReusableCell(withIdentifier: "PlainCell")
-            cell?.textLabel?.text = player
-            return cell!
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "AUTHPlayerCell", for: indexPath) as? AUTHPlayerCell {
+                cell.configureCell(player: player)
+                return cell
+            }else {
+                return UITableViewCell()
+            }
         }else {
             let player = team2Players[indexPath.row]
-            let cell = tableView.dequeueReusableCell(withIdentifier: "PlainCell")
-            cell?.textLabel?.text = player
-            return cell!
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "AUTHPlayerCell", for: indexPath) as? AUTHPlayerCell {
+                cell.configureCell(player: player)
+                return cell
+            }else {
+                return UITableViewCell()
+            }
         }
     }
 }

@@ -17,6 +17,8 @@ class Game {
     private var _gameTime : String!
     private var _team1 : String!
     private var _team2 : String!
+    private var _team1Key : String!
+    private var _team2Key : String!
     private var _gym : String!
     
     //Firebase
@@ -43,9 +45,23 @@ class Game {
     var team2 : String {
         return _team2
     }
+
+    var team1Key : String {
+        return _team1Key
+    }
+    
+    var team2Key : String {
+        return _team2Key
+    }
     
     var gym : String {
         return _gym
+    }
+    
+
+    
+    var gameKey : String {
+        return _gameKey
     }
     
     init(gameTitle : String, gameDate : String, gameTime : String) {
@@ -82,6 +98,15 @@ class Game {
         if let gym = gameData["gym"] as? String {
             self._gym = gym
         }
+        
+        if let firstTeamKey = gameData["team1Key"] as? String {
+            self._team1Key = firstTeamKey
+        }
+        
+        if let secondTeamKey = gameData["team2Key"] as? String {
+            self._team2Key = secondTeamKey
+        }
+        
         
         _gameRef = DataService.ds.REF_GAMES.child(gameKey)
         
