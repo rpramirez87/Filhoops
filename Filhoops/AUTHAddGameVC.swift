@@ -157,6 +157,7 @@ class AUTHAddGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         firebaseGamePost.setValue(teamPost)
         
         addGameToPlayersBasedOn(gameKey: firebaseGamePost.key, forTeam: firstTeam.teamKey, andTeam: secondTeam.teamKey)
+
         
         self.dismiss(animated: true, completion: nil)
         
@@ -270,7 +271,7 @@ class AUTHAddGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 
                 for snap in snapshots {
-                    print("SNAP: \(snap)")
+                    print("PLAYERS: \(snap)")
                     if let userDict = snap.value as? Dictionary<String, AnyObject> {
                         
                         if let playerTeamKey = userDict["teamKey"] as? String {
@@ -290,7 +291,5 @@ class AUTHAddGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
             }
             
         })
-
-        
     }
 }

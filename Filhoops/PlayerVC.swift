@@ -72,10 +72,14 @@ class PlayerVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 }
                 self.tableView.reloadData()
                 
-                // Calculate Average
-                let average = self.playerAverage()
-                self.averageLabel.text = String(format: "%.1f", average)
-                self.careerHighLabel.text = "\(self.playerPoints.max()!)"
+                // Calculate Average and Max
+        
+                if self.playerPoints.count != 0 {
+                    let average = self.playerAverage()
+                    self.averageLabel.text = String(format: "%.1f", average)
+                    self.careerHighLabel.text = "\(self.playerPoints.max()!)"
+                }
+              
             }
         })
     }

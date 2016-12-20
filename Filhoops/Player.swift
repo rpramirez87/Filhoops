@@ -80,7 +80,7 @@ class Player {
         _playerRef = DataService.ds.REF_USERS.child(playerKey)
         _currentGameRef = _playerRef.child("games").child(_gameKey)
         
-        _playerRef.child("games").observeSingleEvent(of: .value, with: { (snapshot) in
+        _playerRef.child("games").observe(.value, with: { (snapshot) in
             
             guard snapshot.exists() else {
                 print("No Data Here")

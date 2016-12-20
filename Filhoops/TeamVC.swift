@@ -29,18 +29,18 @@ class TeamVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         collectionView.dataSource = self
         collectionView.delegate = self
 
-        DataService.ds.REF_USER_CURRENT_TEAM.observe(.value, with: { (snapshot) in
+        DataService.ds.REF_USER_CURRENT_TEAM.observeSingleEvent(of: .value, with: { (snapshot) in
             if let currentTeam = snapshot.value as? String {
                 
                 self.currentUsersTeam = currentTeam
                 self.teamNameLabel.text = currentTeam
             }
         })
-        
-        DataService.ds.REF_USER_CURRENT_TEAM_KEY.observe(.value, with: { (snapshot) in
+        DataService.ds.REF_USER_CURRENT_TEAM_KEY.observeSingleEvent(of: .value, with: { (snapshot) in
             if let currentTeamKey = snapshot.value as? String {
                 self.currentUsersTeamKey = currentTeamKey
                 print("Current Team Key : \(self.currentUsersTeamKey!)")
+                self.uploadGames(currentGameKey: currentTeamKey)
             }
         })
     
@@ -67,30 +67,6 @@ class TeamVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
                 self.collectionView.reloadData()
             }
             
-        })
-        
-        //Load team games from database
-        DataService.ds.REF_GAMES.observeSingleEvent(of: .value, with: { (snapshot) in
-            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
-                
-                for snap in snapshots {
-                    print("SNAP: \(snap)")
-                    if let gameDict = snap.value as? Dictionary<String, AnyObject> {
-                        
-                        // Save unique key value for Team
-                        let key = snap.key
-                        let game = Game(gameKey: key, gameData: gameDict)
-                        self.teamGames.append(game)
-                        
-                        if let gameTitle = gameDict["name"] as? String {
-                            print(gameTitle)
-                            
-                        }
-                    }
-                }
-                self.gameCollectionView.reloadData()
-
-            }
         })
     }
     
@@ -128,5 +104,66 @@ class TeamVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
                 return UICollectionViewCell()
             }
         }
+    }
+    
+    func uploadGames(currentGameKey : String) {
+        //Load team games from database
+        DataService.ds.REF_GAMES.queryOrdered(byChild: "team1Key").queryEqual(toValue: currentGameKey).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                
+                guard snapshot.exists() else {
+                    print("No Team Games Here")
+                    return
+                }
+                
+                for snap in snapshots {
+                    print("SNAP: \(snap)")
+                    if let gameDict = snap.value as? Dictionary<String, AnyObject> {
+                        
+                        // Save unique key value for Team
+                        let key = snap.key
+                        let game = Game(gameKey: key, gameData: gameDict)
+                        self.teamGames.append(game)
+                        
+                        if let gameTitle = gameDict["name"] as? String {
+                            print(gameTitle)
+                            
+                        }
+                    }
+                }
+                self.gameCollectionView.reloadData()
+                
+            }
+        })
+        
+        //Load team games from database
+        DataService.ds.REF_GAMES.queryOrdered(byChild: "team2Key").queryEqual(toValue: currentGameKey).observeSingleEvent(of: .value, with: { (snapshot) in
+            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                
+                guard snapshot.exists() else {
+                    print("No Team Games Here")
+                    return
+                }
+                
+                for snap in snapshots {
+                    print("SNAP: \(snap)")
+                    if let gameDict = snap.value as? Dictionary<String, AnyObject> {
+                        
+                        // Save unique key value for Team
+                        let key = snap.key
+                        let game = Game(gameKey: key, gameData: gameDict)
+                        self.teamGames.append(game)
+                        
+                        if let gameTitle = gameDict["name"] as? String {
+                            print(gameTitle)
+                            
+                        }
+                    }
+                }
+                self.gameCollectionView.reloadData()
+                
+            }
+        })
+
     }
 }
