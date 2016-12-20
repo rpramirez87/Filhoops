@@ -106,8 +106,13 @@ class TeamVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         }
     }
     
+
+    
+    //MARK: Helper Functions
+    
     func uploadGames(currentGameKey : String) {
-        //Load team games from database
+        
+        //Load team games from database based on key "team1Key"
         DataService.ds.REF_GAMES.queryOrdered(byChild: "team1Key").queryEqual(toValue: currentGameKey).observeSingleEvent(of: .value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 
@@ -136,7 +141,7 @@ class TeamVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             }
         })
         
-        //Load team games from database
+        //Load team games from database based on key "team2Key"
         DataService.ds.REF_GAMES.queryOrdered(byChild: "team2Key").queryEqual(toValue: currentGameKey).observeSingleEvent(of: .value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 

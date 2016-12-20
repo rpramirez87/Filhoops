@@ -448,7 +448,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Mochi Apps";
 				TargetAttributes = {
 					D9FCB21D1DD83A2C00AF6BB7 = {

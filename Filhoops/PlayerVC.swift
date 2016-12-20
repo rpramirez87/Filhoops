@@ -23,8 +23,9 @@ class PlayerVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var careerHighLabel: UILabel!
     @IBOutlet weak var numberLabel: UILabel!
     
-    
+    var currentPlayer : Player?
     var playerPoints = [Int]()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
