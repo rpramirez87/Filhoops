@@ -18,6 +18,8 @@ class TeamVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     var teamPlayers = [Player]()
     var teamGames = [Game]()
     
+    var playerSelected : Player!
+    
     var currentUsersTeam : String!
     var currentUsersTeamKey : String!
     
@@ -66,10 +68,19 @@ class TeamVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
                 }
                 self.collectionView.reloadData()
             }
-            
         })
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "goToPlayer" {
+            let playerVC = segue.destination as! PlayerVC
+            playerVC.currentPlayer = playerSelected
+        }
+    }
+    
+    
+    //MARK: Collection View Delegate Functions
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -106,7 +117,16 @@ class TeamVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         }
     }
     
-
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if collectionView == self.collectionView {
+            playerSelected = teamPlayers[indexPath.row]
+            performSegue(withIdentifier: "goToPlayer", sender: nil)
+            
+        }else {
+            let teamGame = teamGames[indexPath.row]
+        }
+    }
     
     //MARK: Helper Functions
     

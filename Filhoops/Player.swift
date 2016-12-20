@@ -42,6 +42,10 @@ class Player {
     var points : Int {
         return _points
     }
+    
+    var playerKey : String {
+        return _playerKey
+    }
 
     
     init(playerName : String, imageUrl : String, playerNumber : String, points : Int) {

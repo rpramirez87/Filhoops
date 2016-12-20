@@ -66,8 +66,6 @@ class AUTHCalendarVC: UIViewController,UITableViewDataSource, UITableViewDelegat
         if segue.identifier == "showGameVC" {
             let AUTHGameVC = segue.destination as! AUTHGameVC
             AUTHGameVC.currentGame = gameSelected
-
-            
         }
     }
     
