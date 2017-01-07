@@ -16,6 +16,7 @@ class Player {
     private var _playerKey : String!
     private var _gameKey : String!
     private var _points : Int!
+    
     private var _playerRef : FIRDatabaseReference!
     private var _currentGameRef : FIRDatabaseReference!
     
@@ -102,8 +103,6 @@ class Player {
                         print("GAME MATCH")
                         if let currentGameDict = snap.value as? Dictionary<String, AnyObject> {
                             
-                            // Save unique key value for Team
-                            
                             if let points = currentGameDict["playerPoints"] as? Int {
                                 print("POINTS : \(points)")
                                 self._points = points
@@ -120,6 +119,8 @@ class Player {
         })
     }
     
+    
+    //Adjust value of points
     func adjustPoints(addPoint : Bool) {
         if addPoint {
             _points = _points + 1

@@ -37,6 +37,9 @@ class PlayerVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         tableView.dataSource = self
         
         if currentPlayer != nil {
+            
+            // Other Players
+            
             print("Other Users")
             
             guard let player = currentPlayer else {
@@ -97,7 +100,7 @@ class PlayerVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                         if let gameDict = snap.value as? Dictionary<String, AnyObject> {
                             print("GAME DICT \(gameDict)")
                             if let points = gameDict["playerPoints"] as? Int {
-                                print("POINTS\(points)")
+                                print("POINTS \(points)")
                                 self.playerPoints.append(points)
                             }
                         }
@@ -119,15 +122,16 @@ class PlayerVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             
             
         }else {
+            
+            // Current User
             backButton.isHidden = true
             backButton.isUserInteractionEnabled = false
             
             
             
-            FBgraphRequest()
+            //FBgraphRequest()
             
             // Get Player Keys
-            
             DataService.ds.REF_USER_CURRENT.observeSingleEvent(of: .value, with: { (snapshot) in
                 if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
                     
@@ -142,12 +146,36 @@ class PlayerVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
                             self.teamNameLabel.text = snap.value as! String?
                         }
                         
+                        if snap.key == "name" {
+                            if let playerName = snap.value as! String? {
+                                let names = playerName.components(separatedBy: [" "])
+                                print(names[0])
+                                print(names[1])
+                                
+                                //self.playerNameLabel.text = "\(playerName)"
+                                self.firstNameLabel.text = "\(names.first!)"
+                                self.lastNameLabel.text = "\(names.last!)"
+                            }
+                        }
+                        
+                        if snap.key == "url" {
+                            
+                            let imageUrl = snap.value as! String?
+                            let url = NSURL(string : imageUrl!)
+                            //If data can be converted
+                            if let data = NSData(contentsOf: url as! URL){
+                                //Use the Image
+                                let img = UIImage(data : data as Data)
+                                self.playerImageView.image = img
+                            }
+                        }
                         
                         
                     }
                 }
             })
             
+            //Get Current User's Games
             DataService.ds.REF_USER_CURRENT.child("games").observe(.value, with: { (snapshot) in
                 if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
                     self.playerPoints = []

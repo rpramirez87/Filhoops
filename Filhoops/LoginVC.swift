@@ -13,8 +13,6 @@ import SwiftKeychainWrapper
 
 class LoginVC : UIViewController, FBSDKLoginButtonDelegate {
 
-
-
     @IBOutlet weak var bgImageView: UIImageView!
     @IBOutlet weak var emailTextField: CustomTextField!
     @IBOutlet weak var passwordTextField: CustomTextField!
@@ -24,14 +22,8 @@ class LoginVC : UIViewController, FBSDKLoginButtonDelegate {
     
     //MARK: TODO - Constraint User to only sign up for one team
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-//        facebookButton.delegate = self
-//        facebookButton.readPermissions = ["email" , "public_profile"]
-        
-        
         //Shade Background
         self.bgImageView.alpha = 0.6
     }
@@ -44,11 +36,6 @@ class LoginVC : UIViewController, FBSDKLoginButtonDelegate {
             doesCurrentUserHaveTeam()
         }
         
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     //MARK: Facebook Delegate Functions
@@ -99,7 +86,7 @@ class LoginVC : UIViewController, FBSDKLoginButtonDelegate {
         }
     }
 
-    @IBAction func facebookButtonTapped(_ sender: Any) {
+    @IBAction func facebookButtonTapped(_ sender: CustomButton) {
         print("Facebook Button Tapped")
         let facebookLogin = FBSDKLoginManager()
         
@@ -114,40 +101,8 @@ class LoginVC : UIViewController, FBSDKLoginButtonDelegate {
                 self.firebaseAuth(credential)
             }
         }
-        
-
     }
-    @IBAction func signInButtonTapped(_ sender: Any) {
-        
-        if let email = emailTextField.text, let password = passwordTextField.text {
-            FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, error) in
-                
-                if error == nil {
-                    print("Email user is authenticated")
-                    if let currentUser = user {
-                        let currentUserData = ["provider" : currentUser.providerID]
-                        self.keychainSignIn(id : currentUser.uid, userData: currentUserData)
-                        
-                    }
-                }else {
-                    FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, error) in
-                        
-                        if error != nil {
-                            print("Unable to authenticate with Firebase using email")
-                        } else {
-                            print("Sucessfully authenticated with Firebase")
-                            if let currentUser = user {
-                                let currentUserData = ["provider" : currentUser.providerID]
-                                self.keychainSignIn(id : currentUser.uid, userData: currentUserData)
-                            }
-                        }
-                    })
-                }
-            })
-            
-        }
 
-    }
     
     //MARK: Helper Functions
     

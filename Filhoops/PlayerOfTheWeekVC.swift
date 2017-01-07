@@ -46,7 +46,6 @@ class PlayerOfTheWeekVC: UIViewController {
             }
             
             // Current User does have a team
-            print("Team \(snapshot.value) exists")
             print("Current user is on \(team)")
             self.performSegue(withIdentifier: "loadingScreenToMainVC", sender: nil)
         })

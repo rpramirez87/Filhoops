@@ -19,7 +19,7 @@ class HomeVC: UIViewController, WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // loading URL :
+        //Filhoops home page
         let filhoopsURL = "http://filhoopshouston.com/"
         let url = URL(string: filhoopsURL)
         let request = URLRequest(url: url! as URL)
@@ -42,13 +42,6 @@ class HomeVC: UIViewController, WKNavigationDelegate {
         if webView.canGoForward {
             webView.goForward()
         }
-        
-    }
-    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     //MARK:- WKNavigationDelegate
@@ -63,6 +56,7 @@ class HomeVC: UIViewController, WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         print("finish to load")
     }
+    
     @IBAction func signOutButtonTapped(_ sender: Any) {
         let keyChainResult = KeychainWrapper.standard.removeObject(forKey: KEY_UID)
         print("User signed out \(keyChainResult)")

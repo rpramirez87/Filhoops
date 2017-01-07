@@ -86,6 +86,8 @@ class SignUpVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
         
         guard let playerImageURL = self.profileImageURL,  let playerName = self.playerName else {
             print("WARNING: Facebook Error getting User's Profile Picture and Name")
+            self.profileImageURL = "http://www.sawyoo.com/postpic/2011/04/facebook-no-profile-picture-icon_698868.jpg"
+            self.playerName = "Firebase User"
             return
         }
         
@@ -137,8 +139,6 @@ class SignUpVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
                     print("ID \(id)")
                     let facebookProfileUrl = "http://graph.facebook.com/\(id)/picture?type=large"
                     self.profileImageURL = facebookProfileUrl
-                    
-
                 }
                 
                 // Handle name
@@ -146,8 +146,6 @@ class SignUpVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
                 if let playerName = dict["name"] as? String {
                     print(playerName)
                     self.playerName = playerName
-
-   
                 }
             }
         }
