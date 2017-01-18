@@ -18,6 +18,9 @@ class Player {
     private var _points : Int!
     private var _team : String!
     
+    private var _playerAverage : Double!
+    private var _playerMax : Int!
+    
     private var _playerRef : FIRDatabaseReference!
     private var _currentGameRef : FIRDatabaseReference!
     
@@ -59,9 +62,16 @@ class Player {
         }else {
             return "Unknown Value"
         }
-  
     }
-
+    
+    var average : Double {
+        return _playerAverage
+    }
+    
+    var max : Int {
+        return _playerMax
+    }
+    
     
     init(playerName : String, imageUrl : String, playerNumber : String, points : Int) {
         self._playerName = playerName
@@ -84,6 +94,15 @@ class Player {
         if let team = playerData["team"] as? String {
             self._team = team
         }
+        
+        if let max = playerData["playerCareerHigh"] as? Int {
+            self._playerMax = max
+        }
+        
+        if let average = playerData["playerAverage"] as? Double {
+            self._playerAverage = average
+        }
+        
     }
     
     
@@ -99,7 +118,7 @@ class Player {
             self._playerNumber = number
         }
         
-  
+        
         _playerRef = DataService.ds.REF_USERS.child(playerKey)
         _currentGameRef = _playerRef.child("games").child(_gameKey)
         
@@ -127,11 +146,10 @@ class Player {
                                 
                             }
                         }
-
+                        
                     }
                 }
             }
-            
         })
     }
     
@@ -144,8 +162,48 @@ class Player {
             _points = _points - 1
         }
         _currentGameRef.child("playerPoints").setValue(_points)
+        adjustAverage()
     }
+    
+    func adjustAverage() {
+        print("Adjusting Average")
 
+        
+        print(_playerName)
+        _playerRef.child("games").observe(.value, with: { (snapshot) in
+            var allOfThePoints = [Int]()
+            var sum = 0
+            guard snapshot.exists() else {
+                print("No Data Here")
+                return
+            }
+            
+            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                
+                print("GAME COUNT : \(snapshot.children.allObjects.count)")
+                for snap in snapshots {
+                    print("GAME MATCH")
+                    if let currentGameDict = snap.value as? Dictionary<String, AnyObject> {
+                        
+                        if let points = currentGameDict["playerPoints"] as? Int {
+                            allOfThePoints.append(points)
+                            sum += points
+                            print("POINTS : \(points)")
+                            
+                        }
+                    }
+                }
+                print("ALL OF THE POINTS \(allOfThePoints)")
+                print("Sum \(sum)")
+                print("Average \(Double(sum) / Double(allOfThePoints.count))")
+                let average = Double(sum) / Double(allOfThePoints.count)
+                self._playerRef.child("playerAverage").setValue(Double(String(format: "%.1f", average)))
+                self._playerRef.child("playerCareerHigh").setValue(allOfThePoints.max())
+            }
+        })
 
-
+    }
+    
+    
+    
 }

@@ -20,7 +20,7 @@ class LeaderboardsVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         playersTableView.dataSource = self
         
         //Load players from users database
-        DataService.ds.REF_USERS.observe(.value, with: { (snapshot) in
+        DataService.ds.REF_USERS.queryOrdered(byChild: "playerAverage").observe(.value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 
                 //Clear all posts
@@ -35,6 +35,7 @@ class LeaderboardsVC: UIViewController, UITableViewDelegate, UITableViewDataSour
                     }
                 }
             }
+            self.players.reverse()
             self.playersTableView.reloadData()
         })
     }
@@ -74,7 +75,6 @@ class LeaderboardsVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             return UIColor.gray
         case 2:
             return UIColor.brown
-            
         default:
             return UIColor.clear
         }

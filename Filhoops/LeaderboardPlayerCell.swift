@@ -26,7 +26,7 @@ class LeaderboardPlayerCell: UITableViewCell {
         playerNameLabel.text = player.playerName
         playerTeamLabel.text = player.team
         numberLabel.text = "\(cellNumber + 1)."
-        playerAverageLabel.text = "\(40 / (cellNumber + 1))"
+        playerAverageLabel.text = "\(player.average)"
         
         //Set up Image
         let imageURL = URL(string: player.imageURL)
