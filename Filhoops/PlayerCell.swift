@@ -25,6 +25,7 @@ class PlayerCell: UICollectionViewCell {
         
         //Set up Image
         let url = NSURL(string : player.imageURL)
+        
         //If data can be converted
         if let data = NSData(contentsOf: url as! URL){
             //Use the Image
@@ -32,7 +33,4 @@ class PlayerCell: UICollectionViewCell {
             self.profileImageView.image = img
         }
     }
-    
-    
-    
 }

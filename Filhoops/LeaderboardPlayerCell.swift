@@ -14,22 +14,37 @@ class LeaderboardPlayerCell: UITableViewCell {
     @IBOutlet weak var numberLabel: UILabel!
     @IBOutlet weak var playerNameLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
-    
+    @IBOutlet weak var playerTeamLabel: UILabel!
+    @IBOutlet weak var playerAverageLabel: UILabel!
+
     var player : Player!
     
-    func configureCell(player : Player) {
+    func configureCell(player : Player, cellNumber : Int) {
         self.player = player
         
-        //Set up name
+        //Set up Labels
         playerNameLabel.text = player.playerName
+        playerTeamLabel.text = player.team
+        numberLabel.text = "\(cellNumber + 1)."
+        playerAverageLabel.text = "\(40 / (cellNumber + 1))"
         
         //Set up Image
-        let url = NSURL(string : player.imageURL)
-        //If data can be converted
-        if let data = NSData(contentsOf: url as! URL){
-            //Use the Image
-            let img = UIImage(data : data as Data)
-            self.profileImageView.image = img
+        let imageURL = URL(string: player.imageURL)
+        var image: UIImage?
+        if let url = imageURL {
+            //All network operations has to run on different thread(not on main thread).
+            DispatchQueue.global(qos: .userInitiated).async {
+                let imageData = NSData(contentsOf: url)
+                //All UI operations has to run on main thread.
+                DispatchQueue.main.async {
+                    if imageData != nil {
+                        image = UIImage(data: imageData as! Data)
+                        self.profileImageView.image = image
+                    } else {
+                        image = nil
+                    }
+                }
+            }
         }
     }
 

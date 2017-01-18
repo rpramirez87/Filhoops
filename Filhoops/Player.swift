@@ -16,6 +16,7 @@ class Player {
     private var _playerKey : String!
     private var _gameKey : String!
     private var _points : Int!
+    private var _team : String!
     
     private var _playerRef : FIRDatabaseReference!
     private var _currentGameRef : FIRDatabaseReference!
@@ -25,7 +26,11 @@ class Player {
     }
     
     var imageURL : String {
-        return _imageURL
+        if _imageURL != nil {
+            return _imageURL
+        }else {
+            return "https://www.exploretalent.com/graphics/filler.jpg"
+        }
     }
     
     var playerNumber : String {
@@ -47,6 +52,15 @@ class Player {
     var playerKey : String {
         return _playerKey
     }
+    
+    var team: String {
+        if _team != nil {
+            return _team
+        }else {
+            return "Unknown Value"
+        }
+  
+    }
 
     
     init(playerName : String, imageUrl : String, playerNumber : String, points : Int) {
@@ -65,7 +79,11 @@ class Player {
         
         if let imageUrl = playerData["url"] as? String {
             self._imageURL = imageUrl
-        }    
+        }
+        
+        if let team = playerData["team"] as? String {
+            self._team = team
+        }
     }
     
     

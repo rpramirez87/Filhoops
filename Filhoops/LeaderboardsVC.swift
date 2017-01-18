@@ -11,32 +11,53 @@ import Firebase
 
 
 class LeaderboardsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
-
+    var players = [Player]()
     @IBOutlet weak var playersTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         playersTableView.delegate = self
         playersTableView.dataSource = self
+        
+        //Load players from users database
+        DataService.ds.REF_USERS.observe(.value, with: { (snapshot) in
+            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                
+                //Clear all posts
+                self.players = []
+                
+                for snap in snapshots {
+                    print("SNAP: \(snap)")
+                    if let userDict = snap.value as? Dictionary<String, AnyObject> {
+                        let key = snap.key
+                        let user = Player(playerKey: key, playerData: userDict)
+                        self.players.append(user)
+                    }
+                }
+            }
+            self.playersTableView.reloadData()
+        })
     }
     
     //MARK : UITableView Delegate Functions
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = playersTableView.dequeueReusableCell(withIdentifier: "LeaderboardPlayerCell", for: indexPath) as? LeaderboardPlayerCell
-        cell?.playerNameLabel.text = "Patrick Ramirez"
-        cell?.numberLabel.text = "\(indexPath.row + 1)."
-
-        
-        return cell!
+        let player = players[indexPath.row]
+        if let cell = playersTableView.dequeueReusableCell(withIdentifier: "LeaderboardPlayerCell", for: indexPath) as? LeaderboardPlayerCell {
+            cell.configureCell(player: player, cellNumber : indexPath.row)
+            return cell
+        }else {
+            return UITableViewCell()
+        }
     }
+    
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return players.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
