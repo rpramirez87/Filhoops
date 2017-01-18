@@ -34,6 +34,8 @@
 		D98BCD0F1DFD96EC004455F3 /* HolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98BCD091DFD96EC004455F3 /* HolderView.swift */; };
 		D98BCD111DFD9736004455F3 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98BCD101DFD9736004455F3 /* Colors.swift */; };
 		D98BCD131DFDA3EA004455F3 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98BCD121DFDA3EA004455F3 /* Game.swift */; };
+		D9A5674B1E25438E003F8757 /* LeaderboardsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A5674A1E25438E003F8757 /* LeaderboardsVC.swift */; };
+		D9A5674D1E255127003F8757 /* LeaderboardPlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A5674C1E255127003F8757 /* LeaderboardPlayerCell.swift */; };
 		D9B02E0A1E01F8BC00042476 /* AUTHGameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B02E091E01F8BC00042476 /* AUTHGameCell.swift */; };
 		D9B124DF1E0087260080182E /* AUTHCalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B124DE1E0087260080182E /* AUTHCalendarVC.swift */; };
 		D9B124E11E00873B0080182E /* AUTHAddGameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B124E01E00873B0080182E /* AUTHAddGameVC.swift */; };
@@ -103,6 +105,8 @@
 		D98BCD091DFD96EC004455F3 /* HolderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HolderView.swift; sourceTree = "<group>"; };
 		D98BCD101DFD9736004455F3 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		D98BCD121DFDA3EA004455F3 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		D9A5674A1E25438E003F8757 /* LeaderboardsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardsVC.swift; sourceTree = "<group>"; };
+		D9A5674C1E255127003F8757 /* LeaderboardPlayerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderboardPlayerCell.swift; sourceTree = "<group>"; };
 		D9B02E091E01F8BC00042476 /* AUTHGameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUTHGameCell.swift; sourceTree = "<group>"; };
 		D9B124DE1E0087260080182E /* AUTHCalendarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUTHCalendarVC.swift; sourceTree = "<group>"; };
 		D9B124E01E00873B0080182E /* AUTHAddGameVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUTHAddGameVC.swift; sourceTree = "<group>"; };
@@ -238,6 +242,7 @@
 				D912BB401DE1048E00706DD0 /* HomeVC.swift */,
 				D989648E1DE116CC00B3AD41 /* PlayerVC.swift */,
 				D9C836C21DF24B2800263DBE /* TeamVC.swift */,
+				D9A5674A1E25438E003F8757 /* LeaderboardsVC.swift */,
 			);
 			name = Tabs;
 			sourceTree = "<group>";
@@ -294,6 +299,7 @@
 				D9C4DDA81DEE4209005D16E0 /* GameDataCell.swift */,
 				D9B02E091E01F8BC00042476 /* AUTHGameCell.swift */,
 				D950BEBD1E0713070077ED1E /* AUTHPlayerCell.swift */,
+				D9A5674C1E255127003F8757 /* LeaderboardPlayerCell.swift */,
 			);
 			name = CustomCells;
 			sourceTree = "<group>";
@@ -673,6 +679,7 @@
 				D98BCCFE1DFD901F004455F3 /* LoadingScreenVC.swift in Sources */,
 				D9C4DDA51DED37DB005D16E0 /* CircleImageView.swift in Sources */,
 				D92AFBF91DF2B38C008D2992 /* SignUpVC.swift in Sources */,
+				D9A5674B1E25438E003F8757 /* LeaderboardsVC.swift in Sources */,
 				D92AFBFB1DF2BE91008D2992 /* Team.swift in Sources */,
 				D98BCD0C1DFD96EC004455F3 /* TriangleLayer.swift in Sources */,
 				D9C836C31DF24B2800263DBE /* TeamVC.swift in Sources */,
@@ -690,6 +697,7 @@
 				D9B02E0A1E01F8BC00042476 /* AUTHGameCell.swift in Sources */,
 				D93BD9D41DEA765D00C12E45 /* CustomButton.swift in Sources */,
 				D9C4DDA11DED36C8005D16E0 /* CircleView.swift in Sources */,
+				D9A5674D1E255127003F8757 /* LeaderboardPlayerCell.swift in Sources */,
 				D93BD9D11DEA74B600C12E45 /* Constants.swift in Sources */,
 				D9FCB2221DD83A2C00AF6BB7 /* AppDelegate.swift in Sources */,
 				D989648F1DE116CC00B3AD41 /* PlayerVC.swift in Sources */,

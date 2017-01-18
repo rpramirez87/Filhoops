@@ -10,9 +10,6 @@ import UIKit
 import Firebase
 
 class AddTeamVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    
-    
     @IBOutlet weak var teamTableVC: UITableView!
     @IBOutlet weak var teamTextField: UITextField!
     var teams = [String]()

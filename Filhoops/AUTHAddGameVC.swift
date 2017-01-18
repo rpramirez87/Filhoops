@@ -283,7 +283,6 @@ class AUTHAddGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
                                     "playerPoints" : 0 as AnyObject
                                 ]
                                 playerGamePost.setValue(gamePost)
-                                
                             }
                         }
                     }
