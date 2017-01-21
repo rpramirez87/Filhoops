@@ -12,14 +12,18 @@ import Firebase
 class AUTHGameVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var currentGame : Game?
+    @IBOutlet weak var team1Label: UILabel!
+    @IBOutlet weak var team1ScoreTextField: UITextField!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var team2Label: UILabel!
+    @IBOutlet weak var team2ScoreTextField: UITextField!
+    @IBOutlet weak var gymLabel: UILabel!
     
-    @IBOutlet weak var titleLabel: UILabel!
     var team1Key : String?
     var team2Key : String?
-    
     var team1Name : String = ""
     var team2Name : String = ""
-    
     var gameKey : String = ""
 
     @IBOutlet weak var firstTeamTableVC: UITableView!
@@ -30,9 +34,20 @@ class AUTHGameVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
 
     override func viewDidLoad() {
+        super.viewDidLoad()
         
         if let game = currentGame {
-            self.titleLabel.text = game.gameTitle
+            //self.titleLabel.text = game.gameTitle
+            
+            //Set up Labels
+            team1Label.text = game.team1
+            team2Label.text = game.team2
+            timeLabel.text = game.gameTime
+            dateLabel.text = game.gameDate
+            gymLabel.text = game.gym
+            
+            
+            
             team1Key = game.team1Key
             team2Key = game.team2Key
             team1Name = game.team1
@@ -40,7 +55,7 @@ class AUTHGameVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             gameKey = game.gameKey
             
         }
-        super.viewDidLoad()
+
         firstTeamTableVC.delegate = self
         firstTeamTableVC.dataSource = self
         secondTeamTableVC.dataSource = self
