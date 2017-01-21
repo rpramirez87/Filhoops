@@ -14,6 +14,8 @@ class AUTHCalendarVC: UIViewController,UITableViewDataSource, UITableViewDelegat
     var games = [Game]()
     var currentDate = Date()
     var gameSelected : Game?
+    
+    
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var gamesTableVC: UITableView!
@@ -35,6 +37,9 @@ class AUTHCalendarVC: UIViewController,UITableViewDataSource, UITableViewDelegat
     
     //MARK : IBACTIONS
 
+    @IBAction func backButtonPressed(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     @IBAction func addGameButtonPressed(_ sender: Any) {
         performSegue(withIdentifier: "showAUTHAddGameVC", sender: nil)

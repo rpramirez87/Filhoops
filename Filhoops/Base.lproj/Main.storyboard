@@ -65,13 +65,22 @@
                                             <segue destination="PNG-Nf-Zxf" kind="show" id="J7D-fB-kCe"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="enR-aO-41p">
+                                        <rect key="frame" x="8" y="27" width="34" height="30"/>
+                                        <state key="normal" title="Back"/>
+                                        <connections>
+                                            <action selector="backButtonPressed:" destination="ejc-eO-cdY" eventType="touchUpInside" id="0dB-VC-IM3"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.95686274510000002" green="0.26274509800000001" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="zQj-vj-2ht" secondAttribute="trailing" constant="8" id="IGu-oR-YJT"/>
+                                    <constraint firstItem="enR-aO-41p" firstAttribute="leading" secondItem="Q7w-FM-SKD" secondAttribute="leading" constant="8" id="Inx-lD-XbI"/>
                                     <constraint firstItem="zQj-vj-2ht" firstAttribute="centerY" secondItem="jgt-TZ-yn5" secondAttribute="centerY" id="JQr-fD-2iX"/>
                                     <constraint firstItem="jgt-TZ-yn5" firstAttribute="centerX" secondItem="Q7w-FM-SKD" secondAttribute="centerX" id="Nfx-76-RXx"/>
                                     <constraint firstAttribute="height" constant="65" id="eTT-ts-frB"/>
+                                    <constraint firstAttribute="bottom" secondItem="enR-aO-41p" secondAttribute="bottom" constant="8" id="naw-Bf-ZnC"/>
                                     <constraint firstAttribute="bottom" secondItem="zQj-vj-2ht" secondAttribute="bottom" constant="8" id="p2d-CB-XYU"/>
                                 </constraints>
                             </view>
@@ -232,6 +241,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backLabel" destination="enR-aO-41p" id="OGv-MN-9cV"/>
                         <outlet property="dateLabel" destination="bF5-7O-dbH" id="xKa-kh-Vrl"/>
                         <outlet property="dayLabel" destination="hO5-80-XOe" id="xnO-6L-SKN"/>
                         <outlet property="gamesTableVC" destination="owd-eP-g8u" id="tF4-aj-cyG"/>
@@ -1568,7 +1578,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zaQ-Az-fiN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1191" y="1706"/>
+            <point key="canvasLocation" x="1041" y="1748"/>
         </scene>
         <!--Player-->
         <scene sceneID="9be-nO-H84">
@@ -1842,7 +1852,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mFZ-He-fkI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="333" y="1714"/>
+            <point key="canvasLocation" x="325" y="1748"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="WIO-cd-wJa">
@@ -1901,7 +1911,7 @@
                                 </constraints>
                                 <segments>
                                     <segment title="Top Players"/>
-                                    <segment title="Bracket Leaders"/>
+                                    <segment title="Top Teams"/>
                                 </segments>
                                 <color key="tintColor" red="0.2470588235" green="0.31764705879999999" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
                             </segmentedControl>
