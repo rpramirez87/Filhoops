@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -1858,7 +1858,6 @@
                         <segue destination="vXs-7R-dBl" kind="relationship" relationship="viewControllers" id="DRo-FK-TeC"/>
                         <segue destination="FDk-0q-52p" kind="relationship" relationship="viewControllers" id="iUk-gC-uYg"/>
                         <segue destination="ejK-gT-eKF" kind="relationship" relationship="viewControllers" id="SAV-An-fEw"/>
-                        <segue destination="nYc-PT-kbA" kind="relationship" relationship="viewControllers" id="0NT-zF-Auu"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="INR-uP-0FT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1932,7 +1931,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Profile Picture" translatesAutoresizingMaskIntoConstraints="NO" id="Kzt-bg-bO8" customClass="CircleImageView" customModule="Filhoops" customModuleProvider="target">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Profile Picture" translatesAutoresizingMaskIntoConstraints="NO" id="Kzt-bg-bO8" customClass="CircleImageView" customModule="Filhoops" customModuleProvider="target">
                                                             <rect key="frame" x="41" y="2" width="50" height="50"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="50" id="F39-vV-qAJ"/>
@@ -1950,16 +1949,16 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="vso-nA-e44">
-                                                            <rect key="frame" x="99" y="2" width="161" height="50"/>
+                                                            <rect key="frame" x="107" y="2" width="153" height="50"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Patrick Ramirez" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="8JD-YV-ODa">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="161" height="25"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="153" height="25"/>
                                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.87" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wolves" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="p6a-7l-sca">
-                                                                    <rect key="frame" x="0.0" y="25" width="161" height="25"/>
+                                                                    <rect key="frame" x="0.0" y="25" width="153" height="25"/>
                                                                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.54000000000000004" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -1974,7 +1973,7 @@
                                                         <constraint firstAttribute="trailing" secondItem="Wxo-JO-9g9" secondAttribute="trailing" constant="8" id="RKV-EK-r8j"/>
                                                         <constraint firstItem="Kzt-bg-bO8" firstAttribute="centerY" secondItem="cWE-wm-3OZ" secondAttribute="centerY" id="RMx-Pg-c7c"/>
                                                         <constraint firstItem="cWE-wm-3OZ" firstAttribute="centerY" secondItem="yQt-5T-mgb" secondAttribute="centerY" id="S5X-rd-W3k"/>
-                                                        <constraint firstItem="vso-nA-e44" firstAttribute="leading" secondItem="Kzt-bg-bO8" secondAttribute="trailing" constant="8" id="WW1-PB-aG7"/>
+                                                        <constraint firstItem="vso-nA-e44" firstAttribute="leading" secondItem="Kzt-bg-bO8" secondAttribute="trailing" constant="16" id="WW1-PB-aG7"/>
                                                         <constraint firstItem="vso-nA-e44" firstAttribute="height" secondItem="Kzt-bg-bO8" secondAttribute="height" id="eUg-x5-Z2X"/>
                                                         <constraint firstItem="Wxo-JO-9g9" firstAttribute="leading" secondItem="vso-nA-e44" secondAttribute="trailing" constant="8" id="erO-me-Fky"/>
                                                         <constraint firstItem="Wxo-JO-9g9" firstAttribute="centerY" secondItem="vso-nA-e44" secondAttribute="centerY" id="hHP-kY-EMM"/>
@@ -2123,60 +2122,12 @@
             </objects>
             <point key="canvasLocation" x="-691" y="1714"/>
         </scene>
-        <!--Playoffs-->
-        <scene sceneID="I4K-Pe-Huq">
-            <objects>
-                <viewController id="nYc-PT-kbA" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Bod-VK-5wl"/>
-                        <viewControllerLayoutGuide type="bottom" id="vFE-Bv-ym1"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="chM-cP-OWn">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hjP-e5-5hV">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Playoffs" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SB0-vh-JLz">
-                                        <rect key="frame" x="163" y="14" width="89" height="36"/>
-                                        <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="26"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.2470588235" green="0.31764705879999999" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="65" id="uVu-k6-h2A"/>
-                                    <constraint firstItem="SB0-vh-JLz" firstAttribute="centerY" secondItem="hjP-e5-5hV" secondAttribute="centerY" id="wPt-nv-47y"/>
-                                    <constraint firstItem="SB0-vh-JLz" firstAttribute="centerX" secondItem="hjP-e5-5hV" secondAttribute="centerX" id="wmZ-g2-pqP"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="hjP-e5-5hV" secondAttribute="trailing" id="Oat-1r-mva"/>
-                            <constraint firstItem="hjP-e5-5hV" firstAttribute="top" secondItem="chM-cP-OWn" secondAttribute="top" id="SJ9-D0-Sn8"/>
-                            <constraint firstItem="hjP-e5-5hV" firstAttribute="leading" secondItem="chM-cP-OWn" secondAttribute="leading" id="lNt-v7-LPn"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Playoffs" image="430. Network" id="4vS-jd-Mah"/>
-                    <toolbarItems>
-                        <barButtonItem title="Item" id="gtX-rc-UAl"/>
-                    </toolbarItems>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VZ7-yy-p03" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2517" y="1714"/>
-        </scene>
     </scenes>
     <resources>
         <image name="001. Home" width="22" height="19"/>
         <image name="002. Contact" width="20" height="18"/>
         <image name="004. Followers" width="30" height="18"/>
         <image name="343. Playlist" width="20" height="16"/>
-        <image name="430. Network" width="20" height="20"/>
         <image name="Profile Picture" width="400" height="400"/>
         <image name="back-calendar" width="10" height="18"/>
         <image name="black-mamba" width="501" height="720"/>
