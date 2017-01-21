@@ -124,6 +124,7 @@ class TeamVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             performSegue(withIdentifier: "goToPlayer", sender: nil)
             
         }else {
+            // Setup Team Game
             let teamGame = teamGames[indexPath.row]
         }
     }

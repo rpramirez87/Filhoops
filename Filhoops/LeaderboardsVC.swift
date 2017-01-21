@@ -12,6 +12,8 @@ import Firebase
 
 class LeaderboardsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var players = [Player]()
+    var playerSelected : Player!
+    
     @IBOutlet weak var playersTableView: UITableView!
     
     override func viewDidLoad() {
@@ -51,14 +53,19 @@ class LeaderboardsVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
-    
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return players.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Did Select Row at \(indexPath.row)")
+        playerSelected = players[indexPath.row]
+        performSegue(withIdentifier: "checkOutPlayer", sender: nil)
+
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -77,6 +84,14 @@ class LeaderboardsVC: UIViewController, UITableViewDelegate, UITableViewDataSour
             return UIColor.brown
         default:
             return UIColor.clear
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "checkOutPlayer" {
+            let playerVC = segue.destination as! PlayerVC
+            playerVC.currentPlayer = playerSelected
         }
     }
 }
