@@ -20,5 +20,7 @@ class TeamGameDataCell: UICollectionViewCell {
         self.gameTitleLabel.text = game.gameTitle
         self.gameTimeLabel.text = game.gameTime
         self.gameDateLabel.text = game.gameDate
+        self.team1ScoreLabel.text = game.team1Score
+        self.team2ScoreLabel.text = game.team2Score
     }
 }

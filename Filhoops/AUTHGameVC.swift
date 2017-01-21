@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class AUTHGameVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class AUTHGameVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     
     var currentGame : Game?
     @IBOutlet weak var team1Label: UILabel!
@@ -36,8 +36,17 @@ class AUTHGameVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Setup Delegates
+        firstTeamTableVC.delegate = self
+        firstTeamTableVC.dataSource = self
+        secondTeamTableVC.dataSource = self
+        secondTeamTableVC.delegate = self
+        team1ScoreTextField.delegate = self
+        team2ScoreTextField.delegate = self
+
+        
         if let game = currentGame {
-            //self.titleLabel.text = game.gameTitle
+    
             
             //Set up Labels
             team1Label.text = game.team1
@@ -45,8 +54,8 @@ class AUTHGameVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             timeLabel.text = game.gameTime
             dateLabel.text = game.gameDate
             gymLabel.text = game.gym
-            
-            
+            team1ScoreTextField.text = game.team1Score
+            team2ScoreTextField.text = game.team2Score
             
             team1Key = game.team1Key
             team2Key = game.team2Key
@@ -56,10 +65,7 @@ class AUTHGameVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             
         }
 
-        firstTeamTableVC.delegate = self
-        firstTeamTableVC.dataSource = self
-        secondTeamTableVC.dataSource = self
-        secondTeamTableVC.delegate = self
+
         
   
         
@@ -126,6 +132,25 @@ class AUTHGameVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             }
         })
     }
+    
+    //MARK: Textfield Delegate Functions
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        team1ScoreTextField.resignFirstResponder()
+        team2ScoreTextField.resignFirstResponder()
+    }
+    
+    @IBAction func updateButtonPressed(_ sender: UIButton) {
+        team1ScoreTextField.resignFirstResponder()
+        team2ScoreTextField.resignFirstResponder()
+        var currentGameReference : FIRDatabaseReference!
+        currentGameReference = DataService.ds.REF_GAMES.child(gameKey).child("team1Score")
+        currentGameReference.setValue(team1ScoreTextField.text)
+        currentGameReference = DataService.ds.REF_GAMES.child(gameKey).child("team2Score")
+        currentGameReference.setValue(team2ScoreTextField.text)
+    }
+    
+    
+    //MARK: Tableview Delegate Functions
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
