@@ -49,11 +49,7 @@ class SignUpVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
                 }
                 self.teamPickerView.reloadAllComponents()
             }
-            
         })
-
-        
-        // Do any additional setup after loading the view.
     }
     
     //MARK: Picker View Delegate Functions
@@ -87,7 +83,7 @@ class SignUpVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
         guard let playerImageURL = self.profileImageURL,  let playerName = self.playerName else {
             print("WARNING: Facebook Error getting User's Profile Picture and Name")
             self.profileImageURL = "http://www.sawyoo.com/postpic/2011/04/facebook-no-profile-picture-icon_698868.jpg"
-            self.playerName = "Firebase User"
+            self.playerName = "User"
             return
         }
         
@@ -116,6 +112,7 @@ class SignUpVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
         jerseyLabel.text = "\(currentValue)"
         playerNumber = "\(currentValue)"
     }
+    
     //MARK: Helper Functions
     
     func facebookGraphRequest() {

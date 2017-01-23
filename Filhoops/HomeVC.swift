@@ -20,7 +20,6 @@ class HomeVC: UIViewController, WKNavigationDelegate {
         super.viewDidLoad()
         
         //Filhoops home page
-        let filhoopsURL = "http://filhoopshouston.com/"
         let url = URL(string: filhoopsURL)
         let request = URLRequest(url: url! as URL)
         
@@ -31,11 +30,12 @@ class HomeVC: UIViewController, WKNavigationDelegate {
         self.view.addSubview(webView)
         self.view.sendSubview(toBack: webView)
     }
+    
+    //MARK: IBActions
     @IBAction func backButtonPressed(_ sender: Any) {
         if webView.canGoBack {
             webView.goBack()
         }
-        
     }
     
     @IBAction func forwardButtonPressed(_ sender: Any) {
@@ -44,8 +44,14 @@ class HomeVC: UIViewController, WKNavigationDelegate {
         }
     }
     
-    //MARK:- WKNavigationDelegate
+    @IBAction func signOutButtonTapped(_ sender: Any) {
+        let keyChainResult = KeychainWrapper.standard.removeObject(forKey: KEY_UID)
+        print("User signed out \(keyChainResult)")
+        try! FIRAuth.auth()?.signOut()
+        performSegue(withIdentifier: "goBackToLoginVC", sender: nil)
+    }
     
+    //MARK:- WKNavigationDelegate
     func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         print(error.localizedDescription)
     }
@@ -55,12 +61,5 @@ class HomeVC: UIViewController, WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         print("finish to load")
-    }
-    
-    @IBAction func signOutButtonTapped(_ sender: Any) {
-        let keyChainResult = KeychainWrapper.standard.removeObject(forKey: KEY_UID)
-        print("User signed out \(keyChainResult)")
-        try! FIRAuth.auth()?.signOut()
-        performSegue(withIdentifier: "goBackToLoginVC", sender: nil)
     }
 }
