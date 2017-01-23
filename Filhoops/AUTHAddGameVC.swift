@@ -11,35 +11,27 @@ import Firebase
 
 class AUTHAddGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate{
     
+    
+    @IBOutlet weak var teamTableView: UITableView!
     @IBOutlet weak var team1Label: UILabel!
     @IBOutlet weak var team2Label: UILabel!
-    
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var gymSegmentControl: UISegmentedControl!
+    @IBOutlet weak var timePickerView: UIPickerView!
     
-    //var teams = [String]()
-    //var filteredTeams = [String]()
     
     var currentTeams = [Team]()
     var currentFilteredTeams = [Team]()
-    
     var team1 : Team?, team2 : Team?
-
-    //var teamSelected = ""
     var teamSelected : Team?
     var teamKeySelected = ""
     var timeSelected = ""
     var inSearchMode = false
     var dateToAddGame : Date?
     var gym = "Gym 1"
-    
-    @IBOutlet weak var gymSegmentControl: UISegmentedControl!
-    @IBOutlet weak var timePickerView: UIPickerView!
     var availableTimes = ["7:30 PM","8:30 PM", "9:30 PM", "10:30 PM", "11:30 PM"]
 
-
-  
-    @IBOutlet weak var teamTableView: UITableView!
-
+    //MARK: View Controller Functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,40 +44,11 @@ class AUTHAddGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         
         searchBar.delegate = self
         searchBar.returnKeyType = .done
-        
-        
-        // Load up Firebase data for teams
-        DataService.ds.REF_TEAMS.observeSingleEvent(of: .value, with: { (snapshot) in
-            //Check Values
-            print("Data Service")
-            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
-                
-                //Clear all posts
-                self.currentTeams = []
-                
-                for snap in snapshots {
-                    print("SNAP: \(snap)")
-                    if let teamDict = snap.value as? Dictionary<String, AnyObject> {
-                        let key = snap.key
-                        let team = Team(teamKey : key, teamData : teamDict)
-                        self.currentTeams.append(team)
-                        
-                        
-                        //
-//                        if let teamName = teamDict["name"] as? String {
-//                            self.teams.append(teamName)
-//                        }
-                    }
-                }
-                self.teamTableView.reloadData()
-            }
-        })
-
-
-        // Do any additional setup after loading the view.
+    
+        loadTeamsFromFirebase()
     }
 
-    // MARK : IBActions
+    // MARK: IBActions
     
     @IBAction func team1ButtonPressed(_ sender: Any) {
         guard let team = teamSelected else {
@@ -267,6 +230,7 @@ class AUTHAddGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         print(gameKey)
         print(team1Key)
         print(team2Key)
+        
         DataService.ds.REF_USERS.observe(.value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 
@@ -288,7 +252,28 @@ class AUTHAddGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
                     }
                 }
             }
-            
+        })
+    }
+    
+    private func loadTeamsFromFirebase() {
+        DataService.ds.REF_TEAMS.observeSingleEvent(of: .value, with: { (snapshot) in
+            //Check Values
+            print("Data Service")
+            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                
+                //Clear all posts
+                self.currentTeams = []
+                
+                for snap in snapshots {
+                    print("SNAP: \(snap)")
+                    if let teamDict = snap.value as? Dictionary<String, AnyObject> {
+                        let key = snap.key
+                        let team = Team(teamKey : key, teamData : teamDict)
+                        self.currentTeams.append(team)
+                    }
+                }
+                self.teamTableView.reloadData()
+            }
         })
     }
 }

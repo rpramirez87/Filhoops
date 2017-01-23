@@ -11,54 +11,52 @@ import Firebase
 
 class AUTHCalendarVC: UIViewController,UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var dayLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var gamesTableVC: UITableView!
+    
     var games = [Game]()
     var currentDate = Date()
     var gameSelected : Game?
     
-    
-    @IBOutlet weak var dayLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var gamesTableVC: UITableView!
+    //MARK: View Controller Functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         gamesTableVC.delegate = self
         gamesTableVC.dataSource = self
-
-       updateGames()
         
-        // Current Date
+        // Set up labels based on date
         self.dateLabel.text = currentDate.longDateFormatter()
-        print(currentDate.longDateFormatter())
         self.dayLabel.text = currentDate.weekdayDateFormatter()
         
+        updateGamesBasedOnCurrentDate()
     }
     
-    //MARK : IBACTIONS
-
+    //MARK: IBACTIONS
+    
     @IBAction func backButtonPressed(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func addGameButtonPressed(_ sender: Any) {
         performSegue(withIdentifier: "showAUTHAddGameVC", sender: nil)
-  
+        
     }
-
     
     @IBAction func nextDayButtonPressed(_ sender: Any) {
         processDay(step: 1)
-        updateGames()
+        updateGamesBasedOnCurrentDate()
     }
     
     @IBAction func previousDayButtonPressed(_ sender: Any) {
         processDay(step: -1)
-        updateGames()
+        updateGamesBasedOnCurrentDate()
         
     }
-    //MARK : STORYBOARD SEGUE ACTIONS
     
+    //MARK : STORYBOARD SEGUE ACTIONS
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "showAUTHAddGameVC" {
@@ -107,10 +105,11 @@ class AUTHCalendarVC: UIViewController,UITableViewDataSource, UITableViewDelegat
         currentDate = (Calendar.current as NSCalendar).date(byAdding: .day, value: step, to: currentDate, options: [])!
         self.dateLabel.text = currentDate.longDateFormatter()
         self.dayLabel.text = currentDate.weekdayDateFormatter()
-
+        
     }
     
-    func updateGames() {
+    func updateGamesBasedOnCurrentDate() {
+        //Convert to string value Firebase can read
         let dateString = currentDate.shortDateFormatter()
         print(dateString)
         
@@ -127,22 +126,15 @@ class AUTHCalendarVC: UIViewController,UITableViewDataSource, UITableViewDelegat
                 self.games = []
                 
                 for snap in snapshots {
-                    print("SNAP: \(snap)")
+                    print("AUTHCalendarVC - GAME: \(snap)")
                     if let gameDict = snap.value as? Dictionary<String, AnyObject> {
-                        
                         // Save unique key value for Team
                         let key = snap.key
                         let game = Game(gameKey: key, gameData: gameDict)
                         self.games.append(game)
-                        
-                        if let gameTitle = gameDict["name"] as? String {
-                            print(gameTitle)
-                            
-                        }
                     }
                 }
                 self.gamesTableVC.reloadData()
-                
             }
         })
     }

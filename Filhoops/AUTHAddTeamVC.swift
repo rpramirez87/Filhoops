@@ -15,7 +15,8 @@ class AUTHAddTeamVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
     @IBOutlet weak var teamTextField: UITextField!
     private var teams = [String]()
     
-    //MARK: ViewController Functions
+    //MARK: View Controller Functions
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,7 +26,7 @@ class AUTHAddTeamVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
         loadTeamsFromFirebase()
     }
-    
+
     //MARK: IBActions
     @IBAction func addTeamButtonPressed(_ sender: Any) {
         
@@ -48,7 +49,6 @@ class AUTHAddTeamVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         ]
         firebaseTeamPost.setValue(teamPost)
     }
-    
     @IBAction func backButtonPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
@@ -61,17 +61,14 @@ class AUTHAddTeamVC: UIViewController, UITableViewDelegate, UITableViewDataSourc
         return cell
         
     }
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return teams.count
     }
     
     //MARK: Helper Functions
-    
     private func loadTeamsFromFirebase() {
         
         //Reloads table view everytime a team is added

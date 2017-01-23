@@ -25,7 +25,7 @@ class AUTHGameVC: UIViewController, UITableViewDataSource, UITableViewDelegate, 
     var team1Players = [Player]()
     var team2Players = [Player]()
     
-    //MARK: VC Functions
+    //MARK: View Controller Functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,10 +48,9 @@ class AUTHGameVC: UIViewController, UITableViewDataSource, UITableViewDelegate, 
         team2ScoreTextField.text = currentGame.team2Score
         
         //Load players from firebase to both teams
-        loadPlayersFromDatabase()
+        loadPlayersFromFirebase()
     }
     
-    //MARK: Textfield Delegate Functions
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         team1ScoreTextField.resignFirstResponder()
         team2ScoreTextField.resignFirstResponder()
@@ -116,7 +115,7 @@ class AUTHGameVC: UIViewController, UITableViewDataSource, UITableViewDelegate, 
     
     //MARK: Helper Functions
     
-    private func loadPlayersFromDatabase() {
+    private func loadPlayersFromFirebase() {
     
         //Load players from users database
         DataService.ds.REF_USERS.observeSingleEvent(of: .value, with: { (snapshot) in

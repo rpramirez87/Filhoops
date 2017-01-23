@@ -317,8 +317,8 @@
 			isa = PBXGroup;
 			children = (
 				D9B124DE1E0087260080182E /* AUTHCalendarVC.swift */,
-				D9D8F4D21DFE0D1200BDAA6A /* AUTHAddTeamVC.swift */,
 				D9577E121DFF4BCA00508CCA /* AUTHGameVC.swift */,
+				D9D8F4D21DFE0D1200BDAA6A /* AUTHAddTeamVC.swift */,
 				D9B124E01E00873B0080182E /* AUTHAddGameVC.swift */,
 			);
 			name = AuthorizedVC;
