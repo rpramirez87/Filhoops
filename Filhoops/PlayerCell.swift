@@ -13,16 +13,15 @@ class PlayerCell: UICollectionViewCell {
     
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var playerNameLabel: UILabel!
-    
+    @IBOutlet weak var playerNumberLabel: UILabel!
     var player : Player!
-    
     
     func configureCell(player : Player) {
         self.player = player
         
         //Set up name
         playerNameLabel.text = player.playerName
-        
+        playerNumberLabel.text = player.playerNumber
         //Set up Image
         let url = NSURL(string : player.imageURL)
         

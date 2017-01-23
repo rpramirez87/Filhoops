@@ -103,6 +103,10 @@ class Player {
             self._playerAverage = average
         }
         
+        if let number = playerData["number"] as? String {
+            self._playerNumber = number
+        }
+        
     }
     
     

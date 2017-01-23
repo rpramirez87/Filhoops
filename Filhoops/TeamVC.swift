@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class TeamVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class TeamVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var teamNameLabel: UILabel!
     @IBOutlet weak var gameCollectionView: UICollectionView!
@@ -110,6 +110,7 @@ class TeamVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             let teamGame = teamGames[indexPath.row]
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeamGameDataCell", for: indexPath) as? TeamGameDataCell {
                 cell.configureCell(game: teamGame)
+       
                 return cell
             }else {
                 return UICollectionViewCell()
@@ -127,6 +128,18 @@ class TeamVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             // Setup Team Game
             let teamGame = teamGames[indexPath.row]
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        if collectionView == self.collectionView {
+            let padding =  CGFloat(10)
+            let collectionViewSize = collectionView.frame.size.height - padding
+            return CGSize(width: collectionViewSize/2, height: collectionViewSize/2)
+        }else {
+            return CGSize(width: 250, height: 100)
+        }
+      
     }
     
     //MARK: Helper Functions
