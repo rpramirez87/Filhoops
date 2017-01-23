@@ -8,20 +8,18 @@
 
 import UIKit
 import Firebase
+import SwiftKeychainWrapper
 
 class TeamVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-
+    
     @IBOutlet weak var teamNameLabel: UILabel!
     @IBOutlet weak var gameCollectionView: UICollectionView!
     @IBOutlet weak var collectionView: UICollectionView!
     
     var teamPlayers = [Player]()
     var teamGames = [Game]()
-    
     var playerSelected : Player!
-    
-    var currentUsersTeam : String!
-    var currentUsersTeamKey : String!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,47 +28,27 @@ class TeamVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         
         collectionView.dataSource = self
         collectionView.delegate = self
-
-        DataService.ds.REF_USER_CURRENT_TEAM.observeSingleEvent(of: .value, with: { (snapshot) in
-            if let currentTeam = snapshot.value as? String {
-                
-                self.currentUsersTeam = currentTeam
-                self.teamNameLabel.text = currentTeam
-            }
-        })
-        DataService.ds.REF_USER_CURRENT_TEAM_KEY.observeSingleEvent(of: .value, with: { (snapshot) in
-            if let currentTeamKey = snapshot.value as? String {
-                self.currentUsersTeamKey = currentTeamKey
-                print("Current Team Key : \(self.currentUsersTeamKey!)")
-                self.uploadGames(currentGameKey: currentTeamKey)
-            }
-        })
-    
-        //Load players from users database
-        DataService.ds.REF_USERS.observe(.value, with: { (snapshot) in
-            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
-                
-                //Clear all posts
-                self.teamPlayers = []
-                
-                for snap in snapshots {
-                    print("SNAP: \(snap)")
-                    if let userDict = snap.value as? Dictionary<String, AnyObject> {
-                        
-                        if let playerTeamKey = userDict["teamKey"] as? String {
-                            if playerTeamKey == self.currentUsersTeamKey {
-                                let key = snap.key
-                                let user = Player(playerKey: key, playerData: userDict)
-                                self.teamPlayers.append(user)
-                            }
-                        }
-                    }
+        
+        
+        DataService.ds.REF_USER_CURRENT.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let userDict = snapshot.value as? Dictionary<String, AnyObject> {
+                //Retrieve Team
+                if let playerTeam = userDict["team"] as? String {
+                    print("Player Team \(playerTeam)")
+                    self.teamNameLabel.text = playerTeam
+                    self.uploadPlayersFromFirebaseBasedOn(team: playerTeam)
                 }
-                self.collectionView.reloadData()
+                
+                //Retrieve Team Key
+                if let playerTeamKey = userDict["teamKey"] as? String {
+                    print("Player Team Key \(playerTeamKey)")
+                    self.uploadGames(teamKey: playerTeamKey, gameKey: "team1Key")
+                    self.uploadGames(teamKey: playerTeamKey, gameKey: "team2Key")
+                }
             }
         })
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "goToPlayer" {
@@ -92,7 +70,7 @@ class TeamVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         }else {
             return teamGames.count
         }
- 
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -110,7 +88,6 @@ class TeamVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             let teamGame = teamGames[indexPath.row]
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeamGameDataCell", for: indexPath) as? TeamGameDataCell {
                 cell.configureCell(game: teamGame)
-       
                 return cell
             }else {
                 return UICollectionViewCell()
@@ -139,15 +116,14 @@ class TeamVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         }else {
             return CGSize(width: 250, height: 100)
         }
-      
     }
     
     //MARK: Helper Functions
     
-    func uploadGames(currentGameKey : String) {
+    func uploadGames(teamKey : String, gameKey : String) {
         
         //Load team games from database based on key "team1Key"
-        DataService.ds.REF_GAMES.queryOrdered(byChild: "team1Key").queryEqual(toValue: currentGameKey).observeSingleEvent(of: .value, with: { (snapshot) in
+        DataService.ds.REF_GAMES.queryOrdered(byChild: gameKey).queryEqual(toValue: teamKey).observeSingleEvent(of: .value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 
                 guard snapshot.exists() else {
@@ -156,53 +132,37 @@ class TeamVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
                 }
                 
                 for snap in snapshots {
-                    print("SNAP: \(snap)")
+                    print("TeamVC - GAME: \(snap)")
                     if let gameDict = snap.value as? Dictionary<String, AnyObject> {
                         
                         // Save unique key value for Team
                         let key = snap.key
                         let game = Game(gameKey: key, gameData: gameDict)
                         self.teamGames.append(game)
-                        
-                        if let gameTitle = gameDict["name"] as? String {
-                            print(gameTitle)
-                            
-                        }
                     }
                 }
                 self.gameCollectionView.reloadData()
-                
             }
         })
+    }
+    
+    func uploadPlayersFromFirebaseBasedOn(team : String) {
         
-        //Load team games from database based on key "team2Key"
-        DataService.ds.REF_GAMES.queryOrdered(byChild: "team2Key").queryEqual(toValue: currentGameKey).observeSingleEvent(of: .value, with: { (snapshot) in
+        //Load players from users database
+        DataService.ds.REF_USERS.queryOrdered(byChild: "team").queryEqual(toValue: team).observeSingleEvent(of: .value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
-                
-                guard snapshot.exists() else {
-                    print("No Team Games Here")
-                    return
-                }
-                
+                //Clear all posts
+                self.teamPlayers = []
                 for snap in snapshots {
-                    print("SNAP: \(snap)")
-                    if let gameDict = snap.value as? Dictionary<String, AnyObject> {
-                        
-                        // Save unique key value for Team
+                    print("TeamVC - USER: \(snap)")
+                    if let userDict = snap.value as? Dictionary<String, AnyObject> {
                         let key = snap.key
-                        let game = Game(gameKey: key, gameData: gameDict)
-                        self.teamGames.append(game)
-                        
-                        if let gameTitle = gameDict["name"] as? String {
-                            print(gameTitle)
-                            
-                        }
+                        let user = Player(playerKey: key, playerData: userDict)
+                        self.teamPlayers.append(user)
                     }
                 }
-                self.gameCollectionView.reloadData()
-                
+                self.collectionView.reloadData()
             }
         })
-
     }
 }

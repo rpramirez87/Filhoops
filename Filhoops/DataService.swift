@@ -51,22 +51,7 @@ class DataService  {
         let user = REF_USERS.child(uid!)
         return user
     }
-    
-    var REF_USER_CURRENT_TEAM : FIRDatabaseReference {
-        let uid = KeychainWrapper.standard.string(forKey: KEY_UID)
-        let user = REF_USERS.child(uid!)
-        let team = user.child("team")
-        return team
-    }
-    
-    var REF_USER_CURRENT_TEAM_KEY : FIRDatabaseReference {
-        let uid = KeychainWrapper.standard.string(forKey: KEY_UID)
-        let user = REF_USERS.child(uid!)
-        let teamKey = user.child("teamKey")
-        return teamKey
-    }
-    
-    
+
     var REF_PROFILE_IMAGES : FIRStorageReference {
         return _REF_PROFILE_IMAGES
     }
