@@ -172,7 +172,6 @@ class Player {
     func adjustAverage() {
         print("Adjusting Average")
 
-        
         print(_playerName)
         _playerRef.child("games").observe(.value, with: { (snapshot) in
             var allOfThePoints = [Int]()

@@ -80,6 +80,7 @@ class Game {
         return _gameKey
     }
     
+    // TeamVC Initializer
     init(gameTitle : String, gameDate : String, gameTime : String) {
         self._gameTitle = gameTitle
         self._gameDate = gameDate
@@ -87,7 +88,7 @@ class Game {
     }
     
     
-    
+    // AddGameVC/GameVC Initializer
     init(gameKey : String, gameData : Dictionary<String, AnyObject>) {
         self._gameKey = gameKey
         
@@ -130,8 +131,6 @@ class Game {
         if let teamTwoScore = gameData["team2Score"] as? String {
             self._team2Score = teamTwoScore
         }
-        
-        
         _gameRef = DataService.ds.REF_GAMES.child(gameKey)
         
     }

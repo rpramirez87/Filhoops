@@ -11,7 +11,8 @@ import Firebase
 
 class AUTHGameVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     
-    var currentGame : Game?
+    @IBOutlet weak var firstTeamTableVC: UITableView!
+    @IBOutlet weak var secondTeamTableVC: UITableView!
     @IBOutlet weak var team1Label: UILabel!
     @IBOutlet weak var team1ScoreTextField: UITextField!
     @IBOutlet weak var timeLabel: UILabel!
@@ -20,19 +21,12 @@ class AUTHGameVC: UIViewController, UITableViewDataSource, UITableViewDelegate, 
     @IBOutlet weak var team2ScoreTextField: UITextField!
     @IBOutlet weak var gymLabel: UILabel!
     
-    var team1Key : String?
-    var team2Key : String?
-    var team1Name : String = ""
-    var team2Name : String = ""
-    var gameKey : String = ""
-
-    @IBOutlet weak var firstTeamTableVC: UITableView!
-    @IBOutlet weak var secondTeamTableVC: UITableView!
-    
+    var currentGame : Game!
     var team1Players = [Player]()
     var team2Players = [Player]()
     
-
+    //MARK: VC Functions
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,94 +37,18 @@ class AUTHGameVC: UIViewController, UITableViewDataSource, UITableViewDelegate, 
         secondTeamTableVC.delegate = self
         team1ScoreTextField.delegate = self
         team2ScoreTextField.delegate = self
-
-        
-        if let game = currentGame {
     
-            
-            //Set up Labels
-            team1Label.text = game.team1
-            team2Label.text = game.team2
-            timeLabel.text = game.gameTime
-            dateLabel.text = game.gameDate
-            gymLabel.text = game.gym
-            team1ScoreTextField.text = game.team1Score
-            team2ScoreTextField.text = game.team2Score
-            
-            team1Key = game.team1Key
-            team2Key = game.team2Key
-            team1Name = game.team1
-            team2Name = game.team2
-            gameKey = game.gameKey
-            
-        }
-
-
+        //Set up Labels
+        team1Label.text = currentGame.team1
+        team2Label.text = currentGame.team2
+        timeLabel.text = currentGame.gameTime
+        dateLabel.text = currentGame.gameDate
+        gymLabel.text = currentGame.gym
+        team1ScoreTextField.text = currentGame.team1Score
+        team2ScoreTextField.text = currentGame.team2Score
         
-  
-        
-        //Load players from users database
-        DataService.ds.REF_USERS.observe(.value, with: { (snapshot) in
-            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
-                
-                //Clear all posts
-                self.team1Players = []
-                self.team2Players = []
-                
-                
-                for snap in snapshots {
-                    print("SNAP: \(snap)")
-                    if let userDict = snap.value as? Dictionary<String, AnyObject> {
-                        
-                        if let playerTeamKey = userDict["teamKey"] as? String {
-                            if playerTeamKey == self.team1Key {
-                                
-                                let key = snap.key
-                                let user = Player(playerKey: key, gameKey: self.gameKey, playerData: userDict)
-                                self.team1Players.append(user)
-                                
-                            }
-                            
-                            if playerTeamKey == self.team2Key {
-                                
-                                let key = snap.key
-                                let user = Player(playerKey: key, gameKey: self.gameKey, playerData: userDict)
-                                self.team2Players.append(user)
-                            }
-                            
-                        }
-                    }
-                }
-                self.firstTeamTableVC.reloadData()
-                self.secondTeamTableVC.reloadData()
-            }
-            
-        })
-        
-        guard let team1FIRKey = team1Key, let team2FIRKey = team2Key else {
-            print("WARNING : Team Keys are not set")
-            return
-            
-        }
-        
-        //Load team names from teams database
-        DataService.ds.REF_TEAMS.child(team1FIRKey).observeSingleEvent(of: .value, with: { (snapshot) in
-            if let teamDict = snapshot.value as? Dictionary<String, AnyObject> {
-                if let teamName = teamDict["name"] as? String {
-                    print(teamName)
-                    self.team1Name = teamName
-                }
-            }
-        })
-        
-        DataService.ds.REF_TEAMS.child(team2FIRKey).observeSingleEvent(of: .value, with: { (snapshot) in
-            if let teamDict = snapshot.value as? Dictionary<String, AnyObject> {
-                if let teamName = teamDict["name"] as? String {
-                    print(teamName)
-                    self.team2Name = teamName
-                }
-            }
-        })
+        //Load players from firebase to both teams
+        loadPlayersFromDatabase()
     }
     
     //MARK: Textfield Delegate Functions
@@ -139,16 +57,20 @@ class AUTHGameVC: UIViewController, UITableViewDataSource, UITableViewDelegate, 
         team2ScoreTextField.resignFirstResponder()
     }
     
+    //MARK: IBActions
     @IBAction func updateButtonPressed(_ sender: UIButton) {
         team1ScoreTextField.resignFirstResponder()
         team2ScoreTextField.resignFirstResponder()
         var currentGameReference : FIRDatabaseReference!
-        currentGameReference = DataService.ds.REF_GAMES.child(gameKey).child("team1Score")
+        currentGameReference = DataService.ds.REF_GAMES.child(currentGame.gameKey).child("team1Score")
         currentGameReference.setValue(team1ScoreTextField.text)
-        currentGameReference = DataService.ds.REF_GAMES.child(gameKey).child("team2Score")
+        currentGameReference = DataService.ds.REF_GAMES.child(currentGame.gameKey).child("team2Score")
         currentGameReference.setValue(team2ScoreTextField.text)
     }
     
+    @IBAction func backButtonPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     //MARK: Tableview Delegate Functions
     
@@ -157,10 +79,10 @@ class AUTHGameVC: UIViewController, UITableViewDataSource, UITableViewDelegate, 
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if tableView == secondTeamTableVC {
-            return team2Name
+        if tableView == firstTeamTableVC {
+            return currentGame.team1
         }else {
-            return team1Name
+            return currentGame.team2
         }
     }
     
@@ -192,8 +114,37 @@ class AUTHGameVC: UIViewController, UITableViewDataSource, UITableViewDelegate, 
         }
     }
     
-    @IBAction func backButtonPressed(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
+    //MARK: Helper Functions
     
+    private func loadPlayersFromDatabase() {
+    
+        //Load players from users database
+        DataService.ds.REF_USERS.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                for snap in snapshots {
+                    print("AUTHGameVC : Team \(snap)")
+                    if let userDict = snap.value as? Dictionary<String, AnyObject> {
+                        
+                        if let playerTeamKey = userDict["teamKey"] as? String {
+                            if playerTeamKey == self.currentGame.team1Key {
+                                
+                                let key = snap.key
+                                let user = Player(playerKey: key, gameKey: self.currentGame.gameKey, playerData: userDict)
+                                self.team1Players.append(user)
+                            }
+                            
+                            if playerTeamKey == self.currentGame.team2Key {
+                                
+                                let key = snap.key
+                                let user = Player(playerKey: key, gameKey: self.currentGame.gameKey, playerData: userDict)
+                                self.team2Players.append(user)
+                            }
+                        }
+                    }
+                }
+                self.firstTeamTableVC.reloadData()
+                self.secondTeamTableVC.reloadData()
+            }
+        })
+    }
 }

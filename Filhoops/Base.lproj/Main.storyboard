@@ -894,7 +894,7 @@
         <!--Add TeamVC-->
         <scene sceneID="oNB-eS-TWZ">
             <objects>
-                <viewController id="PNG-Nf-Zxf" customClass="AddTeamVC" customModule="Filhoops" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="PNG-Nf-Zxf" customClass="AUTHAddTeamVC" customModule="Filhoops" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1fY-xS-rez"/>
                         <viewControllerLayoutGuide type="bottom" id="HiP-TP-rEj"/>
@@ -1624,7 +1624,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zaQ-Az-fiN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1169.5652173913045" y="1747.826086956522"/>
+            <point key="canvasLocation" x="1104" y="1748"/>
         </scene>
         <!--Player-->
         <scene sceneID="9be-nO-H84">
@@ -1898,7 +1898,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mFZ-He-fkI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="325" y="1748"/>
+            <point key="canvasLocation" x="320" y="1748"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="WIO-cd-wJa">
@@ -2077,7 +2077,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uku-8I-Q6K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1964" y="1707"/>
+            <point key="canvasLocation" x="1846" y="1748"/>
         </scene>
         <!--Home-->
         <scene sceneID="DcJ-dn-q0H">
@@ -2177,7 +2177,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uSn-5N-mKQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-543" y="1714"/>
+            <point key="canvasLocation" x="-543" y="1748"/>
         </scene>
     </scenes>
     <resources>
@@ -2195,9 +2195,9 @@
         <image name="wolves-logo" width="447" height="481"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="bfF-4u-fhf"/>
         <segue reference="lUF-Pv-6Zf"/>
         <segue reference="Tmi-nz-YaI"/>
         <segue reference="uxJ-Xi-arz"/>
-        <segue reference="bfF-4u-fhf"/>
     </inferredMetricsTieBreakers>
 </document>
