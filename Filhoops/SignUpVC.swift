@@ -24,36 +24,17 @@ class SignUpVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     var profileImageURL : String?
     var playerNumber : String?
     
+    
+    //MARK: View Controller Functions
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         teamPickerView.delegate = self
         teamPickerView.dataSource = self
         facebookGraphRequest()
-        
-        DataService.ds.REF_TEAMS.observe(.value, with: { (snapshot) in
-            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
-                
-                //Clear all posts
-                self.teams = [""]
-                self.teamKeys = [""]
-                
-                for snap in snapshots {
-                    print("SNAP: \(snap)")
-                    if let teamDict = snap.value as? Dictionary<String, AnyObject> {
-                        if let teamName = teamDict["name"] as? String {
-                            self.teams.append(teamName)
-                            self.teamKeys.append(snap.key)
-                        }
-                    }
-                }
-                self.teamPickerView.reloadAllComponents()
-            }
-        })
+        loadTeamsFromFirebase()
     }
     
     //MARK: Picker View Delegate Functions
-    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -82,7 +63,6 @@ class SignUpVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
         
         guard let playerImageURL = self.profileImageURL,  let playerName = self.playerName else {
             print("WARNING: Facebook Error getting User's Profile Picture and Name")
-            self.profileImageURL = "http://www.sawyoo.com/postpic/2011/04/facebook-no-profile-picture-icon_698868.jpg"
             self.playerName = "User"
             return
         }
@@ -91,7 +71,6 @@ class SignUpVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
             print("WARNING: Please select a Jersey Number")
             return
         }
-
         
         // Add team to user
         var currentUserReference : FIRDatabaseReference!
@@ -118,18 +97,15 @@ class SignUpVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     func facebookGraphRequest() {
         
         //Set up Graph Request
-        FBSDKGraphRequest(graphPath: "/me", parameters: ["fields" : "id, name, email, cover, picture"]).start {
+        FBSDKGraphRequest(graphPath: "/me", parameters: ["fields" : "id, name"]).start {
             (connection, result, err) in
             
             if err != nil {
                 print("Failed to start graph request: \(err)")
-                
             }
-            
             print("Result \(result)")
             
             if let dict = result as? Dictionary<String, AnyObject> {
-                
                 
                 // Handle ID to get facebook picture
                 if let id = dict["id"] as? String {
@@ -139,7 +115,6 @@ class SignUpVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
                 }
                 
                 // Handle name
-                
                 if let playerName = dict["name"] as? String {
                     print(playerName)
                     self.playerName = playerName
@@ -147,5 +122,27 @@ class SignUpVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
             }
         }
     }
-
+    
+    
+    func loadTeamsFromFirebase() {
+        DataService.ds.REF_TEAMS.observe(.value, with: { (snapshot) in
+            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                
+                //Clear all posts
+                self.teams = [""]
+                self.teamKeys = [""]
+                
+                for snap in snapshots {
+                    print("SignupVC - TEAM: \(snap)")
+                    if let teamDict = snap.value as? Dictionary<String, AnyObject> {
+                        if let teamName = teamDict["name"] as? String {
+                            self.teams.append(teamName)
+                            self.teamKeys.append(snap.key)
+                        }
+                    }
+                }
+                self.teamPickerView.reloadAllComponents()
+            }
+        })
+    }
 }

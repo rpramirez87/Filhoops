@@ -128,9 +128,8 @@ class PlayerVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 self.playerGamePoints = []
                 for snap in snapshots {
-                    print("GAMES: \(snap)")
+                    print("PlayerVC - GAMES: \(snap)")
                     if let gameDict = snap.value as? Dictionary<String, AnyObject> {
-                        print("GAME DICT \(gameDict)")
                         if let points = gameDict["playerPoints"] as? Int {
                             print("POINTS \(points)")
                             self.playerGamePoints.append(points)

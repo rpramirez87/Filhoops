@@ -19,9 +19,7 @@ class LoginVC : UIViewController, FBSDKLoginButtonDelegate {
     
     var returningUser = false
 
-    
-    //MARK: TODO - Constraint User to only sign up for one team
-    
+    //MARK: View Controller Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         //Shade Background
@@ -35,14 +33,12 @@ class LoginVC : UIViewController, FBSDKLoginButtonDelegate {
         if let _ = KeychainWrapper.standard.string(forKey: KEY_UID) {
             doesCurrentUserHaveTeam()
         }
-        
     }
     
     //MARK: Facebook Delegate Functions
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print("Successfuly Logged out")
     }
-    
     
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         if error != nil {
@@ -53,8 +49,6 @@ class LoginVC : UIViewController, FBSDKLoginButtonDelegate {
         
         self.showFacebookEmail()
     }
-    
-    
     
     func showFacebookEmail() {
         
@@ -116,7 +110,6 @@ class LoginVC : UIViewController, FBSDKLoginButtonDelegate {
                 if let currentUser = user {
                     let currentUserData = ["provider" : credential.provider]
                     self.keychainSignIn(id : currentUser.uid, userData: currentUserData)
-                    
                 }
                 
             }
@@ -124,14 +117,15 @@ class LoginVC : UIViewController, FBSDKLoginButtonDelegate {
     }
     
     func keychainSignIn(id : String, userData : Dictionary<String, String>) {
-        print("Hello")
-        
+        //Create user in Firebase
         DataService.ds.createFirebaseDBUser(uid: id, userData: userData)
+        
+        //Save uid in Keychain for returning users
         let saveSuccessful: Bool = KeychainWrapper.standard.set(id, forKey: KEY_UID)
         print("Data saved to keychain \(saveSuccessful)")
-  
-        doesCurrentUserHaveTeam()
         
+        //Check if user have a team to go to the right path
+        doesCurrentUserHaveTeam()
     }
     
     func doesCurrentUserHaveTeam() {

@@ -21,25 +21,8 @@ class LeaderboardsVC: UIViewController, UITableViewDelegate, UITableViewDataSour
         playersTableView.delegate = self
         playersTableView.dataSource = self
         
-        //Load players from users database
-        DataService.ds.REF_USERS.queryOrdered(byChild: "playerAverage").observe(.value, with: { (snapshot) in
-            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
-                
-                //Clear all posts
-                self.players = []
-                
-                for snap in snapshots {
-                    print("SNAP: \(snap)")
-                    if let userDict = snap.value as? Dictionary<String, AnyObject> {
-                        let key = snap.key
-                        let user = Player(playerKey: key, playerData: userDict)
-                        self.players.append(user)
-                    }
-                }
-            }
-            self.players.reverse()
-            self.playersTableView.reloadData()
-        })
+        loadTopPlayersFromFirebase()
+        
     }
     
     //MARK : UITableView Delegate Functions
@@ -62,7 +45,6 @@ class LeaderboardsVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Did Select Row at \(indexPath.row)")
         playerSelected = players[indexPath.row]
         performSegue(withIdentifier: "checkOutPlayer", sender: nil)
 
@@ -71,27 +53,34 @@ class LeaderboardsVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 85
     }
-    
-    // MARK : Helper Functions
-    func numberLabelColorBasedOn(position : Int) -> UIColor {
-        
-        switch(position) {
-        case 0:
-            return UIColor.yellow
-        case 1:
-            return UIColor.gray
-        case 2:
-            return UIColor.brown
-        default:
-            return UIColor.clear
-        }
-    }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "checkOutPlayer" {
             let playerVC = segue.destination as! PlayerVC
             playerVC.currentPlayer = playerSelected
         }
+    }
+    
+    private func loadTopPlayersFromFirebase() {
+        //Load players from users database
+        DataService.ds.REF_USERS.queryOrdered(byChild: "playerAverage").observeSingleEvent(of: .value, with: { (snapshot) in
+            if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
+                
+                //Clear all players
+                self.players = []
+                
+                for snap in snapshots {
+                    print("LeaderbordsVC - USER : \(snap)")
+                    if let userDict = snap.value as? Dictionary<String, AnyObject> {
+                        let key = snap.key
+                        let user = Player(playerKey: key, playerData: userDict)
+                        self.players.append(user)
+                    }
+                }
+            }
+            self.players.reverse()
+            self.playersTableView.reloadData()
+        })
     }
 }

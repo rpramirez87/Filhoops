@@ -43,7 +43,7 @@ class TeamVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
                 if let playerTeamKey = userDict["teamKey"] as? String {
                     print("Player Team Key \(playerTeamKey)")
                     self.uploadGames(teamKey: playerTeamKey, gameKey: "team1Key")
-                    self.uploadGames(teamKey: playerTeamKey, gameKey: "team2Key")
+                    self.uploadGames(teamKey: playerTeamKey, gameKey: "team2Key")  
                 }
             }
         })
@@ -122,7 +122,7 @@ class TeamVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     
     func uploadGames(teamKey : String, gameKey : String) {
         
-        //Load team games from database based on key "team1Key"
+        //Load team games from database based on key
         DataService.ds.REF_GAMES.queryOrdered(byChild: gameKey).queryEqual(toValue: teamKey).observeSingleEvent(of: .value, with: { (snapshot) in
             if let snapshots = snapshot.children.allObjects as? [FIRDataSnapshot] {
                 

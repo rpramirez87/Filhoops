@@ -20,7 +20,6 @@ class CustomView: UIView {
         layer.shadowRadius = 5.0
         //Off sets in the layer's shadows
         layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
-        
         //Corner radius
         layer.cornerRadius = 2.0
         

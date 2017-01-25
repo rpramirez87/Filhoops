@@ -103,7 +103,7 @@ class AUTHAddGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         
         let gameName = "\(firstTeam.teamName) Vs \(secondTeam.teamName)"
 
-
+        // Add game to games
         let firebaseGamePost = DataService.ds.REF_GAMES.childByAutoId()
         let teamPost : Dictionary<String, AnyObject> = [
             "name" : gameName as AnyObject,
@@ -118,12 +118,8 @@ class AUTHAddGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         ]
         
         firebaseGamePost.setValue(teamPost)
-        
         addGameToPlayersBasedOn(gameKey: firebaseGamePost.key, forTeam: firstTeam.teamKey, andTeam: secondTeam.teamKey)
-
-        
         self.dismiss(animated: true, completion: nil)
-        
     }
     @IBAction func cancelButtonPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
