@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+@IBDesignable
 class CustomButton: UIButton {
 
     override func awakeFromNib() {
@@ -21,7 +21,7 @@ class CustomButton: UIButton {
         //Off sets in the layer's shadows
         layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
         
-        layer.cornerRadius = 2.0
+        layer.cornerRadius = 20.0
         
     }
     

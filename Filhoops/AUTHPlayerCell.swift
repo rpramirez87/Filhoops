@@ -26,7 +26,7 @@ class AUTHPlayerCell: UITableViewCell {
         playerNameLabel.text = player.playerName
         playerNumberLabel.text = player.playerNumber
         
-        pointsReference.observeSingleEvent(of: .value, with: { (snapshot) in
+        pointsReference.observe(.value, with: { (snapshot) in
             print(snapshot)
             if snapshot.exists() {
                 self.playerPointsLabel.text = "\(snapshot.value as! Int)"

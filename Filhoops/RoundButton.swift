@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+@IBDesignable
 class RoundButton: UIButton {
     
     override func awakeFromNib() {
