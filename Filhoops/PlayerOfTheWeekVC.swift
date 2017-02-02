@@ -29,8 +29,6 @@ class PlayerOfTheWeekVC: UIViewController {
         }else {
             self.performSegue(withIdentifier: "goToLoginVC", sender: nil)
         }
-        
-      
     }
     
     func doesCurrentUserHaveTeam() {
@@ -50,6 +48,4 @@ class PlayerOfTheWeekVC: UIViewController {
             self.performSegue(withIdentifier: "loadingScreenToMainVC", sender: nil)
         })
     }
-
-
 }
