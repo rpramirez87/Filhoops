@@ -22,14 +22,25 @@ class PlayerCell: UICollectionViewCell {
         //Set up name
         playerNameLabel.text = player.playerName
         playerNumberLabel.text = player.playerNumber
-        //Set up Image
-        let url = NSURL(string : player.imageURL)
         
-        //If data can be converted
-        if let data = NSData(contentsOf: url as! URL){
-            //Use the Image
-            let img = UIImage(data : data as Data)
-            self.profileImageView.image = img
+        //Set up Image
+        let imageURL = URL(string : player.imageURL)
+        var image : UIImage?
+        
+        if let url = imageURL {
+            //All network operations has to run on different thread(not on main thread).
+            DispatchQueue.global(qos: .userInitiated).async {
+                let imageData = NSData(contentsOf: url)
+                //All UI operations has to run on main thread.
+                DispatchQueue.main.async {
+                    if imageData != nil {
+                        image = UIImage(data: imageData as! Data)
+                        self.profileImageView.image = image
+                    } else {
+                        image = nil
+                    }
+                }
+            }
         }
     }
 }
