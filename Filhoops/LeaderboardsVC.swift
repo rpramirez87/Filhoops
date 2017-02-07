@@ -16,6 +16,18 @@ class LeaderboardsVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var playersTableView: UITableView!
     
+    //MARK: Constants    
+    private struct Storyboard {
+        //UITableViewCell subclasses
+        static let PlayerCell = "LeaderboardPlayerCell"
+        
+        //Storyboard Segues
+        static let ShowPlayerDetailSegue = "checkOutPlayer"
+        
+    }
+
+    
+    //MARK: View Controller Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         playersTableView.delegate = self
@@ -28,7 +40,7 @@ class LeaderboardsVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     //MARK : UITableView Delegate Functions
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let player = players[indexPath.row]
-        if let cell = playersTableView.dequeueReusableCell(withIdentifier: "LeaderboardPlayerCell", for: indexPath) as? LeaderboardPlayerCell {
+        if let cell = playersTableView.dequeueReusableCell(withIdentifier: Storyboard.PlayerCell, for: indexPath) as? LeaderboardPlayerCell {
             cell.configureCell(player: player, cellNumber : indexPath.row)
             return cell
         }else {
@@ -46,7 +58,7 @@ class LeaderboardsVC: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         playerSelected = players[indexPath.row]
-        performSegue(withIdentifier: "checkOutPlayer", sender: nil)
+        performSegue(withIdentifier: Storyboard.ShowPlayerDetailSegue, sender: nil)
 
     }
     
@@ -56,7 +68,7 @@ class LeaderboardsVC: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "checkOutPlayer" {
+        if segue.identifier == Storyboard.ShowPlayerDetailSegue {
             let playerVC = segue.destination as! PlayerVC
             playerVC.currentPlayer = playerSelected
         }

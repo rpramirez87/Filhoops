@@ -25,6 +25,10 @@ class PlayerVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var currentPlayer : Player?
     var playerGamePoints = [Int]()
     
+    private struct Storyboard {
+        static let GameCell = "GameDataCell"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -59,7 +63,7 @@ class PlayerVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "GameDataCell") as? GameDataCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.GameCell) as? GameDataCell {
             cell.configureCell(gameNumber: indexPath.row, points: playerGamePoints[indexPath.row])
             return cell
         }else {

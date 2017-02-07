@@ -19,7 +19,24 @@ class TeamVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
     var teamPlayers = [Player]()
     var teamGames = [Game]()
     var playerSelected : Player!
-
+    
+    //MARK: Constants
+    private struct TeamKey {
+        static let team1 = "team1Key"
+        static let team2 = "team2Key"
+    }
+    
+    private struct Storyboard {
+        //UITableViewCell subclasses
+        static let PlayerCell = "PlayerCell"
+        static let GameCell = "TeamGameDataCell"
+        
+        //Storyboard Segues
+        static let ShowPlayerDetailSegue = "goToPlayer"
+        
+    }
+    
+    //MARK: View Controller Life Cycle 
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +49,7 @@ class TeamVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         
         DataService.ds.REF_USER_CURRENT.observeSingleEvent(of: .value, with: { (snapshot) in
             if let userDict = snapshot.value as? Dictionary<String, AnyObject> {
+                
                 //Retrieve Team
                 if let playerTeam = userDict["team"] as? String {
                     print("Player Team \(playerTeam)")
@@ -42,8 +60,8 @@ class TeamVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
                 //Retrieve Team Key
                 if let playerTeamKey = userDict["teamKey"] as? String {
                     print("Player Team Key \(playerTeamKey)")
-                    self.uploadGames(teamKey: playerTeamKey, gameKey: "team1Key")
-                    self.uploadGames(teamKey: playerTeamKey, gameKey: "team2Key")  
+                    self.uploadGames(teamKey: playerTeamKey, gameKey: TeamKey.team1)
+                    self.uploadGames(teamKey: playerTeamKey, gameKey: TeamKey.team2)
                 }
             }
         })
@@ -51,7 +69,7 @@ class TeamVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "goToPlayer" {
+        if segue.identifier == Storyboard.ShowPlayerDetailSegue {
             let playerVC = segue.destination as! PlayerVC
             playerVC.currentPlayer = playerSelected
         }
@@ -78,7 +96,7 @@ class TeamVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         if collectionView == self.collectionView {
             let teamPlayer = teamPlayers[indexPath.row]
             
-            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlayerCell", for: indexPath) as? PlayerCell {
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Storyboard.PlayerCell, for: indexPath) as? PlayerCell {
                 cell.configureCell(player : teamPlayer)
                 return cell
             }else {
@@ -86,7 +104,7 @@ class TeamVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
             }
         }else {
             let teamGame = teamGames[indexPath.row]
-            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeamGameDataCell", for: indexPath) as? TeamGameDataCell {
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Storyboard.GameCell, for: indexPath) as? TeamGameDataCell {
                 cell.configureCell(game: teamGame)
                 return cell
             }else {
@@ -99,7 +117,7 @@ class TeamVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
         
         if collectionView == self.collectionView {
             playerSelected = teamPlayers[indexPath.row]
-            performSegue(withIdentifier: "goToPlayer", sender: nil)
+            performSegue(withIdentifier: Storyboard.ShowPlayerDetailSegue, sender: nil)
             
         }else {
             // Setup Team Game
@@ -134,7 +152,6 @@ class TeamVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSo
                 for snap in snapshots {
                     print("TeamVC - GAME: \(snap)")
                     if let gameDict = snap.value as? Dictionary<String, AnyObject> {
-                        
                         // Save unique key value for Team
                         let key = snap.key
                         let game = Game(gameKey: key, gameData: gameDict)

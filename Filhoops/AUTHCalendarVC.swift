@@ -13,19 +13,32 @@ class AUTHCalendarVC: UIViewController,UITableViewDataSource, UITableViewDelegat
     
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var gamesTableVC: UITableView!
+    @IBOutlet weak var gamesTableVC: UITableView! {
+        didSet {
+            gamesTableVC.delegate = self
+            gamesTableVC.dataSource = self
+        }
+    }
     
     var games = [Game]()
     var currentDate = Date()
     var gameSelected : Game?
     
-    //MARK: View Controller Functions
+    //MARK: Constants 
     
+    private struct Storyboard {
+        //UITableViewCell subclass
+        static let GameCell = "AUTHGameCell"
+        
+        //Segues
+        static let ShowAddGameVCSegue = "showAUTHAddGameVC"
+        static let ShowGameVCSegue = "showGameVC"
+    }
+    
+    //MARK: View Controller Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        gamesTableVC.delegate = self
-        gamesTableVC.dataSource = self
+
         
         // Set up labels based on date
         self.dateLabel.text = currentDate.longDateFormatter()
@@ -41,7 +54,7 @@ class AUTHCalendarVC: UIViewController,UITableViewDataSource, UITableViewDelegat
     }
     
     @IBAction func addGameButtonPressed(_ sender: Any) {
-        performSegue(withIdentifier: "showAUTHAddGameVC", sender: nil)
+        performSegue(withIdentifier: Storyboard.ShowAddGameVCSegue, sender: nil)
         
     }
     
@@ -59,14 +72,14 @@ class AUTHCalendarVC: UIViewController,UITableViewDataSource, UITableViewDelegat
     //MARK : STORYBOARD SEGUE ACTIONS
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "showAUTHAddGameVC" {
+        if segue.identifier == Storyboard.ShowAddGameVCSegue {
             let AddGameVC = segue.destination as! AUTHAddGameVC
             AddGameVC.view.backgroundColor = UIColor.clear
             AddGameVC.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
             AddGameVC.dateToAddGame = currentDate
         }
         
-        if segue.identifier == "showGameVC" {
+        if segue.identifier == Storyboard.ShowGameVCSegue {
             let AUTHGameVC = segue.destination as! AUTHGameVC
             AUTHGameVC.currentGame = gameSelected
         }
@@ -84,7 +97,7 @@ class AUTHCalendarVC: UIViewController,UITableViewDataSource, UITableViewDelegat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let game = games[indexPath.row]
         
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "AUTHGameCell", for: indexPath) as? AUTHGameCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.GameCell, for: indexPath) as? AUTHGameCell {
             cell.configureCell(game : game)
             return cell
         }else {
@@ -94,7 +107,7 @@ class AUTHCalendarVC: UIViewController,UITableViewDataSource, UITableViewDelegat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         gameSelected = games[indexPath.row]
-        performSegue(withIdentifier: "showGameVC", sender: nil)
+        performSegue(withIdentifier: Storyboard.ShowGameVCSegue, sender: nil)
     }
     
     //MARK: Helper Functions

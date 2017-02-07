@@ -9,7 +9,7 @@
 import UIKit
 
 class GameDataCell: UITableViewCell {
-
+    
     @IBOutlet weak var gameLabel: UILabel!
     @IBOutlet weak var pointLabel: UILabel!
     
@@ -21,7 +21,5 @@ class GameDataCell: UITableViewCell {
     func configureCell(gameNumber : Int, points : Int) {
         self.gameLabel.text = "Game \(gameNumber + 1)"
         self.pointLabel.text = "\(points)"
-        
-        
     }
 }

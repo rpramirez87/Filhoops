@@ -14,7 +14,8 @@ class SignUpVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var imageView: CircleImageView!
-    @IBOutlet weak var teamTextField: UITextField! {
+    @IBOutlet weak var teamTextField: UITextField!
+     {
         didSet {
             teamTextField.attributedPlaceholder = NSAttributedString(string: "Team",
                                                                      attributes: [NSForegroundColorAttributeName: UIColor.white])
@@ -72,6 +73,12 @@ class SignUpVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     var playerNumber : String?
     let teamPicker = UIPickerView()
     let numberPicker =  UIPickerView()
+    
+    
+    //MARK: Constants
+    private struct Storyboard {
+        static let ShowTabVCSegue = "signUpToTabVC"
+    }
     
     //MARK: View Controller Functions
     override func viewDidLoad() {
@@ -149,7 +156,7 @@ class SignUpVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
         currentTeamReference = DataService.ds.REF_TEAMS.child(teamKey).child("players").child(DataService.ds.REF_USER_CURRENT.key)
         currentTeamReference.setValue(true)
         
-        performSegue(withIdentifier: "signUpToTabVC", sender: nil)
+        performSegue(withIdentifier: Storyboard.ShowTabVCSegue, sender: nil)
     }
     
     //MARK: Helper Functions

@@ -460,6 +460,9 @@
                                                     </label>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="55" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S9b-VP-65x">
                                                         <rect key="frame" x="41.333333333333329" y="39.666666666666671" width="49.999999999999986" height="29.666666666666671"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="50" id="uJS-FT-hjo"/>
+                                                        </constraints>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
@@ -508,12 +511,15 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="64" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lHo-Qf-vyI">
-                                                        <rect key="frame" x="41" y="39.666666666666671" width="51" height="29.666666666666671"/>
+                                                        <rect key="frame" x="41.333333333333371" y="39.666666666666671" width="50" height="29.666666666666671"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="50" id="UYO-5U-yjd"/>
+                                                        </constraints>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UGl-9R-b0q">
+                                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UGl-9R-b0q">
                                                         <rect key="frame" x="41" y="79.333333333333343" width="51" height="29.666666666666657"/>
                                                         <color key="backgroundColor" red="0.95686274510000002" green="0.26274509800000001" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <state key="normal" title="Update">
@@ -593,7 +599,7 @@
                                             </constraints>
                                         </view>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AUTHPlayerCell" rowHeight="60" id="awe-Y5-dAT" customClass="AUTHPlayerCell" customModule="Filhoops" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AUTHTeam1PlayerCell" rowHeight="60" id="awe-Y5-dAT" customClass="AUTHPlayerCell" customModule="Filhoops" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="72" width="414" height="60"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="awe-Y5-dAT" id="RLQ-xR-jh0">
@@ -726,7 +732,7 @@
                                             </constraints>
                                         </view>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AUTHPlayerCell" rowHeight="60" id="44y-pO-qPh" customClass="AUTHPlayerCell" customModule="Filhoops" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AUTHTeam2PlayerCell" rowHeight="60" id="44y-pO-qPh" customClass="AUTHPlayerCell" customModule="Filhoops" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="72" width="414" height="60"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="44y-pO-qPh" id="q2c-eJ-6ge">

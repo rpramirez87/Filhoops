@@ -19,7 +19,6 @@ class AUTHAddGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     @IBOutlet weak var gymSegmentControl: UISegmentedControl!
     @IBOutlet weak var timePickerView: UIPickerView!
     
-    
     var currentTeams = [Team]()
     var currentFilteredTeams = [Team]()
     var team1 : Team?, team2 : Team?
@@ -31,7 +30,7 @@ class AUTHAddGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
     var gym = "Gym 1"
     var availableTimes = ["7:30 PM","8:30 PM", "9:30 PM", "10:30 PM", "11:30 PM"]
 
-    //MARK: View Controller Functions
+    //MARK: View Controller Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -179,13 +178,11 @@ class AUTHAddGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         }else {
             return currentTeams.count
         }
-     
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //Exit Search bar
         searchBar.resignFirstResponder()
-        
         
         if inSearchMode {
             teamSelected = currentFilteredTeams[indexPath.row]
@@ -208,7 +205,6 @@ class AUTHAddGameVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSou
         }else {
             inSearchMode = true
             let lower = searchBar.text!.lowercased()
-            //filteredTeams = teams.filter({$0.lowercased().range(of :lower) != nil})
             currentFilteredTeams = currentTeams.filter({$0.teamName.lowercased().range(of :lower) != nil})
             teamTableView.reloadData()
         }

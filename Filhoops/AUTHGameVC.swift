@@ -11,14 +11,38 @@ import Firebase
 
 class AUTHGameVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     
-    @IBOutlet weak var firstTeamTableVC: UITableView!
-    @IBOutlet weak var secondTeamTableVC: UITableView!
+    @IBOutlet weak var firstTeamTableVC: UITableView! {
+        didSet {
+            firstTeamTableVC.delegate = self
+            firstTeamTableVC.dataSource = self
+        }
+    }
+    @IBOutlet weak var secondTeamTableVC: UITableView! {
+        didSet {
+            secondTeamTableVC.dataSource = self
+            secondTeamTableVC.delegate = self
+        }
+    }
+    @IBOutlet weak var team1ScoreTextField: UITextField! {
+        didSet {
+            team1ScoreTextField.delegate = self
+        }
+    }
+    @IBOutlet weak var team2ScoreTextField: UITextField! {
+        didSet {
+            team2ScoreTextField.delegate = self
+        }
+    }
+    
+    private struct Storyboard {
+        static let Team1PlayerCell = "AUTHTeam1PlayerCell"
+        static let Team2PlayerCell = "AUTHTeam2PlayerCell"
+    }
+    
+    @IBOutlet weak var team2Label: UILabel!
     @IBOutlet weak var team1Label: UILabel!
-    @IBOutlet weak var team1ScoreTextField: UITextField!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var team2Label: UILabel!
-    @IBOutlet weak var team2ScoreTextField: UITextField!
     @IBOutlet weak var gymLabel: UILabel!
     
     var currentGame : Game!
@@ -30,14 +54,6 @@ class AUTHGameVC: UIViewController, UITableViewDataSource, UITableViewDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Setup Delegates
-        firstTeamTableVC.delegate = self
-        firstTeamTableVC.dataSource = self
-        secondTeamTableVC.dataSource = self
-        secondTeamTableVC.delegate = self
-        team1ScoreTextField.delegate = self
-        team2ScoreTextField.delegate = self
-    
         //Set up Labels
         team1Label.text = currentGame.team1
         team2Label.text = currentGame.team2
@@ -61,10 +77,13 @@ class AUTHGameVC: UIViewController, UITableViewDataSource, UITableViewDelegate, 
         team1ScoreTextField.resignFirstResponder()
         team2ScoreTextField.resignFirstResponder()
         var currentGameReference : FIRDatabaseReference!
-        currentGameReference = DataService.ds.REF_GAMES.child(currentGame.gameKey).child("team1Score")
-        currentGameReference.setValue(team1ScoreTextField.text)
-        currentGameReference = DataService.ds.REF_GAMES.child(currentGame.gameKey).child("team2Score")
-        currentGameReference.setValue(team2ScoreTextField.text)
+        if sender.tag == 0 {
+            currentGameReference = DataService.ds.REF_GAMES.child(currentGame.gameKey).child("team1Score")
+            currentGameReference.setValue(team1ScoreTextField.text)
+        }else {
+            currentGameReference = DataService.ds.REF_GAMES.child(currentGame.gameKey).child("team2Score")
+            currentGameReference.setValue(team2ScoreTextField.text)
+        }
     }
     
     @IBAction func backButtonPressed(_ sender: Any) {
@@ -96,7 +115,7 @@ class AUTHGameVC: UIViewController, UITableViewDataSource, UITableViewDelegate, 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == firstTeamTableVC {
             let player = team1Players[indexPath.row]
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "AUTHPlayerCell", for: indexPath) as? AUTHPlayerCell {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.Team1PlayerCell, for: indexPath) as? AUTHPlayerCell {
                 cell.configureCell(player: player)
                 return cell
             }else {
@@ -104,7 +123,7 @@ class AUTHGameVC: UIViewController, UITableViewDataSource, UITableViewDelegate, 
             }
         }else {
             let player = team2Players[indexPath.row]
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "AUTHPlayerCell", for: indexPath) as? AUTHPlayerCell {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.Team2PlayerCell, for: indexPath) as? AUTHPlayerCell {
                 cell.configureCell(player: player)
                 return cell
             }else {

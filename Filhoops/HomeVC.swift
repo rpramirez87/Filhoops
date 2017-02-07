@@ -16,6 +16,7 @@ class HomeVC: UIViewController, WKNavigationDelegate {
     @IBOutlet weak var container : UIView!
     var webView : WKWebView!
     
+    //MARK: View Controller Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         

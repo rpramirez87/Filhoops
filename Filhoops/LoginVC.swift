@@ -18,10 +18,21 @@ class LoginVC : UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var passwordTextField: CustomTextField!
     
     var returningUser = false
+    
+    //MARK: Constants
+    private struct Storyboard {
+        
+        //Storyboard Segues
+        static let ShowSignUpVCSegue = "goToSignUpVC"
+        static let ShowTabBarVCSegue = "showTabBarVC"
+        
+    }
 
-    //MARK: View Controller Functions
+    //MARK: View Controller Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    
         //Shade Background
         self.bgImageView.alpha = 0.6
     }
@@ -135,7 +146,7 @@ class LoginVC : UIViewController, FBSDKLoginButtonDelegate {
             // Current User does not have a team
             guard let team = snapshot.value as? String else {
                 self.returningUser = false
-                self.performSegue(withIdentifier: "goToSignUpVC", sender: nil)
+                self.performSegue(withIdentifier: Storyboard.ShowSignUpVCSegue, sender: nil)
                 print("Team doesn't exist")
                 return
             }
@@ -143,7 +154,7 @@ class LoginVC : UIViewController, FBSDKLoginButtonDelegate {
             // Current User does have a team
             print("Team \(snapshot.value) exists")
             print("Current user is on \(team)")
-            self.performSegue(withIdentifier: "showTabBarVC", sender: nil)
+            self.performSegue(withIdentifier: Storyboard.ShowTabBarVCSegue, sender: nil)
         })
     }
 }
